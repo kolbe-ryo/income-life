@@ -15,9 +15,10 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Income Life',
-      home: TopPage(),
+      theme: ThemeData.dark(),
+      home: const TopPage(),
     );
   }
 }

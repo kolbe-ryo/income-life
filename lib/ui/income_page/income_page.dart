@@ -7,7 +7,6 @@ class IncomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Top')),
       body: Center(
         child: TextButton(
             child: const Text('Income'),
@@ -32,7 +31,6 @@ class MyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('next')),
       body: Center(child: Text('next')),
     );
   }
