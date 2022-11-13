@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gsheets/gsheets.dart';
-import 'package:income_life/ipass.dart';
-import 'package:income_life/util/logger.dart';
 
 void main() async {
-  final gsheets = GSheets(credentials);
-  final sheets = await gsheets.spreadsheet(id);
-  final sheet = sheets.worksheetByTitle('data');
-  final data = await sheet!.values.allRows(fromRow: 2);
-  logger.info(data);
-
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
