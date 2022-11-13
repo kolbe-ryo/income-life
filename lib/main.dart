@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:income_life/di/di.dart';
 import 'package:income_life/ui/top_page/top_page.dart';
-import 'package:income_life/ui/top_page/top_page_view_model.dart';
 
-void main() async {
+void main() {
   setUpDI();
-  await TopPageViewModel().fetch();
   return runApp(const MainPage());
 }
 
