@@ -1,4 +1,5 @@
-import 'package:income_life/data/model/gsheets_model.dart';
+// Project imports:
+import '../model/gsheets_model.dart';
 
 abstract class GsheetsInterface {
   // fetch gsheets data from internet

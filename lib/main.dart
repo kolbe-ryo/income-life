@@ -1,6 +1,9 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/di/di.dart';
-import 'package:income_life/ui/top_page/top_page.dart';
+
+// Project imports:
+import 'di/di.dart';
+import 'ui/top_page/top_page.dart';
 
 void main() {
   setUpDI();

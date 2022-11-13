@@ -1,9 +1,12 @@
+// Package imports:
 import 'package:gsheets/gsheets.dart';
-import 'package:income_life/data/interface/gsheets_interface.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/enum/currency_value.dart';
-import 'package:income_life/ipass.dart';
-import 'package:income_life/util/logger.dart';
+
+// Project imports:
+import '../interface/gsheets_interface.dart';
+import '../model/gsheets_model.dart';
+import '../../enum/currency_value.dart';
+import '../../ipass.dart';
+import '../../util/logger.dart';
 
 class GsheetsDao implements GsheetsInterface {
   static final _gsheets = GSheets(gSheetsCredentials);

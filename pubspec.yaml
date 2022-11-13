@@ -13,6 +13,8 @@ dependencies:
   freezed_annotation: ^2.1.0
   get_it: ^7.2.0
   gsheets: ^0.4.2
+  import_path_converter: ^1.0.1
+  import_sorter: ^4.6.0
   provider: ^6.0.4
   simple_logger: ^1.9.0+1
   state_notifier: ^0.7.2+1
@@ -27,3 +29,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+import_path_converter:
+  relative: true

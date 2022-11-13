@@ -1,5 +1,8 @@
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:income_life/enum/currency_value.dart';
+
+// Project imports:
+import '../../enum/currency_value.dart';
 
 part 'gsheets_model.freezed.dart';
 
