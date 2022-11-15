@@ -9,17 +9,18 @@ class IncomePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: TextButton(
-            child: const Text('Income'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) {
-                    return const MyWidget();
-                  },
-                ),
-              );
-            }),
+          child: const Text('Income'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute<Widget>(
+                builder: (context) {
+                  return const MyWidget();
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }

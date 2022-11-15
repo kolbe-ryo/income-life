@@ -24,6 +24,7 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
       BnbItems.search: GlobalKey<NavigatorState>(),
       BnbItems.settings: GlobalKey<NavigatorState>(),
     };
+    // fetch();
   }
 
   Future<void> fetch() async {

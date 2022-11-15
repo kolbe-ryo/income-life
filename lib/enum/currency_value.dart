@@ -1,12 +1,6 @@
-// Package imports:
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 enum CurrencyValue {
-  @JsonValue('JP')
   jpy,
-  @JsonValue('USA')
   usd,
-  @JsonValue('')
   non,
 }
 
