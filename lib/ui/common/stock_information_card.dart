@@ -10,25 +10,29 @@ class StockInformationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
       child: Card(
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(kPadding / 2),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              _UnitInformation(StockInformationAttribute.name),
-              _UnitInformation(StockInformationAttribute.price),
-              _UnitInformation(StockInformationAttribute.devidend),
-            ],
+        child: InkWell(
+          borderRadius: BorderRadius.circular(10),
+          onTap: () => null,
+          child: Padding(
+            padding: const EdgeInsets.all(kPadding / 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                _UnitInformation(StockInformationAttribute.name),
+                _UnitInformation(StockInformationAttribute.price),
+                _UnitInformation(StockInformationAttribute.devidend),
+              ],
+            ),
           ),
         ),
       ),
-      onTap: () => null,
     );
   }
 }
@@ -79,7 +83,10 @@ class _UnitInformation extends StatelessWidget {
             padding: const EdgeInsets.all(2),
             child: Text(
               info.ticker,
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Padding(

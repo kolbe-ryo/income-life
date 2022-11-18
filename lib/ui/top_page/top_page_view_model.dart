@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:get_it/get_it.dart';
+import 'package:income_life/data/model/gsheets_model.dart';
+import 'package:income_life/enum/currency_value.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
@@ -24,12 +26,51 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
       BnbItems.search: GlobalKey<NavigatorState>(),
       BnbItems.settings: GlobalKey<NavigatorState>(),
     };
-    // fetch();
+    fetch();
   }
 
   Future<void> fetch() async {
-    state = state.copyWith(gsheets: await GetIt.I<GsheetsInterface>().fetch());
+    // state = state.copyWith(gsheets: await GetIt.I<GsheetsInterface>().fetch());
+    state = state.copyWith(gsheets: _testModels);
   }
 
   void switchBNB(int index) => state = state.copyWith(pageIndex: index);
 }
+
+final _testModels = [
+  const GsheetsModel(
+    market: CurrencyValue.usd,
+    ticker: 'TSLA',
+    name: 'Tesla',
+    price: 190.59,
+    devidend: 0.0012,
+  ),
+  const GsheetsModel(
+    market: CurrencyValue.jpy,
+    ticker: '4092T',
+    name: '三菱重工',
+    price: 4023,
+    devidend: 0.014,
+  ),
+  const GsheetsModel(
+    market: CurrencyValue.usd,
+    ticker: 'ARCC',
+    name: 'AresCapitalCorp',
+    price: 19.09,
+    devidend: 0.095,
+  ),
+  const GsheetsModel(
+    market: CurrencyValue.usd,
+    ticker: 'SPRD',
+    name: 'HighDvidendIndex',
+    price: 204.3,
+    devidend: 0.0345,
+  ),
+  const GsheetsModel(
+    market: CurrencyValue.usd,
+    ticker: 'CRWD',
+    name: 'CrowdStrike',
+    price: 160.43,
+    devidend: 0.0043,
+  ),
+];
