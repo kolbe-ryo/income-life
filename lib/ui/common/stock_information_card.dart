@@ -1,11 +1,16 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/enum/stock_information_attribute_enum.dart';
-import 'package:income_life/ui/common/base_show_dialog.dart';
-import 'package:income_life/ui/common/constants.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
-import 'package:income_life/ui/global/stock_data_state.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
+import '../../data/model/gsheets_model.dart';
+import '../../enum/stock_information_attribute_enum.dart';
+import 'base_show_dialog.dart';
+import 'constants.dart';
+import '../global/stock_data_manager.dart';
+import '../global/stock_data_state.dart';
 
 class StockInformationCard extends StatelessWidget {
   const StockInformationCard({super.key});
@@ -24,11 +29,18 @@ class StockInformationCard extends StatelessWidget {
           onTap: () async {
             final index = context.read<int>();
             final ticker = context.read<StockDataState>().gsheets[index].ticker;
+            final viewModel = context.read<StockDataManager>();
             final isAdded = await baseShowDialog(
               context: context,
               title: 'ポートフォリオに追加しますか',
               widget: Text(ticker),
             );
+            if (isAdded ?? false) {
+              //. TODO: Loading処理追加
+              showProgressDialog(context);
+              await Future<dynamic>.delayed(const Duration(milliseconds: 500));
+              viewModel.addPortfolio(index);
+            }
             return;
           },
           child: Padding(
@@ -123,7 +135,7 @@ class _UnitInformation extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8),
-            child: Text('${info.devidend * 100}%'),
+            child: Text(info.dividendRate),
           ),
         ];
     }

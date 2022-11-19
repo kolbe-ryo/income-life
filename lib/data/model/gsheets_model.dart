@@ -14,6 +14,10 @@ class GsheetsModel with _$GsheetsModel {
     @Default('') String name,
     @Default(0) double price,
     @Default(0) double devidend,
-    @Default(false) bool isAdded,
+    @Default(false) bool isAddedPortfolio,
   }) = _GsheetsModel;
+
+  const GsheetsModel._();
+
+  String get dividendRate => '${(devidend * 100).toStringAsFixed(2)}%';
 }

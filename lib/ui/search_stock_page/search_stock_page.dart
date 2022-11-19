@@ -1,10 +1,14 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/ui/common/constants.dart';
-import 'package:income_life/ui/common/stock_information_card.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
-import 'package:income_life/ui/global/stock_data_state.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
+import '../common/constants.dart';
+import '../common/stock_information_card.dart';
+import '../global/stock_data_manager.dart';
+import '../global/stock_data_state.dart';
 
 class SearchStockPage extends StatelessWidget {
   const SearchStockPage({super.key});

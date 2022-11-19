@@ -2,11 +2,11 @@
 import 'package:gsheets/gsheets.dart';
 
 // Project imports:
-import '../interface/gsheets_interface.dart';
-import '../model/gsheets_model.dart';
 import '../../enum/currency_value.dart';
 import '../../ipass.dart';
 import '../../util/logger.dart';
+import '../interface/gsheets_interface.dart';
+import '../model/gsheets_model.dart';
 
 class GsheetsDao implements GsheetsInterface {
   static final _gsheets = GSheets(gSheetsCredentials);

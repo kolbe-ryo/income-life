@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:income_life/enum/bnb_items.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
-import 'package:income_life/ui/global/stock_data_state.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import '../../enum/bnb_items.dart';
+import '../global/stock_data_manager.dart';
+import '../global/stock_data_state.dart';
 import '../common/custom_bottom_navigation_bar.dart';
 import 'top_page_state.dart';
 import 'top_page_view_model.dart';

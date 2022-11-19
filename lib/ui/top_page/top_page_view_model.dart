@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:get_it/get_it.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/enum/currency_value.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
+import '../../data/model/gsheets_model.dart';
+import '../../enum/currency_value.dart';
 import '../../data/interface/gsheets_interface.dart';
 import '../../enum/bnb_items.dart';
 import 'top_page_state.dart';

@@ -1,9 +1,12 @@
+// Package imports:
 import 'package:get_it/get_it.dart';
-import 'package:income_life/data/interface/gsheets_interface.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/enum/currency_value.dart';
-import 'package:income_life/ui/global/stock_data_state.dart';
 import 'package:state_notifier/state_notifier.dart';
+
+// Project imports:
+import '../../data/interface/gsheets_interface.dart';
+import '../../data/model/gsheets_model.dart';
+import '../../enum/currency_value.dart';
+import 'stock_data_state.dart';
 
 class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   StockDataManager([StockDataState state = const StockDataState()]) : super(state);
@@ -12,14 +15,35 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
 
   @override
   void initState() {
-    _fetch();
+    _fetchGsheets();
+    _fetchFromLocal();
   }
 
   // fetch data from Gsheets and Local Repository
-  Future<void> _fetch() async {
+  Future<void> _fetchGsheets() async {
     // state = state.copyWith(gsheets: await GetIt.I<GsheetsInterface>().fetch());
     state = state.copyWith(gsheets: _testModels);
   }
+
+  // Switch stock isAddedPortfolio and Save local storage
+  void addPortfolio(int index) {
+    final addedItem = state.gsheets[index].copyWith(isAddedPortfolio: true);
+    final ticker = state.gsheets[index].ticker;
+    state = state.copyWith(
+      gsheets: state.gsheets
+          .map(
+            (item) => item.ticker == ticker ? addedItem : item,
+          )
+          .toList(),
+    );
+    _saveToLocal();
+  }
+
+  // Save to local storage
+  void _fetchFromLocal() {}
+
+  // Save to local storage
+  void _saveToLocal() {}
 }
 
 final _testModels = [
@@ -42,7 +66,7 @@ final _testModels = [
     ticker: 'ARCC',
     name: 'AresCapitalCorp',
     price: 19.09,
-    devidend: 0.095,
+    devidend: 0.105,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
