@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TopPageState {
-  List<GsheetsModel> get gsheets => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +29,7 @@ abstract class $TopPageStateCopyWith<$Res> {
           TopPageState value, $Res Function(TopPageState) then) =
       _$TopPageStateCopyWithImpl<$Res, TopPageState>;
   @useResult
-  $Res call({List<GsheetsModel> gsheets, int pageIndex});
+  $Res call({int pageIndex});
 }
 
 /// @nodoc
@@ -46,14 +45,9 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gsheets = null,
     Object? pageIndex = null,
   }) {
     return _then(_value.copyWith(
-      gsheets: null == gsheets
-          ? _value.gsheets
-          : gsheets // ignore: cast_nullable_to_non_nullable
-              as List<GsheetsModel>,
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
@@ -70,7 +64,7 @@ abstract class _$$_TopPageStateCopyWith<$Res>
       __$$_TopPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<GsheetsModel> gsheets, int pageIndex});
+  $Res call({int pageIndex});
 }
 
 /// @nodoc
@@ -84,14 +78,9 @@ class __$$_TopPageStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gsheets = null,
     Object? pageIndex = null,
   }) {
     return _then(_$_TopPageState(
-      gsheets: null == gsheets
-          ? _value._gsheets
-          : gsheets // ignore: cast_nullable_to_non_nullable
-              as List<GsheetsModel>,
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
@@ -103,18 +92,7 @@ class __$$_TopPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TopPageState implements _TopPageState {
-  const _$_TopPageState(
-      {final List<GsheetsModel> gsheets = const <GsheetsModel>[],
-      this.pageIndex = 0})
-      : _gsheets = gsheets;
-
-  final List<GsheetsModel> _gsheets;
-  @override
-  @JsonKey()
-  List<GsheetsModel> get gsheets {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_gsheets);
-  }
+  const _$_TopPageState({this.pageIndex = 0});
 
   @override
   @JsonKey()
@@ -122,7 +100,7 @@ class _$_TopPageState implements _TopPageState {
 
   @override
   String toString() {
-    return 'TopPageState(gsheets: $gsheets, pageIndex: $pageIndex)';
+    return 'TopPageState(pageIndex: $pageIndex)';
   }
 
   @override
@@ -130,14 +108,12 @@ class _$_TopPageState implements _TopPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TopPageState &&
-            const DeepCollectionEquality().equals(other._gsheets, _gsheets) &&
             (identical(other.pageIndex, pageIndex) ||
                 other.pageIndex == pageIndex));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_gsheets), pageIndex);
+  int get hashCode => Object.hash(runtimeType, pageIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -147,12 +123,8 @@ class _$_TopPageState implements _TopPageState {
 }
 
 abstract class _TopPageState implements TopPageState {
-  const factory _TopPageState(
-      {final List<GsheetsModel> gsheets,
-      final int pageIndex}) = _$_TopPageState;
+  const factory _TopPageState({final int pageIndex}) = _$_TopPageState;
 
-  @override
-  List<GsheetsModel> get gsheets;
   @override
   int get pageIndex;
   @override

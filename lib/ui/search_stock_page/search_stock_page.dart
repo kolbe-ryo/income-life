@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:income_life/ui/common/constants.dart';
 import 'package:income_life/ui/common/stock_information_card.dart';
+import 'package:income_life/ui/global/stock_data_manager.dart';
+import 'package:income_life/ui/global/stock_data_state.dart';
 import 'package:provider/provider.dart';
 
 class SearchStockPage extends StatelessWidget {
@@ -26,11 +28,14 @@ class SearchStockPage extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
-            child: ListView(
-              children: const [
-                StockInformationCard(),
-                StockInformationCard(),
-              ],
+            child: ListView.builder(
+              itemCount: context.select((StockDataState value) => value.gsheets.length),
+              itemBuilder: (context, index) {
+                return Provider.value(
+                  value: index,
+                  child: const StockInformationCard(),
+                );
+              },
             ),
           ),
         ),

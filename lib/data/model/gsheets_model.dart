@@ -14,5 +14,6 @@ class GsheetsModel with _$GsheetsModel {
     @Default('') String name,
     @Default(0) double price,
     @Default(0) double devidend,
+    @Default(false) bool isAdded,
   }) = _GsheetsModel;
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/enum/currency_value.dart';
 import 'package:income_life/enum/stock_information_attribute_enum.dart';
+import 'package:income_life/ui/common/base_show_dialog.dart';
 import 'package:income_life/ui/common/constants.dart';
+import 'package:income_life/ui/global/stock_data_manager.dart';
+import 'package:income_life/ui/global/stock_data_state.dart';
 import 'package:provider/provider.dart';
 
 class StockInformationCard extends StatelessWidget {
@@ -19,7 +21,16 @@ class StockInformationCard extends StatelessWidget {
         ),
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
-          onTap: () => null,
+          onTap: () async {
+            final index = context.read<int>();
+            final ticker = context.read<StockDataState>().gsheets[index].ticker;
+            final isAdded = await baseShowDialog(
+              context: context,
+              title: 'ポートフォリオに追加しますか',
+              widget: Text(ticker),
+            );
+            return;
+          },
           child: Padding(
             padding: const EdgeInsets.all(kPadding / 2),
             child: Row(
@@ -44,16 +55,9 @@ class _UnitInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const info = GsheetsModel(
-      market: CurrencyValue.usd,
-      ticker: 'TSLA',
-      name: 'Tesla',
-      price: 190.59,
-      devidend: 0.0012,
-    );
-
     final mediaWidth = context.select((MediaQueryData value) => value.size.width);
-
+    final index = context.watch<int>();
+    final gsheetsModel = context.select((StockDataState value) => value.gsheets[index]);
     return DefaultTextStyle(
       style: const TextStyle(
         fontSize: 22,
@@ -61,11 +65,11 @@ class _UnitInformation extends StatelessWidget {
       ),
       child: SizedBox(
         width: (mediaWidth - kPadding * 3) / 3,
-        height: 58,
+        height: 64,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: _getWidgets(attribute: attribute, info: info),
+          children: _getWidgets(attribute: attribute, info: gsheetsModel),
         ),
       ),
     );
@@ -79,7 +83,7 @@ class _UnitInformation extends StatelessWidget {
       case StockInformationAttribute.name:
         return [
           Container(
-            color: const Color.fromARGB(255, 167, 203, 125),
+            color: Colors.teal,
             padding: const EdgeInsets.all(2),
             child: Text(
               info.ticker,

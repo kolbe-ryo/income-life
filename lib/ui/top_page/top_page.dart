@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:income_life/enum/bnb_items.dart';
+import 'package:income_life/ui/global/stock_data_manager.dart';
+import 'package:income_life/ui/global/stock_data_state.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -16,8 +18,17 @@ class TopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StateNotifierProvider<TopPageViewModel, TopPageState>(
-      create: (_) => TopPageViewModel(),
+    return MultiProvider(
+      providers: [
+        StateNotifierProvider<TopPageViewModel, TopPageState>(
+          create: (_) => TopPageViewModel(),
+          lazy: false,
+        ),
+        StateNotifierProvider<StockDataManager, StockDataState>(
+          create: (_) => StockDataManager(),
+          lazy: false,
+        ),
+      ],
       child: Builder(
         builder: (context) {
           return Scaffold(
