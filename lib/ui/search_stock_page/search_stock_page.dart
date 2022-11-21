@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:income_life/ui/common/app_colors.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -15,32 +16,29 @@ class SearchStockPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider.value(
-      value: MediaQuery.of(context),
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0,
-          title: const _TextField(),
-        ),
-        body: GestureDetector(
-          onTap: () {
-            final currentScope = FocusScope.of(context);
-            if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
-              FocusManager.instance.primaryFocus!.unfocus();
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
-            child: ListView.builder(
-              itemCount: context.select((StockDataState value) => value.gsheets.length),
-              itemBuilder: (context, index) {
-                return Provider.value(
-                  value: index,
-                  child: const StockInformationCard(),
-                );
-              },
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 0,
+        title: const _TextField(),
+      ),
+      body: GestureDetector(
+        onTap: () {
+          final currentScope = FocusScope.of(context);
+          if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+            FocusManager.instance.primaryFocus!.unfocus();
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
+          child: ListView.builder(
+            itemCount: context.select((StockDataState value) => value.length),
+            itemBuilder: (context, index) {
+              return Provider.value(
+                value: index,
+                child: const StockInformationCard(),
+              );
+            },
           ),
         ),
       ),
@@ -49,24 +47,24 @@ class SearchStockPage extends StatelessWidget {
 }
 
 class _TextField extends StatelessWidget {
-  const _TextField({super.key});
+  const _TextField();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: kPadding, bottom: kPadding / 2),
       child: TextField(
-        cursorColor: Colors.white24,
+        cursorColor: AppColors.darkGrey,
         cursorWidth: 1,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.zero,
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Colors.white24),
+            borderRadius: BorderRadius.circular(kBorder),
+            borderSide: const BorderSide(color: AppColors.darkGrey),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Colors.white60),
+            borderRadius: BorderRadius.circular(kBorder),
+            borderSide: const BorderSide(color: AppColors.lightGrey60),
           ),
           prefixIcon: const Icon(
             Icons.search,
@@ -74,7 +72,7 @@ class _TextField extends StatelessWidget {
           ),
         ),
         style: const TextStyle(
-          color: Colors.white70,
+          color: AppColors.lightGrey70,
           fontSize: 18,
         ),
       ),

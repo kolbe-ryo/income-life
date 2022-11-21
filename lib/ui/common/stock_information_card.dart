@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:income_life/ui/common/app_colors.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -22,10 +23,10 @@ class StockInformationCard extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(kBorder),
         ),
         child: InkWell(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(kBorder),
           onTap: () async {
             final index = context.read<int>();
             final ticker = context.read<StockDataState>().gsheets[index].ticker;
@@ -36,9 +37,6 @@ class StockInformationCard extends StatelessWidget {
               widget: Text(ticker),
             );
             if (isAdded ?? false) {
-              //. TODO: Loading処理追加
-              showProgressDialog(context);
-              await Future<dynamic>.delayed(const Duration(milliseconds: 500));
               viewModel.addPortfolio(index);
             }
             return;
@@ -95,7 +93,7 @@ class _UnitInformation extends StatelessWidget {
       case StockInformationAttribute.name:
         return [
           Container(
-            color: Colors.teal,
+            color: AppColors.teal,
             padding: const EdgeInsets.all(2),
             child: Text(
               info.ticker,
@@ -115,7 +113,7 @@ class _UnitInformation extends StatelessWidget {
           const Text(
             'Price',
             style: TextStyle(
-              color: Colors.grey,
+              color: AppColors.grey,
               fontSize: 16,
             ),
           ),
@@ -129,7 +127,7 @@ class _UnitInformation extends StatelessWidget {
           const Text(
             'Devidend',
             style: TextStyle(
-              color: Colors.grey,
+              color: AppColors.grey,
               fontSize: 16,
             ),
           ),

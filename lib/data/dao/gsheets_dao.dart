@@ -42,13 +42,27 @@ class GsheetsDao implements GsheetsInterface {
   }
 
   @override
-  Future<List<GsheetsModel>> get() {
-    // TODO: implement get
-    throw UnimplementedError();
+  void save() {
+    // TODO: implement save
   }
 
   @override
-  void save() {
-    // TODO: implement save
+  Future<double> fetchExchangeRate() async {
+    try {
+      final sheets = await _gsheets.spreadsheet(gSheetsId);
+      final sheet = sheets.worksheetByTitle('exchange');
+      final allData = await sheet!.values.allRows(fromRow: 1, length: 1);
+
+      return double.parse(allData.first.first);
+    } on Exception catch (error) {
+      logger.info(error);
+      throw UnimplementedError();
+    }
+  }
+
+  @override
+  Future<List<GsheetsModel>> getLocal() {
+    // TODO: implement getLocal
+    throw UnimplementedError();
   }
 }

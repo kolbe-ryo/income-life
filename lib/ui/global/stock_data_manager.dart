@@ -1,5 +1,6 @@
 // Package imports:
 import 'package:get_it/get_it.dart';
+import 'package:income_life/util/logger.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
@@ -22,7 +23,8 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   // fetch data from Gsheets and Local Repository
   Future<void> _fetchGsheets() async {
     // state = state.copyWith(gsheets: await GetIt.I<GsheetsInterface>().fetch());
-    state = state.copyWith(gsheets: _testModels);
+    // state = state.copyWith(exchangeRate: await GetIt.I<GsheetsInterface>().fetchExchangeRate());
+    state = state.copyWith(gsheets: _testModels, exchangeRate: 141);
   }
 
   // Switch stock isAddedPortfolio and Save local storage
@@ -53,6 +55,7 @@ final _testModels = [
     name: 'Tesla',
     price: 190.59,
     devidend: 0.0012,
+    totalStocks: 10,
   ),
   const GsheetsModel(
     market: CurrencyValue.jpy,
@@ -60,6 +63,7 @@ final _testModels = [
     name: '三菱重工',
     price: 4023,
     devidend: 0.014,
+    totalStocks: 10,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
@@ -67,6 +71,7 @@ final _testModels = [
     name: 'AresCapitalCorp',
     price: 19.09,
     devidend: 0.105,
+    totalStocks: 10,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
@@ -74,6 +79,7 @@ final _testModels = [
     name: 'HighDvidendIndex',
     price: 204.3,
     devidend: 0.0345,
+    totalStocks: 10,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
@@ -81,6 +87,7 @@ final _testModels = [
     name: 'CrowdStrike',
     price: 160.43,
     devidend: 0.0043,
+    totalStocks: 10,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
@@ -88,5 +95,6 @@ final _testModels = [
     name: 'Google',
     price: 100.21,
     devidend: 0.0023,
+    totalStocks: 10,
   ),
 ];

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$StockDataState {
   List<GsheetsModel> get gsheets => throw _privateConstructorUsedError;
+  double get exchangeRate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StockDataStateCopyWith<StockDataState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $StockDataStateCopyWith<$Res> {
           StockDataState value, $Res Function(StockDataState) then) =
       _$StockDataStateCopyWithImpl<$Res, StockDataState>;
   @useResult
-  $Res call({List<GsheetsModel> gsheets});
+  $Res call({List<GsheetsModel> gsheets, double exchangeRate});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$StockDataStateCopyWithImpl<$Res, $Val extends StockDataState>
   @override
   $Res call({
     Object? gsheets = null,
+    Object? exchangeRate = null,
   }) {
     return _then(_value.copyWith(
       gsheets: null == gsheets
           ? _value.gsheets
           : gsheets // ignore: cast_nullable_to_non_nullable
               as List<GsheetsModel>,
+      exchangeRate: null == exchangeRate
+          ? _value.exchangeRate
+          : exchangeRate // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_StockDataStateCopyWith<$Res>
       __$$_StockDataStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<GsheetsModel> gsheets});
+  $Res call({List<GsheetsModel> gsheets, double exchangeRate});
 }
 
 /// @nodoc
@@ -79,22 +85,29 @@ class __$$_StockDataStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? gsheets = null,
+    Object? exchangeRate = null,
   }) {
     return _then(_$_StockDataState(
       gsheets: null == gsheets
           ? _value._gsheets
           : gsheets // ignore: cast_nullable_to_non_nullable
               as List<GsheetsModel>,
+      exchangeRate: null == exchangeRate
+          ? _value.exchangeRate
+          : exchangeRate // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_StockDataState implements _StockDataState {
+class _$_StockDataState extends _StockDataState {
   const _$_StockDataState(
-      {final List<GsheetsModel> gsheets = const <GsheetsModel>[]})
-      : _gsheets = gsheets;
+      {final List<GsheetsModel> gsheets = const <GsheetsModel>[],
+      this.exchangeRate = 0})
+      : _gsheets = gsheets,
+        super._();
 
   final List<GsheetsModel> _gsheets;
   @override
@@ -105,8 +118,12 @@ class _$_StockDataState implements _StockDataState {
   }
 
   @override
+  @JsonKey()
+  final double exchangeRate;
+
+  @override
   String toString() {
-    return 'StockDataState(gsheets: $gsheets)';
+    return 'StockDataState(gsheets: $gsheets, exchangeRate: $exchangeRate)';
   }
 
   @override
@@ -114,12 +131,14 @@ class _$_StockDataState implements _StockDataState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StockDataState &&
-            const DeepCollectionEquality().equals(other._gsheets, _gsheets));
+            const DeepCollectionEquality().equals(other._gsheets, _gsheets) &&
+            (identical(other.exchangeRate, exchangeRate) ||
+                other.exchangeRate == exchangeRate));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_gsheets));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_gsheets), exchangeRate);
 
   @JsonKey(ignore: true)
   @override
@@ -128,12 +147,16 @@ class _$_StockDataState implements _StockDataState {
       __$$_StockDataStateCopyWithImpl<_$_StockDataState>(this, _$identity);
 }
 
-abstract class _StockDataState implements StockDataState {
-  const factory _StockDataState({final List<GsheetsModel> gsheets}) =
-      _$_StockDataState;
+abstract class _StockDataState extends StockDataState {
+  const factory _StockDataState(
+      {final List<GsheetsModel> gsheets,
+      final double exchangeRate}) = _$_StockDataState;
+  const _StockDataState._() : super._();
 
   @override
   List<GsheetsModel> get gsheets;
+  @override
+  double get exchangeRate;
   @override
   @JsonKey(ignore: true)
   _$$_StockDataStateCopyWith<_$_StockDataState> get copyWith =>

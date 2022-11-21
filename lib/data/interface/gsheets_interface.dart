@@ -5,8 +5,11 @@ abstract class GsheetsInterface {
   // fetch gsheets data from internet
   Future<List<GsheetsModel>> fetch();
 
+  // fetch gsheets data from internet
+  Future<double> fetchExchangeRate();
+
   // fetch gsheets data from local repository
-  Future<List<GsheetsModel>> get();
+  Future<List<GsheetsModel>> getLocal();
 
   // check length for needs to update
   int checkDataLength();

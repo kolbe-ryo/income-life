@@ -28,6 +28,9 @@ class TopPage extends StatelessWidget {
           create: (_) => StockDataManager(),
           lazy: false,
         ),
+        Provider.value(
+          value: MediaQuery.of(context),
+        ),
       ],
       child: Builder(
         builder: (context) {
