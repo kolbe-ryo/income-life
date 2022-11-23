@@ -14,7 +14,9 @@ class StockDataState with _$StockDataState {
 
   const StockDataState._();
 
-  int get length => gsheets.where((e) => e.isAddedPortfolio).length;
+  int get length => gsheets.length;
+
+  int get portfolioLength => gsheets.where((e) => e.isAddedPortfolio).length;
 
   double get totalIncome => gsheets
       .where(
@@ -39,4 +41,22 @@ class StockDataState with _$StockDataState {
       .reduce(
         (a, b) => a + b,
       );
+
+  List<GsheetsModel> get portfolio => gsheets
+      .where(
+        (e) => e.isAddedPortfolio,
+      )
+      .toList()
+    ..sort(
+      (a, b) => -a.income.compareTo(b.income),
+    );
+
+  List<GsheetsModel> get notPortfolio => gsheets
+      .where(
+        (e) => !e.isAddedPortfolio,
+      )
+      .toList()
+    ..sort(
+      (a, b) => -a.income.compareTo(b.income),
+    );
 }

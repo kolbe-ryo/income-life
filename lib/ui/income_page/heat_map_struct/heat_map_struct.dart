@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:income_life/data/model/gsheets_model.dart';
 import 'package:income_life/data/model/heat_map_model.dart';
+import 'package:income_life/ui/common/app_colors.dart';
 
 List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
   int getSizeRate(
@@ -15,7 +15,7 @@ List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
         HeatMapModel(
           mainAxisSize: 100,
           crossAxisSize: 100,
-          color: Colors.teal,
+          color: AppColors.teal,
           model: models[0],
         ),
       ];
@@ -28,13 +28,13 @@ List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
         HeatMapModel(
           mainAxisSize: 100,
           crossAxisSize: size0,
-          color: Colors.teal,
+          color: AppColors.teal,
           model: models[0],
         ),
         HeatMapModel(
           mainAxisSize: 100,
           crossAxisSize: size1,
-          color: Colors.deepOrangeAccent,
+          color: AppColors.deepOrangeAccent,
           model: models[1],
         ),
       ];
@@ -50,19 +50,19 @@ List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
         HeatMapModel(
           mainAxisSize: size2,
           crossAxisSize: size0,
-          color: Colors.teal,
+          color: AppColors.teal,
           model: models[0],
         ),
         HeatMapModel(
           mainAxisSize: size2,
           crossAxisSize: size1,
-          color: Colors.deepOrangeAccent,
+          color: AppColors.deepOrangeAccent,
           model: models[1],
         ),
         HeatMapModel(
           mainAxisSize: size3,
           crossAxisSize: 100,
-          color: Colors.redAccent,
+          color: AppColors.redAccent,
           model: models[2],
         ),
       ];
@@ -81,25 +81,25 @@ List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
         HeatMapModel(
           mainAxisSize: size2,
           crossAxisSize: size0,
-          color: Colors.teal,
+          color: AppColors.teal,
           model: models[0],
         ),
         HeatMapModel(
           mainAxisSize: size2,
           crossAxisSize: size1,
-          color: Colors.deepOrangeAccent,
+          color: AppColors.deepOrangeAccent,
           model: models[1],
         ),
         HeatMapModel(
           mainAxisSize: size3,
           crossAxisSize: size4,
-          color: Colors.redAccent,
+          color: AppColors.redAccent,
           model: models[2],
         ),
         HeatMapModel(
           mainAxisSize: size3,
           crossAxisSize: size5,
-          color: Colors.greenAccent,
+          color: AppColors.greenAccent,
           model: models[3],
         ),
       ];
@@ -121,31 +121,31 @@ List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
         HeatMapModel(
           mainAxisSize: size2,
           crossAxisSize: size0,
-          color: Colors.teal,
+          color: AppColors.teal,
           model: models[0],
         ),
         HeatMapModel(
           mainAxisSize: size2,
           crossAxisSize: size1,
-          color: Colors.deepOrangeAccent,
+          color: AppColors.deepOrangeAccent,
           model: models[1],
         ),
         HeatMapModel(
           mainAxisSize: size3,
           crossAxisSize: size4,
-          color: Colors.redAccent,
+          color: AppColors.redAccent,
           model: models[2],
         ),
         HeatMapModel(
           mainAxisSize: (size3 * size6 / 100).floor(),
           crossAxisSize: size5,
-          color: Colors.greenAccent,
+          color: AppColors.greenAccent,
           model: models[3],
         ),
         HeatMapModel(
           mainAxisSize: (size3 * size7 / 100).floor(),
           crossAxisSize: size5,
-          color: Colors.tealAccent,
+          color: AppColors.tealAccent,
           model: models[4],
         ),
       ];
@@ -169,37 +169,37 @@ List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
           HeatMapModel(
             mainAxisSize: size2,
             crossAxisSize: size0,
-            color: Colors.teal,
+            color: AppColors.teal,
             model: models[0],
           ),
           HeatMapModel(
             mainAxisSize: size2,
             crossAxisSize: size1,
-            color: Colors.deepOrangeAccent,
+            color: AppColors.deepOrangeAccent,
             model: models[1],
           ),
           HeatMapModel(
             mainAxisSize: size3,
             crossAxisSize: size4,
-            color: Colors.redAccent,
+            color: AppColors.redAccent,
             model: models[2],
           ),
           HeatMapModel(
             mainAxisSize: (size3 * size6 / 100).floor(),
             crossAxisSize: size5,
-            color: Colors.greenAccent,
+            color: AppColors.greenAccent,
             model: models[3],
           ),
           HeatMapModel(
             mainAxisSize: (size3 * size7 / 100).floor(),
             crossAxisSize: (size5 * 0.7).floor(),
-            color: Colors.tealAccent,
+            color: AppColors.tealAccent,
             model: models[4],
           ),
           HeatMapModel(
             mainAxisSize: (size3 * size7 / 100).floor(),
             crossAxisSize: (size5 * 0.3).floor(),
-            color: Colors.blueGrey,
+            color: AppColors.blueGrey,
             model: const GsheetsModel(ticker: 'Others'),
           ),
         ];

@@ -1,12 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:income_life/enum/invest_information_enum.dart';
 import 'package:income_life/ui/common/constants.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
+import 'package:income_life/ui/global/stock_data_state.dart';
 import 'package:income_life/ui/income_page/income_heat_map.dart';
-import 'package:income_life/ui/income_page/income_page_state.dart';
-import 'package:income_life/ui/income_page/income_page_view_model.dart';
 import 'package:income_life/util/text_formatter.dart';
 import 'package:provider/provider.dart';
 
@@ -15,32 +12,27 @@ class IncomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StateNotifierProvider<IncomePageViewModel, IncomePageState>(
-      create: (context) => IncomePageViewModel(),
-      builder: (context, _) {
-        return Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(kPadding, kPadding * 2, kPadding, 0),
-            child: Column(
-              children: [
-                const IncomeHeatMap(),
-                const SizedBox(height: kPadding),
-                Row(
-                  children: const [
-                    Expanded(
-                      child: _InvestSummaryCard(InvestInfoEnum.income),
-                    ),
-                    SizedBox(width: kPadding / 2),
-                    _InvestSummaryCard(InvestInfoEnum.stocks),
-                  ],
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(kPadding, kPadding * 2, kPadding, 0),
+        child: Column(
+          children: [
+            const IncomeHeatMap(),
+            const SizedBox(height: kPadding),
+            Row(
+              children: const [
+                Expanded(
+                  child: _InvestSummaryCard(InvestInfoEnum.income),
                 ),
-                const SizedBox(height: kPadding / 2),
-                const _InvestSummaryCard(InvestInfoEnum.totalInvest),
+                SizedBox(width: kPadding / 2),
+                _InvestSummaryCard(InvestInfoEnum.stocks),
               ],
             ),
-          ),
-        );
-      },
+            const SizedBox(height: kPadding / 2),
+            const _InvestSummaryCard(InvestInfoEnum.totalInvest),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -53,7 +45,6 @@ class _InvestSummaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // color: model.color,
       margin: EdgeInsets.zero,
       child: Padding(
         padding: const EdgeInsets.all(kPadding),
@@ -102,14 +93,17 @@ class _InvestSummaryCard extends StatelessWidget {
   }
 
   String _content(BuildContext context) {
-    final stockDataManager = context.read<StockDataManager>().info;
+    final state = context.select((StockDataState value) => value);
+    if (state.portfolioLength == 0) {
+      return '-';
+    }
     switch (kinds) {
       case InvestInfoEnum.income:
-        return '¥ ${formatter.format(stockDataManager.totalIncome.floor())}';
+        return '¥ ${formatter.format(state.totalIncome.floor())}';
       case InvestInfoEnum.totalInvest:
-        return '¥ ${formatter.format(stockDataManager.totalAmount.floor())}';
+        return '¥ ${formatter.format(state.totalAmount.floor())}';
       case InvestInfoEnum.stocks:
-        return formatter.format(stockDataManager.length);
+        return formatter.format(state.portfolioLength);
     }
   }
 }
