@@ -55,8 +55,5 @@ class StockDataState with _$StockDataState {
       .where(
         (e) => !e.isAddedPortfolio,
       )
-      .toList()
-    ..sort(
-      (a, b) => -a.income.compareTo(b.income),
-    );
+      .toList();
 }

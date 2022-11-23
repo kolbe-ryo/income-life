@@ -101,13 +101,6 @@ class _ListView extends StatelessWidget {
             child: const StockInformationCard(),
           );
         }).toList(),
-        // itemCount: selectState.length,
-        // itemBuilder: (context, index) {
-        //   return Provider.value(
-        //     value: index,
-        //     child: const StockInformationCard(),
-        //   );
-        // },
       ),
     );
   }
