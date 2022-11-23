@@ -23,6 +23,7 @@ mixin _$GsheetsModel {
   double get devidend => throw _privateConstructorUsedError;
   bool get isAddedPortfolio => throw _privateConstructorUsedError;
   int get totalStocks => throw _privateConstructorUsedError;
+  double get exchangeRate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GsheetsModelCopyWith<GsheetsModel> get copyWith =>
@@ -42,7 +43,8 @@ abstract class $GsheetsModelCopyWith<$Res> {
       double price,
       double devidend,
       bool isAddedPortfolio,
-      int totalStocks});
+      int totalStocks,
+      double exchangeRate});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$GsheetsModelCopyWithImpl<$Res, $Val extends GsheetsModel>
     Object? devidend = null,
     Object? isAddedPortfolio = null,
     Object? totalStocks = null,
+    Object? exchangeRate = null,
   }) {
     return _then(_value.copyWith(
       market: null == market
@@ -95,6 +98,10 @@ class _$GsheetsModelCopyWithImpl<$Res, $Val extends GsheetsModel>
           ? _value.totalStocks
           : totalStocks // ignore: cast_nullable_to_non_nullable
               as int,
+      exchangeRate: null == exchangeRate
+          ? _value.exchangeRate
+          : exchangeRate // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -114,7 +121,8 @@ abstract class _$$_GsheetsModelCopyWith<$Res>
       double price,
       double devidend,
       bool isAddedPortfolio,
-      int totalStocks});
+      int totalStocks,
+      double exchangeRate});
 }
 
 /// @nodoc
@@ -135,6 +143,7 @@ class __$$_GsheetsModelCopyWithImpl<$Res>
     Object? devidend = null,
     Object? isAddedPortfolio = null,
     Object? totalStocks = null,
+    Object? exchangeRate = null,
   }) {
     return _then(_$_GsheetsModel(
       market: null == market
@@ -165,6 +174,10 @@ class __$$_GsheetsModelCopyWithImpl<$Res>
           ? _value.totalStocks
           : totalStocks // ignore: cast_nullable_to_non_nullable
               as int,
+      exchangeRate: null == exchangeRate
+          ? _value.exchangeRate
+          : exchangeRate // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -179,7 +192,8 @@ class _$_GsheetsModel extends _GsheetsModel {
       this.price = 0,
       this.devidend = 0,
       this.isAddedPortfolio = false,
-      this.totalStocks = 0})
+      this.totalStocks = 0,
+      this.exchangeRate = 0})
       : super._();
 
   @override
@@ -203,10 +217,13 @@ class _$_GsheetsModel extends _GsheetsModel {
   @override
   @JsonKey()
   final int totalStocks;
+  @override
+  @JsonKey()
+  final double exchangeRate;
 
   @override
   String toString() {
-    return 'GsheetsModel(market: $market, ticker: $ticker, name: $name, price: $price, devidend: $devidend, isAddedPortfolio: $isAddedPortfolio, totalStocks: $totalStocks)';
+    return 'GsheetsModel(market: $market, ticker: $ticker, name: $name, price: $price, devidend: $devidend, isAddedPortfolio: $isAddedPortfolio, totalStocks: $totalStocks, exchangeRate: $exchangeRate)';
   }
 
   @override
@@ -223,12 +240,14 @@ class _$_GsheetsModel extends _GsheetsModel {
             (identical(other.isAddedPortfolio, isAddedPortfolio) ||
                 other.isAddedPortfolio == isAddedPortfolio) &&
             (identical(other.totalStocks, totalStocks) ||
-                other.totalStocks == totalStocks));
+                other.totalStocks == totalStocks) &&
+            (identical(other.exchangeRate, exchangeRate) ||
+                other.exchangeRate == exchangeRate));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, market, ticker, name, price,
-      devidend, isAddedPortfolio, totalStocks);
+      devidend, isAddedPortfolio, totalStocks, exchangeRate);
 
   @JsonKey(ignore: true)
   @override
@@ -245,7 +264,8 @@ abstract class _GsheetsModel extends GsheetsModel {
       final double price,
       final double devidend,
       final bool isAddedPortfolio,
-      final int totalStocks}) = _$_GsheetsModel;
+      final int totalStocks,
+      final double exchangeRate}) = _$_GsheetsModel;
   const _GsheetsModel._() : super._();
 
   @override
@@ -262,6 +282,8 @@ abstract class _GsheetsModel extends GsheetsModel {
   bool get isAddedPortfolio;
   @override
   int get totalStocks;
+  @override
+  double get exchangeRate;
   @override
   @JsonKey(ignore: true)
   _$$_GsheetsModelCopyWith<_$_GsheetsModel> get copyWith =>

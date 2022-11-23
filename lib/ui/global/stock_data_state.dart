@@ -10,10 +10,33 @@ part 'stock_data_state.freezed.dart';
 class StockDataState with _$StockDataState {
   const factory StockDataState({
     @Default(<GsheetsModel>[]) List<GsheetsModel> gsheets,
-    @Default(0) double exchangeRate,
   }) = _StockDataState;
 
   const StockDataState._();
 
-  int get length => gsheets.length;
+  int get length => gsheets.where((e) => e.isAddedPortfolio).length;
+
+  double get totalIncome => gsheets
+      .where(
+        (e) => e.isAddedPortfolio,
+      )
+      .map(
+        (e) => e.income,
+      )
+      .toList()
+      .reduce(
+        (a, b) => a + b,
+      );
+
+  double get totalAmount => gsheets
+      .where(
+        (e) => e.isAddedPortfolio,
+      )
+      .map(
+        (e) => e.totalInvestment,
+      )
+      .toList()
+      .reduce(
+        (a, b) => a + b,
+      );
 }

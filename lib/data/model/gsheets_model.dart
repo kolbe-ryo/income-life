@@ -16,11 +16,15 @@ class GsheetsModel with _$GsheetsModel {
     @Default(0) double devidend,
     @Default(false) bool isAddedPortfolio,
     @Default(0) int totalStocks,
+    @Default(0) double exchangeRate,
   }) = _GsheetsModel;
 
   const GsheetsModel._();
 
   String get dividendRate => '${(devidend * 100).toStringAsFixed(2)}%';
 
-  double get totalAmount => totalStocks * price;
+  double get income =>
+      market == CurrencyValue.jpy ? totalStocks * price * devidend : totalStocks * price * devidend * exchangeRate;
+
+  double get totalInvestment => market == CurrencyValue.jpy ? totalStocks * price : totalStocks * price * exchangeRate;
 }

@@ -1,16 +1,13 @@
 // Package imports:
-import 'package:get_it/get_it.dart';
-import 'package:income_life/util/logger.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
-import '../../data/interface/gsheets_interface.dart';
 import '../../data/model/gsheets_model.dart';
 import '../../enum/currency_value.dart';
 import 'stock_data_state.dart';
 
 class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
-  StockDataManager([StockDataState state = const StockDataState()]) : super(state);
+  StockDataManager([super.state = const StockDataState()]);
 
   StockDataState get info => state;
 
@@ -23,8 +20,7 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   // fetch data from Gsheets and Local Repository
   Future<void> _fetchGsheets() async {
     // state = state.copyWith(gsheets: await GetIt.I<GsheetsInterface>().fetch());
-    // state = state.copyWith(exchangeRate: await GetIt.I<GsheetsInterface>().fetchExchangeRate());
-    state = state.copyWith(gsheets: _testModels, exchangeRate: 141);
+    state = state.copyWith(gsheets: _testModels);
   }
 
   // Switch stock isAddedPortfolio and Save local storage
@@ -53,17 +49,21 @@ final _testModels = [
     market: CurrencyValue.usd,
     ticker: 'TSLA',
     name: 'Tesla',
-    price: 190.59,
+    price: 130.59,
     devidend: 0.0012,
-    totalStocks: 10,
+    totalStocks: 20,
+    exchangeRate: 141,
+    isAddedPortfolio: true,
   ),
   const GsheetsModel(
     market: CurrencyValue.jpy,
     ticker: '4092T',
     name: '三菱重工',
     price: 4023,
-    devidend: 0.014,
-    totalStocks: 10,
+    devidend: 0.024,
+    totalStocks: 100,
+    exchangeRate: 141,
+    isAddedPortfolio: true,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
@@ -71,23 +71,29 @@ final _testModels = [
     name: 'AresCapitalCorp',
     price: 19.09,
     devidend: 0.105,
-    totalStocks: 10,
+    totalStocks: 100,
+    exchangeRate: 141,
+    isAddedPortfolio: true,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
     ticker: 'SPRD',
     name: 'HighDvidendIndex',
-    price: 204.3,
+    price: 40.3,
     devidend: 0.0345,
-    totalStocks: 10,
+    totalStocks: 15,
+    exchangeRate: 141,
+    isAddedPortfolio: true,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
     ticker: 'CRWD',
     name: 'CrowdStrike',
-    price: 160.43,
-    devidend: 0.0043,
+    price: 120.43,
+    devidend: 0.13,
     totalStocks: 10,
+    exchangeRate: 141,
+    isAddedPortfolio: false,
   ),
   const GsheetsModel(
     market: CurrencyValue.usd,
@@ -96,5 +102,17 @@ final _testModels = [
     price: 100.21,
     devidend: 0.0023,
     totalStocks: 10,
+    exchangeRate: 141,
+    isAddedPortfolio: false,
+  ),
+  const GsheetsModel(
+    market: CurrencyValue.usd,
+    ticker: 'AMZN',
+    name: 'Amazon',
+    price: 99.80,
+    devidend: 0.053,
+    totalStocks: 20,
+    exchangeRate: 141,
+    isAddedPortfolio: false,
   ),
 ];

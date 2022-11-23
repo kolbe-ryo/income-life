@@ -6,7 +6,7 @@ abstract class GsheetsInterface {
   Future<List<GsheetsModel>> fetch();
 
   // fetch gsheets data from internet
-  Future<double> fetchExchangeRate();
+  Future<double> _fetchExchangeRate();
 
   // fetch gsheets data from local repository
   Future<List<GsheetsModel>> getLocal();

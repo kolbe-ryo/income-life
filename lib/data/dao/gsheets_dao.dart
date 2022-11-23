@@ -17,6 +17,7 @@ class GsheetsDao implements GsheetsInterface {
       final sheets = await _gsheets.spreadsheet(gSheetsId);
       final sheet = sheets.worksheetByTitle('data');
       final allData = await sheet!.values.allRows(fromRow: 2, length: 5);
+      final exchangeRate = await _fetchExchangeRate();
 
       return allData
           .map(
@@ -26,6 +27,7 @@ class GsheetsDao implements GsheetsInterface {
               name: row[2],
               price: double.parse(row[3]),
               devidend: double.parse(row[4]),
+              exchangeRate: exchangeRate,
             ),
           )
           .toList();
@@ -47,7 +49,7 @@ class GsheetsDao implements GsheetsInterface {
   }
 
   @override
-  Future<double> fetchExchangeRate() async {
+  Future<double> _fetchExchangeRate() async {
     try {
       final sheets = await _gsheets.spreadsheet(gSheetsId);
       final sheet = sheets.worksheetByTitle('exchange');
