@@ -1,6 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:income_life/ui/common/app_colors.dart';
+import 'package:income_life/ui/common/base_card.dart';
 import 'package:income_life/ui/search_stock_page/search_stock_page.dart';
 import 'package:income_life/ui/search_stock_page/search_stock_page_state.dart';
 
@@ -13,50 +14,38 @@ import '../../enum/stock_information_attribute_enum.dart';
 import 'base_show_dialog.dart';
 import 'constants.dart';
 import '../global/stock_data_manager.dart';
-import '../global/stock_data_state.dart';
 
-class StockInformationCard extends StatelessWidget {
-  const StockInformationCard({super.key});
+class StockInformationCard extends BaseCard {
+  const StockInformationCard({super.key}) : super();
 
   @override
-  Widget build(BuildContext context) {
-    final model = context.watch<GsheetsModel>();
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Card(
-        margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kBorder),
-        ),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(kBorder),
-          onTap: () async {
-            final ticker = model.ticker;
-            final viewModel = context.read<StockDataManager>();
-            final isAdded = await baseShowDialog(
-              context: context,
-              title: 'ポートフォリオに追加しますか',
-              widget: Text(ticker),
-            );
-            if (isAdded ?? false) {
-              viewModel.addPortfolio(model);
-            }
-            return;
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(kPadding / 2),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                _UnitInformation(StockInformationAttribute.name),
-                _UnitInformation(StockInformationAttribute.price),
-                _UnitInformation(StockInformationAttribute.devidend),
-              ],
-            ),
-          ),
-        ),
-      ),
+  Widget? innerTextWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: const [
+        _UnitInformation(StockInformationAttribute.name),
+        _UnitInformation(StockInformationAttribute.price),
+        _UnitInformation(StockInformationAttribute.devidend),
+      ],
     );
+  }
+
+  @override
+  void Function()? onTap(BuildContext context) {
+    return () async {
+      final model = context.read<GsheetsModel>();
+      final ticker = model.ticker;
+      final viewModel = context.read<StockDataManager>();
+      final isAdded = await baseShowDialog(
+        context: context,
+        title: 'ポートフォリオに追加しますか',
+        widget: Text(ticker),
+      );
+      if (isAdded ?? false) {
+        viewModel.addPortfolio(model);
+      }
+      return;
+    };
   }
 }
 
