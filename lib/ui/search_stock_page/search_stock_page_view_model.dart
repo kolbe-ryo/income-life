@@ -24,4 +24,6 @@ class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> {
         .first;
     state = state.copyWith(condition: condition);
   }
+
+  void inputNumverOfStock(int stocks) => state = state.copyWith(stocks: stocks);
 }

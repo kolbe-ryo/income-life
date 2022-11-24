@@ -13,6 +13,7 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
 
   @override
   void initState() {
+    super.initState();
     _fetchGsheets();
     _fetchFromLocal();
   }

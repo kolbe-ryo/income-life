@@ -2,10 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:income_life/ui/common/app_colors.dart';
+import 'package:income_life/util/logger.dart';
 
 Future<bool?> baseShowDialog({
   required BuildContext context,
   required String title,
+  required GlobalKey<FormState> formKey,
   Widget? widget,
 }) async {
   final isConfirm = await showDialog<bool>(
@@ -22,11 +24,12 @@ Future<bool?> baseShowDialog({
           ),
           CupertinoDialogAction(
             onPressed: () async {
-              // Loading
-              showProgressDialog(context);
-              await Future<dynamic>.delayed(const Duration(seconds: 1));
-              Navigator.pop(context);
-              Navigator.pop(context, true);
+              if (formKey.currentState!.validate()) {
+                showProgressDialog(context);
+                await Future<dynamic>.delayed(const Duration(seconds: 1));
+                Navigator.pop(context);
+                Navigator.pop(context, true);
+              }
             },
             child: const Text('OK'),
           ),

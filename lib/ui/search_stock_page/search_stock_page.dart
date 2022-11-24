@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:income_life/data/model/gsheets_model.dart';
 import 'package:income_life/enum/added_condition_enum.dart';
 import 'package:income_life/ui/common/app_colors.dart';
+import 'package:income_life/ui/common/custom_text_field.dart';
 import 'package:income_life/ui/search_stock_page/search_stock_page_state.dart';
 import 'package:income_life/ui/search_stock_page/search_stock_page_view_model.dart';
 
@@ -28,7 +29,10 @@ class SearchStockPage extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
-            title: const _TextField(),
+            title: const Padding(
+              padding: EdgeInsets.only(top: kPadding, bottom: kPadding / 2),
+              child: CustomTextField(),
+            ),
           ),
           body: GestureDetector(
             onTap: () {
@@ -42,40 +46,6 @@ class SearchStockPage extends StatelessWidget {
           floatingActionButton: const _FloatingActionButton(),
         );
       },
-    );
-  }
-}
-
-class _TextField extends StatelessWidget {
-  const _TextField();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: kPadding, bottom: kPadding / 2),
-      child: TextField(
-        cursorColor: AppColors.darkGrey,
-        cursorWidth: 1,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.zero,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(kBorder),
-            borderSide: const BorderSide(color: AppColors.darkGrey),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(kBorder),
-            borderSide: const BorderSide(color: AppColors.lightGrey60),
-          ),
-          prefixIcon: const Icon(
-            Icons.search,
-            color: Colors.tealAccent,
-          ),
-        ),
-        style: const TextStyle(
-          color: AppColors.lightGrey70,
-          fontSize: 18,
-        ),
-      ),
     );
   }
 }
@@ -95,9 +65,9 @@ class _ListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
       child: ListView(
-        children: selectState.map((e) {
+        children: selectState.map((model) {
           return Provider.value(
-            value: e,
+            value: model,
             child: const StockInformationCard(),
           );
         }).toList(),
