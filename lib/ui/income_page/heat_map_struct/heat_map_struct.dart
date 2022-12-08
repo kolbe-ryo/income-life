@@ -1,6 +1,7 @@
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/data/model/heat_map_model.dart';
-import 'package:income_life/ui/common/app_colors.dart';
+// Project imports:
+import '../../../data/model/gsheets_model.dart';
+import '../../../data/model/heat_map_model.dart';
+import '../../common/app_colors.dart';
 
 List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
   int getSizeRate(

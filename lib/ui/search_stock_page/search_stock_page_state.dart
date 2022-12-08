@@ -1,6 +1,8 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:income_life/enum/added_condition_enum.dart';
+
+// Project imports:
+import '../../enum/added_condition_enum.dart';
 
 part 'search_stock_page_state.freezed.dart';
 

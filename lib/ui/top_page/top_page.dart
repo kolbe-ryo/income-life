@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../enum/bnb_items.dart';
+import '../common/custom_bottom_navigation_bar.dart';
 import '../global/stock_data_manager.dart';
 import '../global/stock_data_state.dart';
-import '../common/custom_bottom_navigation_bar.dart';
 import 'top_page_state.dart';
 import 'top_page_view_model.dart';
 

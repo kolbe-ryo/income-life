@@ -1,10 +1,15 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:income_life/data/model/heat_map_model.dart';
-import 'package:income_life/ui/common/constants.dart';
-import 'package:income_life/ui/global/stock_data_state.dart';
-import 'package:income_life/ui/income_page/heat_map_struct/heat_map_struct.dart';
 import 'package:provider/provider.dart';
+
+// Project imports:
+import '../../data/model/heat_map_model.dart';
+import '../common/constants.dart';
+import '../global/stock_data_state.dart';
+import 'heat_map_struct/heat_map_struct.dart';
 
 class IncomeHeatMap extends StatelessWidget {
   const IncomeHeatMap({super.key});

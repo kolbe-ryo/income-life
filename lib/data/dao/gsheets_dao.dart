@@ -3,7 +3,6 @@ import 'package:gsheets/gsheets.dart';
 
 // Project imports:
 import '../../enum/currency_value.dart';
-import '../../ipass.dart';
 import '../../util/logger.dart';
 import '../interface/gsheets_interface.dart';
 import '../model/gsheets_model.dart';

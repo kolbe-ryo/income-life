@@ -1,21 +1,21 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/enum/added_condition_enum.dart';
-import 'package:income_life/ui/common/app_colors.dart';
-import 'package:income_life/ui/common/custom_text_field.dart';
-import 'package:income_life/ui/search_stock_page/search_stock_page_state.dart';
-import 'package:income_life/ui/search_stock_page/search_stock_page_view_model.dart';
 
 // Package imports:
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import '../../data/model/gsheets_model.dart';
+import '../../enum/added_condition_enum.dart';
+import '../common/app_colors.dart';
 import '../common/constants.dart';
+import '../common/custom_text_field.dart';
 import '../common/stock_information_card.dart';
 import '../global/stock_data_state.dart';
+import 'search_stock_page_state.dart';
+import 'search_stock_page_view_model.dart';
 
 class SearchStockPage extends StatelessWidget {
   const SearchStockPage({super.key});

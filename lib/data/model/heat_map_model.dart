@@ -1,7 +1,11 @@
-// Package imports:
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
+
+// Project imports:
+import 'gsheets_model.dart';
 
 part 'heat_map_model.freezed.dart';
 

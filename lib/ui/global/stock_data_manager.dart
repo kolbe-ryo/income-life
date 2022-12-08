@@ -1,9 +1,12 @@
 // Package imports:
+import 'package:get_it/get_it.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
+import '../../data/interface/gsheets_interface.dart';
 import '../../data/model/gsheets_model.dart';
 import '../../enum/currency_value.dart';
+import '../../util/logger.dart';
 import 'stock_data_state.dart';
 
 class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
@@ -20,13 +23,19 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
 
   // fetch data from Gsheets and Local Repository
   Future<void> _fetchGsheets() async {
-    // state = state.copyWith(gsheets: await GetIt.I<GsheetsInterface>().fetch());
+    state = state.copyWith(
+      gsheets: await GetIt.I<GsheetsInterface>().fetch(),
+    );
+    logger.info(state);
     state = state.copyWith(gsheets: _testModels);
   }
 
   // Switch stock isAddedPortfolio and Save local storage
-  void addPortfolio(GsheetsModel model) {
-    final addedItem = model.copyWith(isAddedPortfolio: true);
+  void addPortfolio(GsheetsModel model, int stocks) {
+    final addedItem = model.copyWith(
+      isAddedPortfolio: true,
+      totalStocks: model.totalStocks + stocks,
+    );
     state = state.copyWith(
       gsheets: state.gsheets
           .map(

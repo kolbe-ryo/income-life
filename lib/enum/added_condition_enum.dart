@@ -1,5 +1,8 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/ui/common/app_colors.dart';
+
+// Project imports:
+import '../ui/common/app_colors.dart';
 
 enum AddedConditionEnum {
   isAdded,

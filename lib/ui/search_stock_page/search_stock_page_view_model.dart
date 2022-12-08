@@ -1,6 +1,9 @@
-import 'package:income_life/enum/added_condition_enum.dart';
-import 'package:income_life/ui/search_stock_page/search_stock_page_state.dart';
+// Package imports:
 import 'package:state_notifier/state_notifier.dart';
+
+// Project imports:
+import '../../enum/added_condition_enum.dart';
+import 'search_stock_page_state.dart';
 
 class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> {
   SearchStockPageViewModel([super.state = const SearchStockPageState()]);

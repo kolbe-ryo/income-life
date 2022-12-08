@@ -2,10 +2,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:income_life/ui/common/app_colors.dart';
-import 'package:income_life/ui/common/base_card.dart';
-import 'package:income_life/ui/search_stock_page/search_stock_page_view_model.dart';
-import 'package:income_life/util/logger.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -13,9 +9,14 @@ import 'package:provider/provider.dart';
 // Project imports:
 import '../../data/model/gsheets_model.dart';
 import '../../enum/stock_information_attribute_enum.dart';
+import '../../util/logger.dart';
+import '../global/stock_data_manager.dart';
+import '../search_stock_page/search_stock_page_state.dart';
+import '../search_stock_page/search_stock_page_view_model.dart';
+import 'app_colors.dart';
+import 'base_card.dart';
 import 'base_show_dialog.dart';
 import 'constants.dart';
-import '../global/stock_data_manager.dart';
 
 class StockInformationCard extends BaseCard {
   const StockInformationCard({super.key}) : super();
@@ -83,7 +84,8 @@ class StockInformationCard extends BaseCard {
         ),
       );
       if (isAdded ?? false) {
-        viewModel.addPortfolio(model);
+        final stocks = context.read<SearchStockPageState>().stocks;
+        viewModel.addPortfolio(model, stocks);
       }
       return;
     };

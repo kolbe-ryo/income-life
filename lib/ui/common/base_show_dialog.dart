@@ -1,8 +1,10 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:income_life/ui/common/app_colors.dart';
-import 'package:income_life/util/logger.dart';
+
+// Project imports:
+import '../../util/logger.dart';
+import 'app_colors.dart';
 
 Future<bool?> baseShowDialog({
   required BuildContext context,

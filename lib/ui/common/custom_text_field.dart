@@ -1,6 +1,9 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/ui/common/app_colors.dart';
-import 'package:income_life/ui/common/constants.dart';
+
+// Project imports:
+import 'app_colors.dart';
+import 'constants.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({super.key});

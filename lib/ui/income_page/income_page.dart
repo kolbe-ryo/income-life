@@ -1,11 +1,15 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/enum/invest_information_enum.dart';
-import 'package:income_life/ui/common/constants.dart';
-import 'package:income_life/ui/global/stock_data_state.dart';
-import 'package:income_life/ui/income_page/income_heat_map.dart';
-import 'package:income_life/util/text_formatter.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
+import '../../enum/invest_information_enum.dart';
+import '../../util/text_formatter.dart';
+import '../common/constants.dart';
+import '../global/stock_data_state.dart';
+import 'income_heat_map.dart';
 
 class IncomePage extends StatelessWidget {
   const IncomePage({super.key});

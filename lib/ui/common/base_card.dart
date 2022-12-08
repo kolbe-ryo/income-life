@@ -1,5 +1,8 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/ui/common/constants.dart';
+
+// Project imports:
+import 'constants.dart';
 
 abstract class BaseCard extends StatelessWidget {
   const BaseCard({super.key});
