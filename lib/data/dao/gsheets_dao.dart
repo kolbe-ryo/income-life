@@ -12,7 +12,15 @@ import '../interface/gsheets_interface.dart';
 import '../model/gsheets_model.dart';
 
 class GsheetsDao implements GsheetsInterface {
-  static final _gsheets = GSheets(json.encode(jsogSheetsCredentialsnKey));
+  factory GsheetsDao() => _instance;
+
+  GsheetsDao._internal() {
+    _gsheets = GSheets(json.encode(jsogSheetsCredentialsnKey));
+  }
+
+  static final _instance = GsheetsDao._internal();
+
+  late final GSheets _gsheets;
 
   @override
   Future<List<GsheetsModel>> fetch() async {
@@ -20,7 +28,7 @@ class GsheetsDao implements GsheetsInterface {
       final sheets = await _gsheets.spreadsheet(gSheetsId);
       final sheet = sheets.worksheetByTitle('data');
       final allData = await sheet!.values.allRows(fromRow: 2, length: 5);
-      final exchangeRate = await _fetchExchangeRate();
+      final exchangeRate = await fetchExchangeRate();
 
       return allData
           .map(
@@ -41,33 +49,16 @@ class GsheetsDao implements GsheetsInterface {
   }
 
   @override
-  int checkDataLength() {
-    // TODO: implement checkDataLength
-    throw UnimplementedError();
-  }
-
-  @override
-  void save() {
-    // TODO: implement save
-  }
-
-  @override
-  Future<double> _fetchExchangeRate() async {
+  Future<double> fetchExchangeRate() async {
     try {
       final sheets = await _gsheets.spreadsheet(gSheetsId);
       final sheet = sheets.worksheetByTitle('exchange');
-      final allData = await sheet!.values.allRows(fromRow: 1, length: 1);
+      final allData = await sheet!.values.allRows(length: 1);
 
       return double.parse(allData.first.first);
     } on Exception catch (error) {
       logger.info(error);
       throw UnimplementedError();
     }
-  }
-
-  @override
-  Future<List<GsheetsModel>> getLocal() {
-    // TODO: implement getLocal
-    throw UnimplementedError();
   }
 }

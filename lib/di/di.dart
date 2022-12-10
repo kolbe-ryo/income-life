@@ -8,6 +8,6 @@ import '../data/interface/gsheets_interface.dart';
 import '../data/interface/local_repository_interface.dart';
 
 void setUpDI() {
-  GetIt.I.registerSingleton<GsheetsInterface>(GsheetsDao());
-  GetIt.I.registerSingleton<LocalRepositoryInterface>(LocalRepositoryDao());
+  GetIt.I.registerLazySingleton<GsheetsInterface>(() => GsheetsDao());
+  GetIt.I.registerLazySingleton<LocalRepositoryInterface>(() => LocalRepositoryDao());
 }

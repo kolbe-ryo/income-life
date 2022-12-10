@@ -5,6 +5,7 @@ import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
 import '../../data/interface/gsheets_interface.dart';
+import '../../data/interface/local_repository_interface.dart';
 import '../../data/model/gsheets_model.dart';
 import '../../enum/currency_value.dart';
 import '../../util/logger.dart';
@@ -64,14 +65,31 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   }
 
   // Save to local storage
-  void _fetchFromLocal() {}
+  Future<void> _fetchFromLocal() async {
+    final localModels = await GetIt.I<LocalRepositoryInterface>().getLocal();
 
-  // Save to local storage
-  void _saveToLocal() {
-    // ローカル保存はtickerとstock数だけでOK？
+    // If matching local portfolio ticker, add it, else add gsheets model
+    final models = <GsheetsModel>[];
+    for (final model in state.gsheets) {
+      models.add(model);
+      for (final localModel in localModels) {
+        if (model.ticker == localModel.ticker) {
+          models.last = localModel;
+          break;
+        }
+      }
+    }
+    state = state.copyWith(gsheets: models);
   }
 
-  void inputNumverOfStock(int stocks) => state = state.copyWith(currentAddingStocks: stocks);
+  // Save to local storage
+  Future<void> _saveToLocal() async {
+    await GetIt.I<LocalRepositoryInterface>().save(state.portfolio);
+  }
+
+  void inputNumverOfStock(int stocks) {
+    state = state.copyWith(currentAddingStocks: stocks);
+  }
 
   List<GsheetsModel> selectGsheets({
     required StockDataState state,

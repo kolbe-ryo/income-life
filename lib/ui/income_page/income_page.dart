@@ -27,21 +27,17 @@ class IncomePage extends StatelessWidget {
               children: [
                 const IncomeHeatMap(),
                 const SizedBox(height: kPadding),
-                Expanded(
-                  child: Row(
-                    children: const [
-                      Expanded(
-                        child: _InvestSummaryCard(InvestInfoEnum.income),
-                      ),
-                      SizedBox(width: kPadding / 2),
-                      _InvestSummaryCard(InvestInfoEnum.stocks),
-                    ],
-                  ),
+                Row(
+                  children: const [
+                    Expanded(
+                      child: _InvestSummaryCard(InvestInfoEnum.income),
+                    ),
+                    SizedBox(width: kPadding / 2),
+                    _InvestSummaryCard(InvestInfoEnum.stocks),
+                  ],
                 ),
                 const SizedBox(height: kPadding / 2),
-                const Expanded(
-                  child: _InvestSummaryCard(InvestInfoEnum.totalInvest),
-                ),
+                _InvestSummaryCard(InvestInfoEnum.totalInvest),
                 const SizedBox(height: kPadding / 2),
               ],
             ),

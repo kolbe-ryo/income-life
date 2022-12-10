@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+GsheetsModel _$GsheetsModelFromJson(Map<String, dynamic> json) {
+  return _GsheetsModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$GsheetsModel {
   CurrencyValue get market => throw _privateConstructorUsedError;
@@ -25,6 +29,7 @@ mixin _$GsheetsModel {
   int get totalStocks => throw _privateConstructorUsedError;
   double get exchangeRate => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GsheetsModelCopyWith<GsheetsModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -183,7 +188,7 @@ class __$$_GsheetsModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_GsheetsModel extends _GsheetsModel {
   const _$_GsheetsModel(
       {this.market = CurrencyValue.non,
@@ -195,6 +200,9 @@ class _$_GsheetsModel extends _GsheetsModel {
       this.totalStocks = 0,
       this.exchangeRate = 0})
       : super._();
+
+  factory _$_GsheetsModel.fromJson(Map<String, dynamic> json) =>
+      _$$_GsheetsModelFromJson(json);
 
   @override
   @JsonKey()
@@ -245,6 +253,7 @@ class _$_GsheetsModel extends _GsheetsModel {
                 other.exchangeRate == exchangeRate));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, market, ticker, name, price,
       devidend, isAddedPortfolio, totalStocks, exchangeRate);
@@ -254,6 +263,13 @@ class _$_GsheetsModel extends _GsheetsModel {
   @pragma('vm:prefer-inline')
   _$$_GsheetsModelCopyWith<_$_GsheetsModel> get copyWith =>
       __$$_GsheetsModelCopyWithImpl<_$_GsheetsModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_GsheetsModelToJson(
+      this,
+    );
+  }
 }
 
 abstract class _GsheetsModel extends GsheetsModel {
@@ -267,6 +283,9 @@ abstract class _GsheetsModel extends GsheetsModel {
       final int totalStocks,
       final double exchangeRate}) = _$_GsheetsModel;
   const _GsheetsModel._() : super._();
+
+  factory _GsheetsModel.fromJson(Map<String, dynamic> json) =
+      _$_GsheetsModel.fromJson;
 
   @override
   CurrencyValue get market;

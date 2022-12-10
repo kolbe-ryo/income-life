@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../enum/currency_value.dart';
 
 part 'gsheets_model.freezed.dart';
+part 'gsheets_model.g.dart';
 
 @freezed
 class GsheetsModel with _$GsheetsModel {
@@ -20,6 +21,8 @@ class GsheetsModel with _$GsheetsModel {
   }) = _GsheetsModel;
 
   const GsheetsModel._();
+
+  factory GsheetsModel.fromJson(Map<String, dynamic> json) => _$GsheetsModelFromJson(json);
 
   String get dividendRate => '${(devidend * 100).toStringAsFixed(2)}%';
 

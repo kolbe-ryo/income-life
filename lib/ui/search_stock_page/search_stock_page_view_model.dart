@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:flutter/material.dart';
 import 'package:income_life/data/model/gsheets_model.dart';
 import 'package:income_life/ui/global/stock_data_manager.dart';
 import 'package:state_notifier/state_notifier.dart';
@@ -17,6 +18,25 @@ class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> with 
   @override
   void initState() {
     super.initState();
+    final models = manager.selectGsheets(
+      state: manager.state,
+      condition: state.condition,
+    );
+    state = state.copyWith(searchedGsheets: models);
+  }
+
+  void load() {
+    // final addedItem = model.copyWith(
+    //   isAddedPortfolio: true,
+    //   totalStocks: model.totalStocks + state.currentAddingStocks,
+    // );
+    // state = state.copyWith(
+    //   gsheets: state.gsheets
+    //       .map(
+    //         (item) => item.ticker == model.ticker ? addedItem : item,
+    //       )
+    //       .toList(),
+    // );
     final models = manager.selectGsheets(
       state: manager.state,
       condition: state.condition,
