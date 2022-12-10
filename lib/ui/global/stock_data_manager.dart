@@ -66,7 +66,9 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   void _fetchFromLocal() {}
 
   // Save to local storage
-  void _saveToLocal() {}
+  void _saveToLocal() {
+    // ローカル保存はtickerとstock数だけでOK？
+  }
 
   void inputNumverOfStock(int stocks) => state = state.copyWith(currentAddingStocks: stocks);
 }

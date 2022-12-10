@@ -66,11 +66,11 @@ class _UnitInformation extends StatelessWidget {
     final model = context.watch<GsheetsModel>();
     return DefaultTextStyle(
       style: const TextStyle(
-        fontSize: 22,
+        fontSize: 20,
         overflow: TextOverflow.ellipsis,
       ),
       child: SizedBox(
-        width: (mediaWidth - kPadding * 3) / 3,
+        width: _getWidth(mediaWidth - kPadding * 3),
         height: 64,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -79,6 +79,17 @@ class _UnitInformation extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  double _getWidth(double width) {
+    switch (attribute) {
+      case StockInformationAttribute.name:
+        return width * 4 / 10;
+      case StockInformationAttribute.price:
+        return width * 3 / 10;
+      case StockInformationAttribute.devidend:
+        return width * 3 / 10;
+    }
   }
 
   List<Widget> _getWidgets({

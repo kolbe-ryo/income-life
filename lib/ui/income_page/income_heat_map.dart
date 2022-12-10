@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
 import '../../data/model/heat_map_model.dart';
-import '../../util/logger.dart';
 import '../common/add_portfolio_dialog_design.dart';
 import '../common/base_show_dialog.dart';
 import '../common/constants.dart';
@@ -55,16 +55,24 @@ class _HeatMapElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<StockDataManager>();
     return Card(
       color: heatMapModel.color,
       margin: EdgeInsets.zero,
       child: InkWell(
         onTap: () async {
-          await _checkAndAddPortfolio(context, heatMapModel.model);
-          logger.info('onPress');
+          await _checkAndAddPortfolio(
+            context: context,
+            model: heatMapModel.model,
+            viewModel: viewModel,
+          );
         },
-        onLongPress: () {
-          logger.info('onLongPress');
+        onLongPress: () async {
+          await _deletePortfolio(
+            context: context,
+            model: heatMapModel.model,
+            viewModel: viewModel,
+          );
         },
         child: Center(
           child: Text(
@@ -80,11 +88,11 @@ class _HeatMapElement extends StatelessWidget {
     );
   }
 
-  Future<void> _checkAndAddPortfolio(
-    BuildContext context,
-    GsheetsModel model,
-  ) async {
-    final viewModel = context.read<StockDataManager>();
+  Future<void> _checkAndAddPortfolio({
+    required BuildContext context,
+    required GsheetsModel model,
+    required StockDataManager viewModel,
+  }) async {
     void inputMethod(int stocks) => viewModel.inputNumverOfStock(stocks);
     final formKey = GlobalKey<FormState>();
     final isAdded = await baseShowDialog(
@@ -104,5 +112,22 @@ class _HeatMapElement extends StatelessWidget {
     }
   }
 
-  Future<void> _deletePortfolio() async {}
+  Future<void> _deletePortfolio({
+    required BuildContext context,
+    required GsheetsModel model,
+    required StockDataManager viewModel,
+  }) async {
+    final isDelete = await baseShowDialog(
+      context: context,
+      title: 'Do you want to delete?',
+      isSimpleDialog: true,
+      widget: const Padding(
+        padding: EdgeInsets.only(top: kPadding / 2),
+        child: Text('This operation cannot be undone'),
+      ),
+    );
+    if (isDelete ?? false) {
+      viewModel.deletePortfolio(model);
+    }
+  }
 }
