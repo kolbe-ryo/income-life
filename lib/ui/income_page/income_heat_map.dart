@@ -32,8 +32,8 @@ class IncomeHeatMap extends StatelessWidget {
       ),
       child: StaggeredGrid.count(
         crossAxisCount: 100,
-        mainAxisSpacing: 4,
-        crossAxisSpacing: 4,
+        mainAxisSpacing: 3,
+        crossAxisSpacing: 3,
         children: heatMapStruct(portfoio)
             .map(
               (model) => StaggeredGridTile.count(

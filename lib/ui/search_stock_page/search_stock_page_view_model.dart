@@ -11,6 +11,10 @@ import 'search_stock_page_state.dart';
 class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> with LocatorMixin {
   SearchStockPageViewModel([super.state = const SearchStockPageState()]);
 
+  late final TextEditingController _controller;
+
+  TextEditingController get controller => _controller;
+
   StockDataManager get manager => read();
 
   DateTime _last = DateTime.now();
@@ -23,25 +27,16 @@ class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> with 
       condition: state.condition,
     );
     state = state.copyWith(searchedGsheets: models);
+    _controller = TextEditingController();
   }
 
   void load() {
-    // final addedItem = model.copyWith(
-    //   isAddedPortfolio: true,
-    //   totalStocks: model.totalStocks + state.currentAddingStocks,
-    // );
-    // state = state.copyWith(
-    //   gsheets: state.gsheets
-    //       .map(
-    //         (item) => item.ticker == model.ticker ? addedItem : item,
-    //       )
-    //       .toList(),
-    // );
     final models = manager.selectGsheets(
       state: manager.state,
       condition: state.condition,
     );
     state = state.copyWith(searchedGsheets: models);
+    _controller.clear();
   }
 
   // Change each condition(isAdded, isNotAdded or All) to tap the FAB

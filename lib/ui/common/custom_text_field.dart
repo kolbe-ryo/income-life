@@ -18,6 +18,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: context.read<SearchStockPageViewModel>().controller,
       cursorColor: AppColors.darkGrey,
       cursorWidth: 1,
       decoration: InputDecoration(

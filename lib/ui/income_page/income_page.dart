@@ -37,7 +37,7 @@ class IncomePage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: kPadding / 2),
-                _InvestSummaryCard(InvestInfoEnum.totalInvest),
+                const _InvestSummaryCard(InvestInfoEnum.totalInvest),
                 const SizedBox(height: kPadding / 2),
               ],
             ),

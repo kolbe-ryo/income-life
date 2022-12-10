@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
+import 'package:income_life/ui/search_stock_page/search_stock_page_view_model.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -33,8 +34,9 @@ class StockInformationCard extends BaseCard {
   void Function()? onTap(BuildContext context) {
     return () async {
       final model = context.read<GsheetsModel>();
-      final viewModel = context.read<StockDataManager>();
-      void inputMethod(int stocks) => viewModel.inputNumverOfStock(stocks);
+      final stockDataManager = context.read<StockDataManager>();
+      final searchStockPageViewModel = context.read<SearchStockPageViewModel>();
+      void inputMethod(int stocks) => stockDataManager.inputNumverOfStock(stocks);
       final formKey = GlobalKey<FormState>();
       final isAdded = await baseShowDialog(
         context: context,
@@ -49,7 +51,8 @@ class StockInformationCard extends BaseCard {
         ),
       );
       if (isAdded ?? false) {
-        viewModel.addPortfolio(model);
+        stockDataManager.addPortfolio(model);
+        searchStockPageViewModel.load();
       }
     };
   }
