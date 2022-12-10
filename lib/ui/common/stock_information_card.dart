@@ -1,7 +1,7 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:income_life/ui/common/custom_text_field.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -37,7 +37,6 @@ class StockInformationCard extends BaseCard {
   void Function()? onTap(BuildContext context) {
     return () async {
       final model = context.read<GsheetsModel>();
-      final ticker = model.ticker;
       final viewModel = context.read<StockDataManager>();
       final inputMethod = (int stocks) => context.read<SearchStockPageViewModel>().inputNumverOfStock(stocks);
       final formKey = GlobalKey<FormState>();
@@ -61,7 +60,7 @@ class StockInformationCard extends BaseCard {
                       const Text('Ticker :'),
                       Expanded(
                         child: Text(
-                          ticker,
+                          model.ticker,
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -73,7 +72,7 @@ class StockInformationCard extends BaseCard {
                     children: const [
                       Text('Stocks :'),
                       Expanded(
-                        child: _TextField(),
+                        child: DigitsTextField(),
                       ),
                     ],
                   ),
@@ -89,46 +88,6 @@ class StockInformationCard extends BaseCard {
       }
       return;
     };
-  }
-}
-
-class _TextField extends StatelessWidget {
-  const _TextField();
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: context.watch<GlobalKey<FormState>>(),
-      child: CupertinoTextFormFieldRow(
-        cursorColor: AppColors.darkGrey,
-        cursorWidth: 1,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-        ),
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        padding: const EdgeInsets.symmetric(horizontal: kPadding),
-        placeholder: 'ex ) 10',
-        textAlign: TextAlign.center,
-        keyboardType: TextInputType.number,
-        style: const TextStyle(
-          color: AppColors.lightGrey70,
-          fontSize: 18,
-        ),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please enter some text';
-          } else if (value == '0') {
-            return 'Please enter 1 or more';
-          }
-          return null;
-        },
-        onChanged: (value) {
-          final stocks = int.parse(value);
-          context.read<void Function(int)>()(stocks);
-          logger.info(stocks);
-        },
-      ),
-    );
   }
 }
 

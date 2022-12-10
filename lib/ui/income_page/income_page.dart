@@ -19,22 +19,33 @@ class IncomePage extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.fromLTRB(kPadding, kPadding * 2, kPadding, 0),
-        child: Column(
-          children: [
-            const IncomeHeatMap(),
-            const SizedBox(height: kPadding),
-            Row(
-              children: const [
+        child: SingleChildScrollView(
+          child: SizedBox(
+            height:
+                context.select((MediaQueryData value) => value.size.height) - kBottomNavigationBarHeight - kPadding * 2,
+            child: Column(
+              children: [
+                const IncomeHeatMap(),
+                const SizedBox(height: kPadding),
                 Expanded(
-                  child: _InvestSummaryCard(InvestInfoEnum.income),
+                  child: Row(
+                    children: const [
+                      Expanded(
+                        child: _InvestSummaryCard(InvestInfoEnum.income),
+                      ),
+                      SizedBox(width: kPadding / 2),
+                      _InvestSummaryCard(InvestInfoEnum.stocks),
+                    ],
+                  ),
                 ),
-                SizedBox(width: kPadding / 2),
-                _InvestSummaryCard(InvestInfoEnum.stocks),
+                const SizedBox(height: kPadding / 2),
+                const Expanded(
+                  child: _InvestSummaryCard(InvestInfoEnum.totalInvest),
+                ),
+                const SizedBox(height: kPadding / 2),
               ],
             ),
-            const SizedBox(height: kPadding / 2),
-            const _InvestSummaryCard(InvestInfoEnum.totalInvest),
-          ],
+          ),
         ),
       ),
     );
@@ -56,6 +67,7 @@ class _InvestSummaryCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              // Change card inner layout whether stocks information or not
               if (kinds != InvestInfoEnum.stocks) kinds.icon,
               Column(
                 crossAxisAlignment: kinds != InvestInfoEnum.stocks ? CrossAxisAlignment.end : CrossAxisAlignment.center,
@@ -88,7 +100,7 @@ class _InvestSummaryCard extends StatelessWidget {
   String get _title {
     switch (kinds) {
       case InvestInfoEnum.income:
-        return 'Income';
+        return 'Income / y';
       case InvestInfoEnum.totalInvest:
         return 'Total Investment';
       case InvestInfoEnum.stocks:

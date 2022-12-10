@@ -1,5 +1,9 @@
 // Flutter imports:
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:income_life/util/logger.dart';
+import 'package:provider/provider.dart';
 
 // Project imports:
 import 'app_colors.dart';
@@ -31,6 +35,46 @@ class CustomTextField extends StatelessWidget {
       style: const TextStyle(
         color: AppColors.lightGrey70,
         fontSize: 18,
+      ),
+    );
+  }
+}
+
+class DigitsTextField extends StatelessWidget {
+  const DigitsTextField({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: context.watch<GlobalKey<FormState>>(),
+      child: CupertinoTextFormFieldRow(
+        cursorColor: AppColors.darkGrey,
+        cursorWidth: 1,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+        ),
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        padding: const EdgeInsets.symmetric(horizontal: kPadding),
+        placeholder: 'ex ) 10',
+        textAlign: TextAlign.center,
+        keyboardType: TextInputType.number,
+        style: const TextStyle(
+          color: AppColors.lightGrey70,
+          fontSize: 18,
+        ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter some text';
+          } else if (value == '0') {
+            return 'Please enter 1 or more';
+          }
+          return null;
+        },
+        onChanged: (value) {
+          final stocks = int.parse(value);
+          context.read<void Function(int)>()(stocks);
+          logger.info(stocks);
+        },
       ),
     );
   }

@@ -55,6 +55,7 @@ class _ListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Change display stock by FAB condition
     final searchCondition = context.select((SearchStockPageState value) => value.condition);
     final selectState = context.select(
       (StockDataState value) => selectGsheets(

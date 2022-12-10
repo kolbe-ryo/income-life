@@ -3,18 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import '../../util/logger.dart';
 import 'app_colors.dart';
 
 Future<bool?> baseShowDialog({
   required BuildContext context,
   required String title,
-  required GlobalKey<FormState> formKey,
+  GlobalKey<FormState>? formKey,
   Widget? widget,
 }) async {
   final isConfirm = await showDialog<bool>(
+    barrierDismissible: false,
     context: context,
     builder: (context) {
+      final navigator = Navigator.of(context);
       return CupertinoAlertDialog(
         title: Text(title),
         content: widget,
@@ -26,11 +27,12 @@ Future<bool?> baseShowDialog({
           ),
           CupertinoDialogAction(
             onPressed: () async {
-              if (formKey.currentState!.validate()) {
+              if (formKey?.currentState!.validate() ?? false) {
                 showProgressDialog(context);
                 await Future<dynamic>.delayed(const Duration(seconds: 1));
-                Navigator.pop(context);
-                Navigator.pop(context, true);
+                navigator
+                  ..pop()
+                  ..pop(true);
               }
             },
             child: const Text('OK'),
