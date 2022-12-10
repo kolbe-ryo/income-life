@@ -12,11 +12,7 @@ class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> {
     final condition = AddedConditionEnum.values
         .where(
           (e) =>
-              (e.index ==
-                  AddedConditionEnum.values.indexWhere(
-                        (e) => e == state.condition,
-                      ) +
-                      1) ||
+              (e.index == AddedConditionEnum.values.indexWhere((e) => e == state.condition) + 1) ||
               e.index ==
                   AddedConditionEnum.values.indexWhere(
                         (e) => e == state.condition,
@@ -27,6 +23,4 @@ class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> {
         .first;
     state = state.copyWith(condition: condition);
   }
-
-  void inputNumverOfStock(int stocks) => state = state.copyWith(stocks: stocks);
 }

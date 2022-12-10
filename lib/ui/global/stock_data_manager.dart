@@ -31,10 +31,26 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   }
 
   // Switch stock isAddedPortfolio and Save local storage
-  void addPortfolio(GsheetsModel model, int stocks) {
+  void addPortfolio(GsheetsModel model) {
     final addedItem = model.copyWith(
       isAddedPortfolio: true,
-      totalStocks: model.totalStocks + stocks,
+      totalStocks: model.totalStocks + state.currentAddingStocks,
+    );
+    state = state.copyWith(
+      gsheets: state.gsheets
+          .map(
+            (item) => item.ticker == model.ticker ? addedItem : item,
+          )
+          .toList(),
+    );
+    _saveToLocal();
+  }
+
+  // Switch stock isAddedPortfolio and Save local storage
+  void deletePortfolio(GsheetsModel model) {
+    final addedItem = model.copyWith(
+      isAddedPortfolio: false,
+      totalStocks: 0,
     );
     state = state.copyWith(
       gsheets: state.gsheets
@@ -51,6 +67,8 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
 
   // Save to local storage
   void _saveToLocal() {}
+
+  void inputNumverOfStock(int stocks) => state = state.copyWith(currentAddingStocks: stocks);
 }
 
 final _testModels = [

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$StockDataState {
   List<GsheetsModel> get gsheets => throw _privateConstructorUsedError;
+  int get currentAddingStocks => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StockDataStateCopyWith<StockDataState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $StockDataStateCopyWith<$Res> {
           StockDataState value, $Res Function(StockDataState) then) =
       _$StockDataStateCopyWithImpl<$Res, StockDataState>;
   @useResult
-  $Res call({List<GsheetsModel> gsheets});
+  $Res call({List<GsheetsModel> gsheets, int currentAddingStocks});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$StockDataStateCopyWithImpl<$Res, $Val extends StockDataState>
   @override
   $Res call({
     Object? gsheets = null,
+    Object? currentAddingStocks = null,
   }) {
     return _then(_value.copyWith(
       gsheets: null == gsheets
           ? _value.gsheets
           : gsheets // ignore: cast_nullable_to_non_nullable
               as List<GsheetsModel>,
+      currentAddingStocks: null == currentAddingStocks
+          ? _value.currentAddingStocks
+          : currentAddingStocks // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_StockDataStateCopyWith<$Res>
       __$$_StockDataStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<GsheetsModel> gsheets});
+  $Res call({List<GsheetsModel> gsheets, int currentAddingStocks});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_StockDataStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? gsheets = null,
+    Object? currentAddingStocks = null,
   }) {
     return _then(_$_StockDataState(
       gsheets: null == gsheets
           ? _value._gsheets
           : gsheets // ignore: cast_nullable_to_non_nullable
               as List<GsheetsModel>,
+      currentAddingStocks: null == currentAddingStocks
+          ? _value.currentAddingStocks
+          : currentAddingStocks // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -93,7 +104,8 @@ class __$$_StockDataStateCopyWithImpl<$Res>
 
 class _$_StockDataState extends _StockDataState {
   const _$_StockDataState(
-      {final List<GsheetsModel> gsheets = const <GsheetsModel>[]})
+      {final List<GsheetsModel> gsheets = const <GsheetsModel>[],
+      this.currentAddingStocks = 0})
       : _gsheets = gsheets,
         super._();
 
@@ -106,8 +118,12 @@ class _$_StockDataState extends _StockDataState {
   }
 
   @override
+  @JsonKey()
+  final int currentAddingStocks;
+
+  @override
   String toString() {
-    return 'StockDataState(gsheets: $gsheets)';
+    return 'StockDataState(gsheets: $gsheets, currentAddingStocks: $currentAddingStocks)';
   }
 
   @override
@@ -115,12 +131,14 @@ class _$_StockDataState extends _StockDataState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StockDataState &&
-            const DeepCollectionEquality().equals(other._gsheets, _gsheets));
+            const DeepCollectionEquality().equals(other._gsheets, _gsheets) &&
+            (identical(other.currentAddingStocks, currentAddingStocks) ||
+                other.currentAddingStocks == currentAddingStocks));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_gsheets));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_gsheets), currentAddingStocks);
 
   @JsonKey(ignore: true)
   @override
@@ -130,12 +148,15 @@ class _$_StockDataState extends _StockDataState {
 }
 
 abstract class _StockDataState extends StockDataState {
-  const factory _StockDataState({final List<GsheetsModel> gsheets}) =
-      _$_StockDataState;
+  const factory _StockDataState(
+      {final List<GsheetsModel> gsheets,
+      final int currentAddingStocks}) = _$_StockDataState;
   const _StockDataState._() : super._();
 
   @override
   List<GsheetsModel> get gsheets;
+  @override
+  int get currentAddingStocks;
   @override
   @JsonKey(ignore: true)
   _$$_StockDataStateCopyWith<_$_StockDataState> get copyWith =>

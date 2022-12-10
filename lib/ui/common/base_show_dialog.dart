@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'app_colors.dart';
+// import 'app_colors.dart';
 
 Future<bool?> baseShowDialog({
   required BuildContext context,
@@ -28,11 +28,7 @@ Future<bool?> baseShowDialog({
           CupertinoDialogAction(
             onPressed: () async {
               if (formKey?.currentState!.validate() ?? false) {
-                showProgressDialog(context);
-                await Future<dynamic>.delayed(const Duration(seconds: 1));
-                navigator
-                  ..pop()
-                  ..pop(true);
+                navigator.pop(true);
               }
             },
             child: const Text('OK'),
@@ -44,20 +40,20 @@ Future<bool?> baseShowDialog({
   return isConfirm;
 }
 
-void showProgressDialog(BuildContext context) {
-  showGeneralDialog(
-    context: context,
-    barrierDismissible: false,
-    transitionDuration: const Duration(milliseconds: 300),
-    barrierColor: AppColors.black.withOpacity(0.5),
-    pageBuilder: (
-      BuildContext context,
-      Animation<dynamic> animation,
-      Animation<dynamic> secondaryAnimation,
-    ) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    },
-  );
-}
+// void showProgressDialog(BuildContext context) {
+//   showGeneralDialog(
+//     context: context,
+//     barrierDismissible: false,
+//     transitionDuration: const Duration(milliseconds: 300),
+//     barrierColor: AppColors.black.withOpacity(0.5),
+//     pageBuilder: (
+//       BuildContext context,
+//       Animation<dynamic> animation,
+//       Animation<dynamic> secondaryAnimation,
+//     ) {
+//       return const Center(
+//         child: CircularProgressIndicator(),
+//       );
+//     },
+//   );
+// }

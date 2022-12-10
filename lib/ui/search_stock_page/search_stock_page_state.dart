@@ -10,6 +10,5 @@ part 'search_stock_page_state.freezed.dart';
 class SearchStockPageState with _$SearchStockPageState {
   const factory SearchStockPageState({
     @Default(AddedConditionEnum.all) AddedConditionEnum condition,
-    @Default(0) int stocks,
   }) = _SearchStockPageState;
 }

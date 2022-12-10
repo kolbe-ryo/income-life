@@ -7,8 +7,6 @@ import 'package:income_life/data/model/gsheets_model.dart';
 import 'package:income_life/ui/common/base_show_dialog.dart';
 import 'package:income_life/ui/common/custom_text_field.dart';
 import 'package:income_life/ui/global/stock_data_manager.dart';
-import 'package:income_life/ui/search_stock_page/search_stock_page_state.dart';
-import 'package:income_life/ui/search_stock_page/search_stock_page_view_model.dart';
 import 'package:income_life/util/logger.dart';
 import 'package:provider/provider.dart';
 
@@ -84,7 +82,7 @@ class _HeatMapElement extends StatelessWidget {
 
   Future<void> checkMyStock(BuildContext context, GsheetsModel model) async {
     final viewModel = context.read<StockDataManager>();
-    final inputMethod = (int stocks) => context.read<SearchStockPageViewModel>().inputNumverOfStock(stocks);
+    void inputMethod(int stocks) => viewModel.inputNumverOfStock(stocks);
     final formKey = GlobalKey<FormState>();
     final isAdded = await baseShowDialog(
       context: context,
@@ -129,8 +127,7 @@ class _HeatMapElement extends StatelessWidget {
       ),
     );
     if (isAdded ?? false) {
-      final stocks = context.read<SearchStockPageState>().stocks;
-      viewModel.addPortfolio(model, stocks);
+      viewModel.addPortfolio(model);
     }
   }
 }

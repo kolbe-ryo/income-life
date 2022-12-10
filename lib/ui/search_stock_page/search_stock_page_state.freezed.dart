@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SearchStockPageState {
   AddedConditionEnum get condition => throw _privateConstructorUsedError;
-  int get stocks => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchStockPageStateCopyWith<SearchStockPageState> get copyWith =>
@@ -30,7 +29,7 @@ abstract class $SearchStockPageStateCopyWith<$Res> {
           $Res Function(SearchStockPageState) then) =
       _$SearchStockPageStateCopyWithImpl<$Res, SearchStockPageState>;
   @useResult
-  $Res call({AddedConditionEnum condition, int stocks});
+  $Res call({AddedConditionEnum condition});
 }
 
 /// @nodoc
@@ -48,17 +47,12 @@ class _$SearchStockPageStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? condition = null,
-    Object? stocks = null,
   }) {
     return _then(_value.copyWith(
       condition: null == condition
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
               as AddedConditionEnum,
-      stocks: null == stocks
-          ? _value.stocks
-          : stocks // ignore: cast_nullable_to_non_nullable
-              as int,
     ) as $Val);
   }
 }
@@ -71,7 +65,7 @@ abstract class _$$_SearchStockPageStateCopyWith<$Res>
       __$$_SearchStockPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AddedConditionEnum condition, int stocks});
+  $Res call({AddedConditionEnum condition});
 }
 
 /// @nodoc
@@ -86,17 +80,12 @@ class __$$_SearchStockPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? condition = null,
-    Object? stocks = null,
   }) {
     return _then(_$_SearchStockPageState(
       condition: null == condition
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
               as AddedConditionEnum,
-      stocks: null == stocks
-          ? _value.stocks
-          : stocks // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -104,19 +93,15 @@ class __$$_SearchStockPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchStockPageState implements _SearchStockPageState {
-  const _$_SearchStockPageState(
-      {this.condition = AddedConditionEnum.all, this.stocks = 0});
+  const _$_SearchStockPageState({this.condition = AddedConditionEnum.all});
 
   @override
   @JsonKey()
   final AddedConditionEnum condition;
-  @override
-  @JsonKey()
-  final int stocks;
 
   @override
   String toString() {
-    return 'SearchStockPageState(condition: $condition, stocks: $stocks)';
+    return 'SearchStockPageState(condition: $condition)';
   }
 
   @override
@@ -125,12 +110,11 @@ class _$_SearchStockPageState implements _SearchStockPageState {
         (other.runtimeType == runtimeType &&
             other is _$_SearchStockPageState &&
             (identical(other.condition, condition) ||
-                other.condition == condition) &&
-            (identical(other.stocks, stocks) || other.stocks == stocks));
+                other.condition == condition));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, condition, stocks);
+  int get hashCode => Object.hash(runtimeType, condition);
 
   @JsonKey(ignore: true)
   @override
@@ -141,14 +125,11 @@ class _$_SearchStockPageState implements _SearchStockPageState {
 }
 
 abstract class _SearchStockPageState implements SearchStockPageState {
-  const factory _SearchStockPageState(
-      {final AddedConditionEnum condition,
-      final int stocks}) = _$_SearchStockPageState;
+  const factory _SearchStockPageState({final AddedConditionEnum condition}) =
+      _$_SearchStockPageState;
 
   @override
   AddedConditionEnum get condition;
-  @override
-  int get stocks;
   @override
   @JsonKey(ignore: true)
   _$$_SearchStockPageStateCopyWith<_$_SearchStockPageState> get copyWith =>

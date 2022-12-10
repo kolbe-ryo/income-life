@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:income_life/ui/common/custom_text_field.dart';
 
 // Package imports:
@@ -9,10 +8,7 @@ import 'package:provider/provider.dart';
 // Project imports:
 import '../../data/model/gsheets_model.dart';
 import '../../enum/stock_information_attribute_enum.dart';
-import '../../util/logger.dart';
 import '../global/stock_data_manager.dart';
-import '../search_stock_page/search_stock_page_state.dart';
-import '../search_stock_page/search_stock_page_view_model.dart';
 import 'app_colors.dart';
 import 'base_card.dart';
 import 'base_show_dialog.dart';
@@ -38,7 +34,7 @@ class StockInformationCard extends BaseCard {
     return () async {
       final model = context.read<GsheetsModel>();
       final viewModel = context.read<StockDataManager>();
-      final inputMethod = (int stocks) => context.read<SearchStockPageViewModel>().inputNumverOfStock(stocks);
+      void inputMethod(int stocks) => viewModel.inputNumverOfStock(stocks);
       final formKey = GlobalKey<FormState>();
       final isAdded = await baseShowDialog(
         context: context,
@@ -83,10 +79,8 @@ class StockInformationCard extends BaseCard {
         ),
       );
       if (isAdded ?? false) {
-        final stocks = context.read<SearchStockPageState>().stocks;
-        viewModel.addPortfolio(model, stocks);
+        viewModel.addPortfolio(model);
       }
-      return;
     };
   }
 }
