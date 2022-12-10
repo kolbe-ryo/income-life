@@ -1,5 +1,8 @@
 // Package imports:
+import 'dart:convert';
+
 import 'package:gsheets/gsheets.dart';
+import 'package:income_life/util/gsheets_authentication.dart';
 
 // Project imports:
 import '../../enum/currency_value.dart';
@@ -8,7 +11,7 @@ import '../interface/gsheets_interface.dart';
 import '../model/gsheets_model.dart';
 
 class GsheetsDao implements GsheetsInterface {
-  static final _gsheets = GSheets(gSheetsCredentials);
+  static final _gsheets = GSheets(json.encode(jsogSheetsCredentialsnKey));
 
   @override
   Future<List<GsheetsModel>> fetch() async {

@@ -23,10 +23,10 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
 
   // fetch data from Gsheets and Local Repository
   Future<void> _fetchGsheets() async {
-    state = state.copyWith(
-      gsheets: await GetIt.I<GsheetsInterface>().fetch(),
-    );
-    logger.info(state);
+    // state = state.copyWith(
+    //   gsheets: await GetIt.I<GsheetsInterface>().fetch(),
+    // );
+    // logger.info(state);
     state = state.copyWith(gsheets: _testModels);
   }
 

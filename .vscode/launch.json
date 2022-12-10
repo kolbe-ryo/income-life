@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "income_life",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "income_life (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "income_life (debug mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--dart-define=PROJECTID=income-life-368112",
+                "--dart-define=PRIVATEKEYID=9de10201d5c0d831a6e3aca68964c13989d0f73d",
+                "--dart-define=PRIVATEKEY=MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCm0NE6udY0xMpGgTGJSAmR6QHl+NPzegfy/AFT23s5dpbuakr9y8UVeErpksstBR/lgWDeJ5gP/Ohd+u0G2QIm2UajDPDcwYPvh23T5PW1iqiw+LwowqXRfthG71bwfcwMUBZonPJ/fwerPBrvr2lZpj/vLi4qukmhfHj+xXJ0NhQBiH18E6K2gVSlC+D+U8zomv146zTTFSGCrMs7ZWdm5dwCgEFPSXk3MEZy/fo/q6Hv7eVuqFOe6o40K7IXulPCTzkV9YSjCcsr/crGaWaUHeoHYiqSid4ESo9cGdpFU42VYsxJ90Ye4RjUYmEn5fjxJ788ldMzp+hmvtw+Kc+XAgMBAAECggEAF1uI2HC6AiSF8C5Z2c+Y63HVXrajMuXk5AyOQQgr7mVhB9whSP01yOZRkvgHc/PSPggKIMEphR+UB8jBVKKhLwBgaCdBOJ/uEeWEJtXZ48QZD8KcUhbDMhzROsl7gmwS3KyAHsDPIbQPRlZBrUsB9NgW/q4YL8pq0e5EYOQTvRq1Qj2zGTdnZENQwLgcufjbbKrcYpI4eAJvGovb6pUMFnvjGEKmNWOwM9XKS+CLOH60n03FFneIcnBE+7Uwz7yoPchpMAW8CU3cRaDz0Y7yih+OGEAvxkN1wTAaOWDXNxeh7/R/iOxP6Inv92LEqqhdkFPFc8wm/ivTe+kmhbol4QKBgQDiHReKPw/ts3DJJNfkhzDd/5A2mAj8GFCe5O8yZZMrhRezZmBsn5MacGJkV1QA2x487xxG6mxP/tp4Q5OBp3LMRPX4ToS4gTwKULoidITSyxCnyoRzjhUPSjWx0kzRUFaxXlHP07aE0KtS+ra7X2j4qrwkJyyEs3S9c0JJwSJxoQKBgQC83UllbK1R5ukR2nuO8COMxEsXvaV5WOuegAfuN3oWZq5afHfOUx+8ZkBwpRc7Pk6fS2CjUn12t29NMO9TdzoKn29ZO6Ke01+K8fdqX5/5mEG2r8uYSjUBe2LeaucdzFTjs/4Scn23K0JMciowQPK4wT41gepILEoqMPf2y/WmNwKBgDji6NE3HGLJCk8QneA4wuqXKUkS5u/FjkLrheI/+86vJU9VKl0pqHC2ZYqpDdFJT0o1Pf/5alaV35DyL2InJpKNpvRZjLp+iQRvWuTgO6psvDv6j2gjDtlR6kBakEj41Va6TArlUL4JYZD20pJBZr9o9PyDfofEPlKLdNnpZSkBAoGAUwcJPDBhpY7YyYN+LCF/z2OAC6jQtR8VPjHUyrHS10Q+xALR/H9ohT+CdsLtCptinv7ZNhOOmoEbyhiILe5NMtxSbC0eWapc501mUnpFbsmzoed4nrOIx+UBWvwuLFhmvU+kk2GHyN2YoNjTmTEEQ5qYiZdacm4eEJxEdlfF31MCgYEAyJqBbaaW4cjboUlHOEdE3WMoBppqubz+LvG0c9mXGl9SHvcvMIRLRw7Tfxk/Uz1E0u0R4WK7G5TpGULHeHBzwUYAdS5KU19OHuXuplDvjjWOn00A8NRZzLENvTzOQSEuveToxk5zEem+ilSupdorJ8kD86u/fO/WK6b8FQDfUjA=",
+                "--dart-define=CLIENTEMAIL=income-life@income-life-368112.iam.gserviceaccount.com",
+                "--dart-define=CLIENTEID=109450732605494127197",
+                "--dart-define=AUTHURI=https://accounts.google.com/o/oauth2/auth",
+                "--dart-define=TOKENURI=https://oauth2.googleapis.com/token",
+                "--dart-define=AUTHPROVIDERX509CERTURL=https://www.googleapis.com/oauth2/v1/certs",
+                "--dart-define=CLIENTX509CERTURL=https://www.googleapis.com/robot/v1/metadata/x509/income-life%40income-life-368112.iam.gserviceaccount.com",
+                "--dart-define=GSHEETSID=1XxE80CBGvDTw0tAVZWPUZU0K0TPDLQhcINm6esFosXE"
+            ]
+        },
+        {
+            "name": "income_life (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
