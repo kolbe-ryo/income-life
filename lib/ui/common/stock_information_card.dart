@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
-import 'package:income_life/ui/common/custom_text_field.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -9,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../../data/model/gsheets_model.dart';
 import '../../enum/stock_information_attribute_enum.dart';
 import '../global/stock_data_manager.dart';
+import 'add_portfolio_dialog_design.dart';
 import 'app_colors.dart';
 import 'base_card.dart';
 import 'base_show_dialog.dart';
@@ -45,37 +45,7 @@ class StockInformationCard extends BaseCard {
             Provider.value(value: inputMethod),
             Provider.value(value: formKey),
           ],
-          child: Padding(
-            padding: const EdgeInsets.only(top: kPadding / 2, left: kPadding),
-            child: DefaultTextStyle(
-              style: const TextStyle(fontSize: kFontSize),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Text('Ticker :'),
-                      Expanded(
-                        child: Text(
-                          model.ticker,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: kPadding / 2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
-                      Text('Stocks :'),
-                      Expanded(
-                        child: DigitsTextField(),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
+          child: AddPortfolioDialogDesign(model),
         ),
       );
       if (isAdded ?? false) {

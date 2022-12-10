@@ -1,12 +1,14 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/ui/common/app_colors.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import '../../data/model/gsheets_model.dart';
+import '../global/stock_data_manager.dart';
+import 'app_colors.dart';
 import 'constants.dart';
 
 abstract class BaseCard extends StatelessWidget {

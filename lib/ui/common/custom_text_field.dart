@@ -2,10 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:income_life/util/logger.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
 
 // Project imports:
+import '../../util/logger.dart';
 import 'app_colors.dart';
 import 'constants.dart';
 

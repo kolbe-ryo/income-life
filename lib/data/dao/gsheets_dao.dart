@@ -1,11 +1,12 @@
-// Package imports:
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:gsheets/gsheets.dart';
-import 'package:income_life/util/gsheets_authentication.dart';
 
 // Project imports:
 import '../../enum/currency_value.dart';
+import '../../util/gsheets_authentication.dart';
 import '../../util/logger.dart';
 import '../interface/gsheets_interface.dart';
 import '../model/gsheets_model.dart';

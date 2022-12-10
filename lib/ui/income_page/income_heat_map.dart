@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/ui/common/base_show_dialog.dart';
-import 'package:income_life/ui/common/custom_text_field.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
-import 'package:income_life/util/logger.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import '../../data/model/gsheets_model.dart';
 import '../../data/model/heat_map_model.dart';
+import '../../util/logger.dart';
+import '../common/add_portfolio_dialog_design.dart';
+import '../common/base_show_dialog.dart';
 import '../common/constants.dart';
+import '../global/stock_data_manager.dart';
 import '../global/stock_data_state.dart';
 import 'heat_map_struct/heat_map_struct.dart';
 
@@ -60,7 +60,7 @@ class _HeatMapElement extends StatelessWidget {
       margin: EdgeInsets.zero,
       child: InkWell(
         onTap: () async {
-          await checkMyStock(context, heatMapModel.model);
+          await _checkAndAddPortfolio(context, heatMapModel.model);
           logger.info('onPress');
         },
         onLongPress: () {
@@ -80,7 +80,10 @@ class _HeatMapElement extends StatelessWidget {
     );
   }
 
-  Future<void> checkMyStock(BuildContext context, GsheetsModel model) async {
+  Future<void> _checkAndAddPortfolio(
+    BuildContext context,
+    GsheetsModel model,
+  ) async {
     final viewModel = context.read<StockDataManager>();
     void inputMethod(int stocks) => viewModel.inputNumverOfStock(stocks);
     final formKey = GlobalKey<FormState>();
@@ -93,41 +96,13 @@ class _HeatMapElement extends StatelessWidget {
           Provider.value(value: inputMethod),
           Provider.value(value: formKey),
         ],
-        child: Padding(
-          padding: const EdgeInsets.only(top: kPadding / 2, left: kPadding),
-          child: DefaultTextStyle(
-            style: const TextStyle(fontSize: kFontSize),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    const Text('Ticker :'),
-                    Expanded(
-                      child: Text(
-                        model.ticker,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: kPadding / 2),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    Text('Stocks :'),
-                    Expanded(
-                      child: DigitsTextField(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
+        child: AddPortfolioDialogDesign(model),
       ),
     );
     if (isAdded ?? false) {
       viewModel.addPortfolio(model);
     }
   }
+
+  Future<void> _deletePortfolio() async {}
 }
