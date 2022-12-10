@@ -72,10 +72,13 @@ class _UnitInformation extends StatelessWidget {
       child: SizedBox(
         width: _getWidth(mediaWidth - kPadding * 3),
         height: 64,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: _getWidgets(attribute: attribute, info: model),
+        child: Padding(
+          padding: const EdgeInsets.only(left: kPadding / 2),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: _getWidgets(attribute: attribute, info: model),
+          ),
         ),
       ),
     );

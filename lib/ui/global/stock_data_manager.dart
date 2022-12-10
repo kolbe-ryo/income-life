@@ -1,5 +1,6 @@
 // Package imports:
 import 'package:get_it/get_it.dart';
+import 'package:income_life/enum/added_condition_enum.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
@@ -71,6 +72,20 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   }
 
   void inputNumverOfStock(int stocks) => state = state.copyWith(currentAddingStocks: stocks);
+
+  List<GsheetsModel> selectGsheets({
+    required StockDataState state,
+    required AddedConditionEnum condition,
+  }) {
+    switch (condition) {
+      case AddedConditionEnum.isAdded:
+        return state.portfolio;
+      case AddedConditionEnum.notAdded:
+        return state.notPortfolio;
+      case AddedConditionEnum.all:
+        return state.gsheets;
+    }
+  }
 }
 
 final _testModels = [

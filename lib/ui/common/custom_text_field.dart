@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:income_life/ui/search_stock_page/search_stock_page_view_model.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -38,6 +39,9 @@ class CustomTextField extends StatelessWidget {
         color: AppColors.lightGrey70,
         fontSize: 18,
       ),
+      onChanged: (text) {
+        context.read<SearchStockPageViewModel>().searchText(text);
+      },
     );
   }
 }

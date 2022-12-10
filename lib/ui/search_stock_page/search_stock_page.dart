@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:income_life/ui/global/stock_data_manager.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-import '../../data/model/gsheets_model.dart';
 import '../../enum/added_condition_enum.dart';
 import '../common/app_colors.dart';
 import '../common/constants.dart';
@@ -56,17 +56,21 @@ class _ListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Change display stock by FAB condition
-    final searchCondition = context.select((SearchStockPageState value) => value.condition);
-    final selectState = context.select(
-      (StockDataState value) => selectGsheets(
-        state: value,
-        condition: searchCondition,
-      ),
-    );
+    final viewModel1 = context.read<StockDataManager>();
+    final viewModel2 = context.read<SearchStockPageViewModel>();
+    final condition = context.select((SearchStockPageState value) => value.condition);
+    final isSearching = context.select((SearchStockPageState value) => value.isSearching);
+    final searchedModels = !isSearching
+        ? context.select(
+            (StockDataState value) => viewModel1.selectGsheets(state: value, condition: condition),
+          )
+        : context.select(
+            (SearchStockPageState value) => viewModel2.selectGsheets(state: value),
+          );
     return Padding(
       padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
       child: ListView(
-        children: selectState.map((model) {
+        children: searchedModels.map((model) {
           return Provider.value(
             value: model,
             child: const StockInformationCard(),
@@ -87,23 +91,9 @@ class _FloatingActionButton extends StatelessWidget {
       backgroundColor: searchCondition.color,
       onPressed: () => context.read<SearchStockPageViewModel>().switchCondition(),
       child: const FaIcon(
-        FontAwesomeIcons.shuffle,
+        FontAwesomeIcons.toggleOn,
         color: AppColors.white,
       ),
     );
-  }
-}
-
-List<GsheetsModel> selectGsheets({
-  required StockDataState state,
-  required AddedConditionEnum condition,
-}) {
-  switch (condition) {
-    case AddedConditionEnum.isAdded:
-      return state.portfolio;
-    case AddedConditionEnum.notAdded:
-      return state.notPortfolio;
-    case AddedConditionEnum.all:
-      return state.gsheets;
   }
 }
