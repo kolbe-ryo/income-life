@@ -1,10 +1,12 @@
-// Project imports:
+// Dart imports:
 import 'dart:convert';
 
-import 'package:income_life/data/model/gsheets_model.dart';
+// Package imports:
 import 'package:shared_preferences/shared_preferences.dart';
 
+// Project imports:
 import '../interface/local_repository_interface.dart';
+import '../model/gsheets_model.dart';
 
 class LocalRepositoryDao implements LocalRepositoryInterface {
   factory LocalRepositoryDao() => _instance;

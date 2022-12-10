@@ -1,11 +1,13 @@
-// Package imports:
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
+
+// Package imports:
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
+import '../../data/model/gsheets_model.dart';
 import '../../enum/added_condition_enum.dart';
+import '../global/stock_data_manager.dart';
 import 'search_stock_page_state.dart';
 
 class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> with LocatorMixin {

@@ -1,8 +1,8 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
 
 // Project imports:
+import '../../data/model/gsheets_model.dart';
 import '../../enum/added_condition_enum.dart';
 
 part 'search_stock_page_state.freezed.dart';

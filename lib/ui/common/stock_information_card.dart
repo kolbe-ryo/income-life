@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
-import 'package:income_life/ui/search_stock_page/search_stock_page_view_model.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -9,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../../data/model/gsheets_model.dart';
 import '../../enum/stock_information_attribute_enum.dart';
 import '../global/stock_data_manager.dart';
+import '../search_stock_page/search_stock_page_view_model.dart';
 import 'add_portfolio_dialog_design.dart';
 import 'app_colors.dart';
 import 'base_card.dart';
@@ -36,8 +36,8 @@ class StockInformationCard extends BaseCard {
       final model = context.read<GsheetsModel>();
       final stockDataManager = context.read<StockDataManager>();
       final searchStockPageViewModel = context.read<SearchStockPageViewModel>();
-      void inputMethod(int stocks) => stockDataManager.inputNumverOfStock(stocks);
       final formKey = GlobalKey<FormState>();
+      void inputMethod(int stocks) => stockDataManager.inputNumverOfStock(stocks);
       final isAdded = await baseShowDialog(
         context: context,
         title: 'Add Your Portfolio?',

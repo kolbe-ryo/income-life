@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -13,6 +12,7 @@ import '../common/app_colors.dart';
 import '../common/constants.dart';
 import '../common/custom_text_field.dart';
 import '../common/stock_information_card.dart';
+import '../global/stock_data_manager.dart';
 import '../global/stock_data_state.dart';
 import 'search_stock_page_state.dart';
 import 'search_stock_page_view_model.dart';

@@ -2,13 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:income_life/ui/search_stock_page/search_stock_page_view_model.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../util/logger.dart';
+import '../search_stock_page/search_stock_page_view_model.dart';
 import 'app_colors.dart';
 import 'constants.dart';
 

@@ -1,4 +1,5 @@
-import 'package:income_life/data/model/gsheets_model.dart';
+// Project imports:
+import '../model/gsheets_model.dart';
 
 abstract class LocalRepositoryInterface {
   // fetch gsheets data from local repository

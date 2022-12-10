@@ -1,12 +1,12 @@
 // Package imports:
 import 'package:get_it/get_it.dart';
-import 'package:income_life/enum/added_condition_enum.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
 import '../../data/interface/gsheets_interface.dart';
 import '../../data/interface/local_repository_interface.dart';
 import '../../data/model/gsheets_model.dart';
+import '../../enum/added_condition_enum.dart';
 import '../../enum/currency_value.dart';
 import '../../util/logger.dart';
 import 'stock_data_state.dart';
