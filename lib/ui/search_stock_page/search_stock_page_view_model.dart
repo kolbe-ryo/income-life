@@ -37,7 +37,7 @@ class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> with 
       state: manager.state,
       condition: state.condition,
     );
-    state = state.copyWith(searchedGsheets: models);
+    state = state.copyWith(searchedGsheets: models, isSearching: false);
     _controller.clear();
   }
 
