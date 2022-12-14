@@ -74,7 +74,7 @@ class _UnitInformation extends StatelessWidget {
       ),
       child: SizedBox(
         width: _getWidth(mediaWidth - kPadding * 3),
-        height: 64,
+        height: kCardHeight,
         child: Padding(
           padding: const EdgeInsets.only(left: kPadding / 2),
           child: Column(

@@ -36,7 +36,9 @@ abstract class BaseCard extends StatelessWidget {
                 foregroundColor: Colors.white,
                 icon: Icons.delete,
                 label: 'Delete',
-                onPressed: (BuildContext context) => context.read<StockDataManager>().deletePortfolio(model),
+                onPressed: (BuildContext context) {
+                  context.read<StockDataManager>().deletePortfolio(model);
+                },
               ),
             ],
           ),
