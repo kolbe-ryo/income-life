@@ -19,29 +19,36 @@ class IncomePage extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.fromLTRB(kPadding, kPadding * 2, kPadding, 0),
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height:
-                context.select((MediaQueryData value) => value.size.height) - kBottomNavigationBarHeight - kPadding * 2,
-            child: Column(
-              children: [
-                const IncomeHeatMap(),
-                const SizedBox(height: kPadding),
-                Row(
-                  children: const [
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: SizedBox(
+                height: constraints.maxHeight,
+                child: Column(
+                  children: [
+                    const IncomeHeatMap(),
+                    const SizedBox(height: kPadding),
                     Expanded(
-                      child: _InvestSummaryCard(InvestInfoEnum.income),
+                      child: Row(
+                        children: const [
+                          Expanded(
+                            child: _InvestSummaryCard(InvestInfoEnum.income),
+                          ),
+                          SizedBox(width: kPadding / 2),
+                          _InvestSummaryCard(InvestInfoEnum.stocks),
+                        ],
+                      ),
                     ),
-                    SizedBox(width: kPadding / 2),
-                    _InvestSummaryCard(InvestInfoEnum.stocks),
+                    const SizedBox(height: kPadding / 2),
+                    const Expanded(
+                      child: _InvestSummaryCard(InvestInfoEnum.totalInvest),
+                    ),
+                    const SizedBox(height: kPadding / 2),
                   ],
                 ),
-                const SizedBox(height: kPadding / 2),
-                const _InvestSummaryCard(InvestInfoEnum.totalInvest),
-                const SizedBox(height: kPadding / 2),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
