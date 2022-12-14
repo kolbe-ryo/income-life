@@ -65,28 +65,34 @@ class _CardTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: kPadding / 2),
+      padding: const EdgeInsets.only(bottom: 12),
       child: Center(
         child: Card(
           margin: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(kBorder),
           ),
-          child: SizedBox(
-            height: kCardHeight,
-            child: ListTile(
-              leading: leadingIcon,
-              title: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: kFontSize,
-                  fontWeight: FontWeight.bold,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: kPadding / 2),
+            child: SizedBox(
+              height: kCardHeight,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: ListTile(
+                  leading: leadingIcon,
+                  title: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: kFontSize,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  trailing: trailingIcon,
+                  onTap: onTap,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(kBorder),
+                  ),
                 ),
-              ),
-              trailing: trailingIcon,
-              onTap: onTap,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(kBorder),
               ),
             ),
           ),
