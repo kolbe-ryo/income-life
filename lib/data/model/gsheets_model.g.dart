@@ -6,10 +6,8 @@ part of 'gsheets_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GsheetsModel _$$_GsheetsModelFromJson(Map<String, dynamic> json) =>
-    _$_GsheetsModel(
-      market: $enumDecodeNullable(_$CurrencyValueEnumMap, json['market']) ??
-          CurrencyValue.non,
+_$_GsheetsModel _$$_GsheetsModelFromJson(Map<String, dynamic> json) => _$_GsheetsModel(
+      market: $enumDecodeNullable(_$CurrencyValueEnumMap, json['market']) ?? CurrencyValue.non,
       ticker: json['ticker'] as String? ?? '',
       name: json['name'] as String? ?? '',
       price: (json['price'] as num?)?.toDouble() ?? 0,
@@ -19,9 +17,8 @@ _$_GsheetsModel _$$_GsheetsModelFromJson(Map<String, dynamic> json) =>
       exchangeRate: (json['exchangeRate'] as num?)?.toDouble() ?? 0,
     );
 
-Map<String, dynamic> _$$_GsheetsModelToJson(_$_GsheetsModel instance) =>
-    <String, dynamic>{
-      'market': _$CurrencyValueEnumMap[instance.market]!,
+Map<String, dynamic> _$$_GsheetsModelToJson(_$_GsheetsModel instance) => <String, dynamic>{
+      'market': _$CurrencyValueEnumMap[instance.market],
       'ticker': instance.ticker,
       'name': instance.name,
       'price': instance.price,

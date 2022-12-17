@@ -1,13 +1,13 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:income_life/util/admob.dart';
 
 // Package imports:
+import 'package:get_it/get_it.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
 import '../../enum/bnb_items.dart';
+import '../../util/admob.dart';
 import 'top_page_state.dart';
 
 class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {

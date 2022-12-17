@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:income_life/ui/common/base_card.dart';
-import 'package:income_life/ui/global/stock_data_manager.dart';
-import 'package:income_life/ui/settings_page/setting_contents/about_app_web_view_page.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../util/constants.dart';
+import '../common/base_card.dart';
+import '../common/base_show_dialog.dart';
+import '../global/stock_data_manager.dart';
+import '../top_page/top_page_view_model.dart';
+import 'setting_contents/base_web_view_page.dart';
+import 'setting_contents/request_to_add_stock_page.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -28,7 +31,10 @@ class SettingsPage extends StatelessWidget {
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => Navigator.push(
                 context,
-                AboutAppWebViewPage.route(),
+                BaseWebView.route(
+                  title: 'About This App',
+                  url: aboutAppUrl,
+                ),
               ),
             ),
             _CardTile(
@@ -41,24 +47,51 @@ class SettingsPage extends StatelessWidget {
               leadingIcon: const FaIcon(FontAwesomeIcons.eraser),
               title: 'Reset',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: () => context.read<StockDataManager>().deleteAll(),
+              onTap: () => _reset(context),
             ),
             _CardTile(
               leadingIcon: const FaIcon(FontAwesomeIcons.envelope),
               title: 'Request to add stock',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: null,
+              onTap: () => Navigator.push(
+                context,
+                RequestToAddStockPage.route(),
+              ),
             ),
             _CardTile(
               leadingIcon: const FaIcon(FontAwesomeIcons.yahoo),
               title: 'Yahoo Finance',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: null,
+              onTap: () => Navigator.push(
+                context,
+                BaseWebView.route(
+                  title: 'Yahoo Finance',
+                  url: yahooFinanceUrl,
+                ),
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _reset(BuildContext context) async {
+    final stockDataManager = context.read<StockDataManager>();
+    final bnbController = context.read<TopPageViewModel>();
+    final isDelete = await baseShowDialog(
+      context: context,
+      title: 'Reset All Your Portfolio?',
+      isSimpleDialog: true,
+      widget: const Padding(
+        padding: EdgeInsets.only(top: kPadding / 2),
+        child: Text('This operation cannot be undone.'),
+      ),
+    );
+    if (isDelete ?? false) {
+      stockDataManager.deleteAll();
+      bnbController.switchBNB(0);
+    }
   }
 }
 

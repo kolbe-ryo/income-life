@@ -6,9 +6,9 @@ import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../enum/invest_information_enum.dart';
+import '../../util/constants.dart';
 import '../../util/text_formatter.dart';
 import '../global/stock_data_state.dart';
-import '../../util/constants.dart';
 
 class StockSummaryCard extends StatelessWidget {
   const StockSummaryCard(this.kinds, {super.key});

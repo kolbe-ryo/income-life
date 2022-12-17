@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 // Package imports:
-import 'package:income_life/util/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
+import '../../util/logger.dart';
 import '../interface/local_repository_interface.dart';
 import '../model/gsheets_model.dart';
 

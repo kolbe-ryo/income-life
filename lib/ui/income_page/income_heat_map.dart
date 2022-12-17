@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:income_life/enum/color_index_enum.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
 import '../../data/model/heat_map_model.dart';
+import '../../enum/color_index_enum.dart';
+import '../../util/constants.dart';
 import '../common/add_portfolio_dialog_design.dart';
 import '../common/base_show_dialog.dart';
-import '../../util/constants.dart';
 import '../global/stock_data_manager.dart';
 import '../global/stock_data_state.dart';
 import 'heat_map_struct/heat_map_struct.dart';
@@ -126,7 +126,7 @@ class _HeatMapElement extends StatelessWidget {
       isSimpleDialog: true,
       widget: const Padding(
         padding: EdgeInsets.only(top: kPadding / 2),
-        child: Text('This operation cannot be undone'),
+        child: Text('This operation cannot be undon.'),
       ),
     );
     if (isDelete ?? false) {

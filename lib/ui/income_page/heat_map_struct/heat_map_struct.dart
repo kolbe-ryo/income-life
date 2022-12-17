@@ -1,9 +1,7 @@
 // Project imports:
-import 'package:income_life/enum/color_index_enum.dart';
-
 import '../../../data/model/gsheets_model.dart';
 import '../../../data/model/heat_map_model.dart';
-import '../../common/app_colors.dart';
+import '../../../enum/color_index_enum.dart';
 
 List<HeatMapModel> heatMapStruct({
   required List<GsheetsModel> models,
