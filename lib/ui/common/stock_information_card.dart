@@ -19,7 +19,7 @@ class StockInformationCard extends BaseCard {
   const StockInformationCard({super.key}) : super();
 
   @override
-  Widget? innerTextWidget() {
+  Widget innerTextWidget() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: const [

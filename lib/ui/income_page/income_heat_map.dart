@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:income_life/enum/color_index_enum.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -34,7 +34,10 @@ class IncomeHeatMap extends StatelessWidget {
         crossAxisCount: 100,
         mainAxisSpacing: 3,
         crossAxisSpacing: 3,
-        children: heatMapStruct(portfoio)
+        children: heatMapStruct(
+          models: portfoio,
+          colorIndex: ColorIndexEnum.crash,
+        )
             .map(
               (model) => StaggeredGridTile.count(
                 crossAxisCellCount: model.crossAxisSize,

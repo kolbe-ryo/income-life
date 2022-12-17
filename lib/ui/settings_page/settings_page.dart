@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:income_life/ui/common/base_card.dart';
 
 // Project imports:
 import '../common/constants.dart';
@@ -17,18 +18,12 @@ class SettingsPage extends StatelessWidget {
         padding: const EdgeInsets.all(kPadding),
         child: Column(
           children: [
-            SizedBox(height: kPadding),
+            const SizedBox(height: kPadding),
             _CardTile(
               leadingIcon: FaIcon(FontAwesomeIcons.appStore),
               title: 'About This App',
               trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => print('test'),
-            ),
-            _CardTile(
-              leadingIcon: FaIcon(FontAwesomeIcons.eraser),
-              title: 'Reset',
-              trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: null,
             ),
             _CardTile(
               leadingIcon: FaIcon(FontAwesomeIcons.certificate),
@@ -37,8 +32,20 @@ class SettingsPage extends StatelessWidget {
               onTap: null,
             ),
             _CardTile(
+              leadingIcon: FaIcon(FontAwesomeIcons.eraser),
+              title: 'Reset',
+              trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
+              onTap: null,
+            ),
+            _CardTile(
               leadingIcon: FaIcon(FontAwesomeIcons.envelope),
-              title: 'Request',
+              title: 'Request to add stock',
+              trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
+              onTap: null,
+            ),
+            _CardTile(
+              leadingIcon: FaIcon(FontAwesomeIcons.yahoo),
+              title: 'Yahoo Finance',
               trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
               onTap: null,
             ),
@@ -66,37 +73,25 @@ class _CardTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
-      child: Center(
-        child: Card(
-          margin: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(kBorder),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: kPadding / 2),
-            child: SizedBox(
-              height: kCardHeight,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: ListTile(
-                  leading: leadingIcon,
-                  title: Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: kFontSize,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  trailing: trailingIcon,
-                  onTap: onTap,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(kBorder),
-                  ),
-                ),
+      child: CardElement(
+        widget: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: ListTile(
+            leading: leadingIcon,
+            title: Text(
+              title,
+              style: const TextStyle(
+                fontSize: kFontSize,
+                fontWeight: FontWeight.bold,
               ),
+            ),
+            trailing: trailingIcon,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(kBorder),
             ),
           ),
         ),
+        onTap: onTap,
       ),
     );
   }

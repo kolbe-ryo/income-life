@@ -16,7 +16,7 @@ abstract class BaseCard extends StatelessWidget {
 
   void Function()? onTap(BuildContext context);
 
-  Widget? innerTextWidget();
+  Widget innerTextWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,10 @@ abstract class BaseCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: Visibility(
         visible: context.select((GsheetsModel value) => value.isAddedPortfolio),
-        replacement: _getCard(context),
+        replacement: CardElement(
+          widget: innerTextWidget(),
+          onTap: onTap(context),
+        ),
         child: Slidable(
           endActionPane: ActionPane(
             extentRatio: 0.3,
@@ -42,13 +45,28 @@ abstract class BaseCard extends StatelessWidget {
               ),
             ],
           ),
-          child: _getCard(context),
+          child: CardElement(
+            widget: innerTextWidget(),
+            onTap: onTap(context),
+          ),
         ),
       ),
     );
   }
+}
 
-  Widget _getCard(BuildContext context) {
+class CardElement extends StatelessWidget {
+  const CardElement({
+    required this.widget,
+    required this.onTap,
+    super.key,
+  });
+
+  final Widget widget;
+  final void Function()? onTap;
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
@@ -56,10 +74,10 @@ abstract class BaseCard extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(kBorder),
-        onTap: onTap(context),
+        onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(kPadding / 2),
-          child: innerTextWidget(),
+          child: widget,
         ),
       ),
     );
