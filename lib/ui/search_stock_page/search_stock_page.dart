@@ -61,12 +61,8 @@ class _ListView extends StatelessWidget {
     final condition = context.select((SearchStockPageState value) => value.condition);
     final isSearching = context.select((SearchStockPageState value) => value.isSearching);
     final searchedModels = !isSearching
-        ? context.select(
-            (StockDataState value) => viewModel1.selectGsheets(state: value, condition: condition),
-          )
-        : context.select(
-            (SearchStockPageState value) => viewModel2.selectGsheets(state: value),
-          );
+        ? context.select((StockDataState value) => viewModel1.selectGsheets(state: value, condition: condition))
+        : context.select((SearchStockPageState value) => viewModel2.selectGsheets(state: value));
     return Padding(
       padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
       child: ListView(

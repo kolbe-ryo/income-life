@@ -40,14 +40,6 @@ class IncomePage extends StatelessWidget {
                       child: StockSummaryCard(InvestInfoEnum.totalInvest),
                     ),
                     const SizedBox(height: kPadding / 2),
-                    Container(
-                      color: Colors.blueGrey,
-                      height: 45,
-                      width: double.infinity,
-                      child: const Center(
-                        child: Text('Advertisement'),
-                      ),
-                    ),
                   ],
                 ),
               ),

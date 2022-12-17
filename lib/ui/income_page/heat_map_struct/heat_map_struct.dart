@@ -1,4 +1,6 @@
 // Project imports:
+import 'package:flutter/material.dart';
+
 import '../../../data/model/gsheets_model.dart';
 import '../../../data/model/heat_map_model.dart';
 import '../../common/app_colors.dart';
@@ -207,3 +209,7 @@ List<HeatMapModel> heatMapStruct(List<GsheetsModel> models) {
       }
   }
 }
+
+// List<Color> getHeatMapColor() {
+
+// }

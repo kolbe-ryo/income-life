@@ -37,8 +37,8 @@ class SettingsPage extends StatelessWidget {
               onTap: null,
             ),
             _CardTile(
-              leadingIcon: FaIcon(FontAwesomeIcons.certificate),
-              title: 'Licenses',
+              leadingIcon: FaIcon(FontAwesomeIcons.envelope),
+              title: 'Request',
               trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
               onTap: null,
             ),

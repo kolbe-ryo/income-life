@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:income_life/util/admob.dart';
 
 // Package imports:
 import 'package:state_notifier/state_notifier.dart';
@@ -13,7 +15,11 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
 
   late final Map<BnbItems, GlobalKey<NavigatorState>> _navigatorKeys;
 
+  late final Future<Widget> _admobBanner;
+
   Map<BnbItems, GlobalKey<NavigatorState>> get navigatorKeys => _navigatorKeys;
+
+  Future<Widget> get admobBanner => _admobBanner;
 
   @override
   void initState() {
@@ -23,6 +29,7 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
       BnbItems.search: GlobalKey<NavigatorState>(),
       BnbItems.settings: GlobalKey<NavigatorState>(),
     };
+    _admobBanner = GetIt.I<Admob>().getBannerWidget();
   }
 
   void switchBNB(int index) => state = state.copyWith(pageIndex: index);
