@@ -20,8 +20,8 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(kPadding),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
         child: Column(
           children: [
             const SizedBox(height: kPadding),
@@ -38,16 +38,16 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             _CardTile(
+              leadingIcon: const FaIcon(FontAwesomeIcons.palette),
+              title: 'Chart Theme',
+              trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
+              onTap: null,
+            ),
+            _CardTile(
               leadingIcon: const FaIcon(FontAwesomeIcons.certificate),
               title: 'Licenses',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => showLicensePage(context: context),
-            ),
-            _CardTile(
-              leadingIcon: const FaIcon(FontAwesomeIcons.eraser),
-              title: 'Reset',
-              trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: () => _reset(context),
             ),
             _CardTile(
               leadingIcon: const FaIcon(FontAwesomeIcons.envelope),
@@ -59,6 +59,12 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             _CardTile(
+              leadingIcon: const FaIcon(FontAwesomeIcons.eraser),
+              title: 'Reset',
+              trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
+              onTap: () => _reset(context),
+            ),
+            _CardTile(
               leadingIcon: const FaIcon(FontAwesomeIcons.yahoo),
               title: 'Yahoo Finance',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
@@ -67,6 +73,7 @@ class SettingsPage extends StatelessWidget {
                 BaseWebView.route(
                   title: 'Yahoo Finance',
                   url: yahooFinanceUrl,
+                  needAppBar: false,
                 ),
               ),
             ),

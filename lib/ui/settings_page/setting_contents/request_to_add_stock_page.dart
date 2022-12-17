@@ -14,9 +14,12 @@ class RequestToAddStockPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('test'),
+      appBar: AppBar(
+        title: Text('Request'),
+        centerTitle: true,
+        elevation: 0,
       ),
+      body: Center(child: Text('tes')),
     );
   }
 }

@@ -25,25 +25,27 @@ class SearchStockPage extends StatelessWidget {
     return StateNotifierProvider<SearchStockPageViewModel, SearchStockPageState>(
       create: (context) => SearchStockPageViewModel(),
       builder: (context, _) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            elevation: 0,
-            title: const Padding(
-              padding: EdgeInsets.only(top: kPadding, bottom: kPadding / 2),
-              child: CustomTextField(),
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0,
+              title: const Padding(
+                padding: EdgeInsets.only(top: kPadding, bottom: kPadding / 2),
+                child: CustomTextField(),
+              ),
             ),
+            body: GestureDetector(
+              onTap: () {
+                final currentScope = FocusScope.of(context);
+                if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+                  FocusManager.instance.primaryFocus!.unfocus();
+                }
+              },
+              child: const _ListView(),
+            ),
+            floatingActionButton: const _FloatingActionButton(),
           ),
-          body: GestureDetector(
-            onTap: () {
-              final currentScope = FocusScope.of(context);
-              if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
-                FocusManager.instance.primaryFocus!.unfocus();
-              }
-            },
-            child: const _ListView(),
-          ),
-          floatingActionButton: const _FloatingActionButton(),
         );
       },
     );

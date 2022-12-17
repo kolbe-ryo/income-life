@@ -12,39 +12,41 @@ class IncomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(kPadding, kPadding * 2, kPadding, 0),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              child: SizedBox(
-                height: constraints.maxHeight,
-                child: Column(
-                  children: [
-                    const IncomeHeatMap(),
-                    const SizedBox(height: kPadding / 2),
-                    Expanded(
-                      child: Row(
-                        children: const [
-                          Expanded(
-                            child: StockSummaryCard(InvestInfoEnum.income),
-                          ),
-                          SizedBox(width: kPadding / 2),
-                          StockSummaryCard(InvestInfoEnum.stocks),
-                        ],
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(kPadding, 0, kPadding, 0),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                child: SizedBox(
+                  height: constraints.maxHeight,
+                  child: Column(
+                    children: [
+                      const IncomeHeatMap(),
+                      const SizedBox(height: kPadding / 2),
+                      Expanded(
+                        child: Row(
+                          children: const [
+                            Expanded(
+                              child: StockSummaryCard(InvestInfoEnum.income),
+                            ),
+                            SizedBox(width: kPadding / 2),
+                            StockSummaryCard(InvestInfoEnum.stocks),
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: kPadding / 2),
-                    const Expanded(
-                      child: StockSummaryCard(InvestInfoEnum.totalInvest),
-                    ),
-                    const SizedBox(height: kPadding / 2),
-                  ],
+                      const SizedBox(height: kPadding / 2),
+                      const Expanded(
+                        child: StockSummaryCard(InvestInfoEnum.totalInvest),
+                      ),
+                      const SizedBox(height: kPadding / 2),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

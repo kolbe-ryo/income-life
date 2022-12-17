@@ -9,9 +9,11 @@ class BaseWebViewArguments {
   BaseWebViewArguments({
     required this.title,
     required this.url,
+    required this.needAppBar,
   });
   final String title;
   final String url;
+  final bool needAppBar;
 }
 
 class BaseWebView extends StatefulWidget {
@@ -20,10 +22,15 @@ class BaseWebView extends StatefulWidget {
   static Route<BaseWebView> route({
     required String title,
     required String url,
+    bool needAppBar = true,
   }) {
     return MaterialPageRoute<BaseWebView>(
       builder: (_) => Provider.value(
-        value: BaseWebViewArguments(title: title, url: url),
+        value: BaseWebViewArguments(
+          title: title,
+          url: url,
+          needAppBar: needAppBar,
+        ),
         child: const BaseWebView(),
       ),
     );
@@ -49,21 +56,26 @@ class _BaseWebViewState extends State<BaseWebView> {
 
   @override
   Widget build(BuildContext context) {
+    final needAppBar = context.select((BaseWebViewArguments value) => value.needAppBar);
     _controller.loadRequest(
       Uri.parse(
         context.select((BaseWebViewArguments value) => value.url),
       ),
     );
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          context.select((BaseWebViewArguments value) => value.title),
+    return SafeArea(
+      child: Scaffold(
+        appBar: needAppBar
+            ? AppBar(
+                title: Text(
+                  context.select((BaseWebViewArguments value) => value.title),
+                ),
+                centerTitle: true,
+                elevation: 0,
+              )
+            : null,
+        body: WebViewWidget(
+          controller: _controller,
         ),
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: WebViewWidget(
-        controller: _controller,
       ),
     );
   }
