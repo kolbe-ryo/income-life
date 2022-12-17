@@ -13,7 +13,7 @@ import 'add_portfolio_dialog_design.dart';
 import 'app_colors.dart';
 import 'base_card.dart';
 import 'base_show_dialog.dart';
-import 'constants.dart';
+import '../../util/constants.dart';
 
 class StockInformationCard extends BaseCard {
   const StockInformationCard({super.key}) : super();

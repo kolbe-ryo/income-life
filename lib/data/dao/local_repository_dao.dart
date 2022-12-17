@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 // Package imports:
+import 'package:income_life/util/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
@@ -41,5 +42,12 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
     final contents = list.map((e) => json.encode(e.toJson())).toList();
 
     await storage.setStringList(kStorageKey, contents);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    final storage = await _storage;
+    final delete = await storage.clear();
+    logger.info(delete);
   }
 }

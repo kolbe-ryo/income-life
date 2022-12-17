@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../../data/model/gsheets_model.dart';
 import '../global/stock_data_manager.dart';
 import 'app_colors.dart';
-import 'constants.dart';
+import '../../util/constants.dart';
 
 abstract class BaseCard extends StatelessWidget {
   const BaseCard({super.key});

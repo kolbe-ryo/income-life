@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:income_life/ui/common/base_card.dart';
+import 'package:income_life/ui/global/stock_data_manager.dart';
+import 'package:income_life/ui/settings_page/setting_contents/about_app_web_view_page.dart';
+import 'package:provider/provider.dart';
 
 // Project imports:
-import '../common/constants.dart';
+import '../../util/constants.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -20,33 +23,36 @@ class SettingsPage extends StatelessWidget {
           children: [
             const SizedBox(height: kPadding),
             _CardTile(
-              leadingIcon: FaIcon(FontAwesomeIcons.appStore),
+              leadingIcon: const FaIcon(FontAwesomeIcons.appStore),
               title: 'About This App',
-              trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: () => print('test'),
+              trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
+              onTap: () => Navigator.push(
+                context,
+                AboutAppWebViewPage.route(),
+              ),
             ),
             _CardTile(
-              leadingIcon: FaIcon(FontAwesomeIcons.certificate),
+              leadingIcon: const FaIcon(FontAwesomeIcons.certificate),
               title: 'Licenses',
-              trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: null,
+              trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
+              onTap: () => showLicensePage(context: context),
             ),
             _CardTile(
-              leadingIcon: FaIcon(FontAwesomeIcons.eraser),
+              leadingIcon: const FaIcon(FontAwesomeIcons.eraser),
               title: 'Reset',
-              trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: null,
+              trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
+              onTap: () => context.read<StockDataManager>().deleteAll(),
             ),
             _CardTile(
-              leadingIcon: FaIcon(FontAwesomeIcons.envelope),
+              leadingIcon: const FaIcon(FontAwesomeIcons.envelope),
               title: 'Request to add stock',
-              trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
+              trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: null,
             ),
             _CardTile(
-              leadingIcon: FaIcon(FontAwesomeIcons.yahoo),
+              leadingIcon: const FaIcon(FontAwesomeIcons.yahoo),
               title: 'Yahoo Finance',
-              trailingIcon: FaIcon(FontAwesomeIcons.arrowRight),
+              trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: null,
             ),
           ],

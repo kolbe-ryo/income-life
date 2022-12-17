@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
-import 'constants.dart';
+import '../../util/constants.dart';
 import 'custom_text_field.dart';
 
 class AddPortfolioDialogDesign extends StatelessWidget {

@@ -23,6 +23,11 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
     _fetchFromLocal();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   // fetch data from Gsheets and Local Repository
   Future<void> _fetchGsheets() async {
     // state = state.copyWith(
@@ -64,6 +69,19 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
     _saveToLocal();
   }
 
+  void deleteAll() {
+    final resetGsheets = state.gsheets
+        .map(
+          (model) => model.copyWith(isAddedPortfolio: false),
+        )
+        .toList();
+    state = state.copyWith(
+      currentAddingStocks: 0,
+      gsheets: resetGsheets,
+    );
+    resetLocal();
+  }
+
   // Save to local storage
   Future<void> _fetchFromLocal() async {
     final localModels = await GetIt.I<LocalRepositoryInterface>().getLocal();
@@ -85,6 +103,10 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   // Save to local storage
   Future<void> _saveToLocal() async {
     await GetIt.I<LocalRepositoryInterface>().save(state.portfolio);
+  }
+
+  Future<void> resetLocal() async {
+    await GetIt.I<LocalRepositoryInterface>().deleteAll();
   }
 
   void inputNumverOfStock(int stocks) {

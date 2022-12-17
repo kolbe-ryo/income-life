@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import '../../enum/invest_information_enum.dart';
-import '../common/constants.dart';
+import '../../util/constants.dart';
 import '../common/stock_summary_card.dart';
 import 'income_heat_map.dart';
 

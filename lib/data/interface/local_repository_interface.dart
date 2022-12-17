@@ -7,4 +7,6 @@ abstract class LocalRepositoryInterface {
 
   // save data to local repository
   Future<void> save(List<GsheetsModel> list);
+
+  Future<void> deleteAll();
 }

@@ -32,6 +32,12 @@ class SearchStockPageViewModel extends StateNotifier<SearchStockPageState> with 
     _controller = TextEditingController();
   }
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   void load() {
     final models = manager.selectGsheets(
       state: manager.state,

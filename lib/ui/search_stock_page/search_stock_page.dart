@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 // Project imports:
 import '../../enum/added_condition_enum.dart';
 import '../common/app_colors.dart';
-import '../common/constants.dart';
+import '../../util/constants.dart';
 import '../common/custom_text_field.dart';
 import '../common/stock_information_card.dart';
 import '../global/stock_data_manager.dart';

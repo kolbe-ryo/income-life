@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import '../../util/logger.dart';
 import '../search_stock_page/search_stock_page_view_model.dart';
 import 'app_colors.dart';
-import 'constants.dart';
+import '../../util/constants.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({super.key});
