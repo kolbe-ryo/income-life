@@ -1,0 +1,4 @@
+enum ChartThemeEnum {
+  heatMap,
+  pieChart,
+}

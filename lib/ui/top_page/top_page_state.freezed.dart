@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TopPageState {
   int get pageIndex => throw _privateConstructorUsedError;
+  ColorIndexEnum get colorIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopPageStateCopyWith<TopPageState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $TopPageStateCopyWith<$Res> {
           TopPageState value, $Res Function(TopPageState) then) =
       _$TopPageStateCopyWithImpl<$Res, TopPageState>;
   @useResult
-  $Res call({int pageIndex});
+  $Res call({int pageIndex, ColorIndexEnum colorIndex});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
   @override
   $Res call({
     Object? pageIndex = null,
+    Object? colorIndex = null,
   }) {
     return _then(_value.copyWith(
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      colorIndex: null == colorIndex
+          ? _value.colorIndex
+          : colorIndex // ignore: cast_nullable_to_non_nullable
+              as ColorIndexEnum,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_TopPageStateCopyWith<$Res>
       __$$_TopPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int pageIndex});
+  $Res call({int pageIndex, ColorIndexEnum colorIndex});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_TopPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pageIndex = null,
+    Object? colorIndex = null,
   }) {
     return _then(_$_TopPageState(
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      colorIndex: null == colorIndex
+          ? _value.colorIndex
+          : colorIndex // ignore: cast_nullable_to_non_nullable
+              as ColorIndexEnum,
     ));
   }
 }
@@ -92,15 +103,19 @@ class __$$_TopPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TopPageState implements _TopPageState {
-  const _$_TopPageState({this.pageIndex = 0});
+  const _$_TopPageState(
+      {this.pageIndex = 0, this.colorIndex = ColorIndexEnum.normal});
 
   @override
   @JsonKey()
   final int pageIndex;
+  @override
+  @JsonKey()
+  final ColorIndexEnum colorIndex;
 
   @override
   String toString() {
-    return 'TopPageState(pageIndex: $pageIndex)';
+    return 'TopPageState(pageIndex: $pageIndex, colorIndex: $colorIndex)';
   }
 
   @override
@@ -109,11 +124,13 @@ class _$_TopPageState implements _TopPageState {
         (other.runtimeType == runtimeType &&
             other is _$_TopPageState &&
             (identical(other.pageIndex, pageIndex) ||
-                other.pageIndex == pageIndex));
+                other.pageIndex == pageIndex) &&
+            (identical(other.colorIndex, colorIndex) ||
+                other.colorIndex == colorIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pageIndex);
+  int get hashCode => Object.hash(runtimeType, pageIndex, colorIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -123,10 +140,13 @@ class _$_TopPageState implements _TopPageState {
 }
 
 abstract class _TopPageState implements TopPageState {
-  const factory _TopPageState({final int pageIndex}) = _$_TopPageState;
+  const factory _TopPageState(
+      {final int pageIndex, final ColorIndexEnum colorIndex}) = _$_TopPageState;
 
   @override
   int get pageIndex;
+  @override
+  ColorIndexEnum get colorIndex;
   @override
   @JsonKey(ignore: true)
   _$$_TopPageStateCopyWith<_$_TopPageState> get copyWith =>

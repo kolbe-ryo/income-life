@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:income_life/ui/settings_page/setting_contents/chart_theme_setting_page/chart_theme_setting_page.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -41,7 +42,10 @@ class SettingsPage extends StatelessWidget {
               leadingIcon: const FaIcon(FontAwesomeIcons.palette),
               title: 'Chart Theme',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
-              onTap: null,
+              onTap: () => Navigator.push(
+                context,
+                ChartThemeSettingPage.route(),
+              ),
             ),
             _CardTile(
               leadingIcon: const FaIcon(FontAwesomeIcons.certificate),

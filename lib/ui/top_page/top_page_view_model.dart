@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:get_it/get_it.dart';
+import 'package:income_life/enum/color_index_enum.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
@@ -32,5 +33,11 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
     _admobBanner = GetIt.I<Admob>().getBannerWidget();
   }
 
-  void switchBNB(int index) => state = state.copyWith(pageIndex: index);
+  void switchBNB(int index) {
+    state = state.copyWith(pageIndex: index);
+  }
+
+  void switchColorIndex(ColorIndexEnum colorIndex) {
+    state = state.copyWith(colorIndex: colorIndex);
+  }
 }
