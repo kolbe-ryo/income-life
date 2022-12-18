@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:get_it/get_it.dart';
+import 'package:income_life/enum/chart_theme_enum.dart';
 import 'package:income_life/enum/color_index_enum.dart';
 import 'package:state_notifier/state_notifier.dart';
 
@@ -37,7 +38,11 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
     state = state.copyWith(pageIndex: index);
   }
 
-  void switchColorIndex(ColorIndexEnum colorIndex) {
-    state = state.copyWith(colorIndex: colorIndex);
+  void switchColorTheme(ColorIndexEnum colorTheme) {
+    state = state.copyWith(colorTheme: colorTheme);
+  }
+
+  void switchChartTheme(ChartThemeEnum chartTheme) {
+    state = state.copyWith(chartTheme: chartTheme);
   }
 }

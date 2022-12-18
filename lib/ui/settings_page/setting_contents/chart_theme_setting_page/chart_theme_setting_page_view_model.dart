@@ -9,11 +9,22 @@ class ChartThemeSettingPageViewModel extends StateNotifier<ChartThemeSettingPage
 
   TopPageViewModel get _topPageViewModel => read();
 
+  @override
+  void initState() {
+    super.initState();
+    state = state.copyWith(
+      colorTheme: _topPageViewModel.state.colorTheme,
+      chartTheme: _topPageViewModel.state.chartTheme,
+    );
+  }
+
   void switchColorTheme(ColorIndexEnum colorTheme) {
-    state = state.copyWith(colorIndex: colorTheme);
+    state = state.copyWith(colorTheme: colorTheme);
+    _topPageViewModel.switchColorTheme(colorTheme);
   }
 
   void switchChartTheme(ChartThemeEnum chartTheme) {
     state = state.copyWith(chartTheme: chartTheme);
+    _topPageViewModel.switchChartTheme(chartTheme);
   }
 }

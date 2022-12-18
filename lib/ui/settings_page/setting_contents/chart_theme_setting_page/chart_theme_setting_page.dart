@@ -5,6 +5,7 @@ import 'package:income_life/enum/color_index_enum.dart';
 import 'package:income_life/ui/settings_page/setting_contents/chart_theme_setting_page/chart_theme_setting_page_state.dart';
 import 'package:income_life/ui/settings_page/setting_contents/chart_theme_setting_page/chart_theme_setting_page_view_model.dart';
 import 'package:income_life/util/constants.dart';
+import 'package:provider/provider.dart';
 
 class ChartThemeSettingPage extends StatelessWidget {
   const ChartThemeSettingPage({super.key});
@@ -22,7 +23,7 @@ class ChartThemeSettingPage extends StatelessWidget {
       builder: (context, _) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Chart Theme Setting'),
+            title: const Text('Theme Setting'),
             centerTitle: true,
             elevation: 0,
           ),
@@ -75,51 +76,46 @@ class _RadioButtonWithText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      // onTap: null,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (isColorTheme) ..._colorThemeRadio(),
-          if (isChartTheme) ..._chartThemeRadio(),
-        ],
-      ),
+    final value = context.select(
+      (ChartThemeSettingPageState value) {
+        if (isColorTheme) {
+          return value.colorTheme;
+        }
+        if (isChartTheme) {
+          return value.chartTheme;
+        }
+      },
     );
-  }
+    final viewModel = context.read<ChartThemeSettingPageViewModel>();
 
-  List<Widget> _colorThemeRadio() {
-    return ColorIndexEnum.values
-        .map(
-          (e) => Row(
-            children: [
-              Radio(
-                value: e,
-                activeColor: Colors.blueAccent,
-                groupValue: e,
-                onChanged: null,
-              ),
-              Text(e.name),
-            ],
-          ),
-        )
-        .toList();
-  }
+    //TODO: Way to detext tap on all row element
 
-  List<Widget> _chartThemeRadio() {
-    return ChartThemeEnum.values
-        .map(
-          (e) => Row(
-            children: [
-              Radio(
-                value: e,
-                activeColor: Colors.blueAccent,
-                groupValue: e,
-                onChanged: null,
+    return Row(
+      children: (isColorTheme ? ColorIndexEnum.values : ChartThemeEnum.values)
+          .map(
+            (e) => GestureDetector(
+              onTap: () {
+                if (isColorTheme) {
+                  viewModel.switchColorTheme(e as ColorIndexEnum);
+                }
+                if (isChartTheme) {
+                  viewModel.switchChartTheme(e as ChartThemeEnum);
+                }
+              },
+              child: Row(
+                children: [
+                  Radio(
+                    value: value,
+                    activeColor: Colors.blueAccent,
+                    groupValue: e,
+                    onChanged: (_) {},
+                  ),
+                  Text(e.name),
+                ],
               ),
-              Text(e.name),
-            ],
-          ),
-        )
-        .toList();
+            ),
+          )
+          .toList(),
+    );
   }
 }

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChartThemeSettingPageState {
-  ColorIndexEnum get colorIndex => throw _privateConstructorUsedError;
+  ColorIndexEnum get colorTheme => throw _privateConstructorUsedError;
   ChartThemeEnum get chartTheme => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $ChartThemeSettingPageStateCopyWith<$Res> {
       _$ChartThemeSettingPageStateCopyWithImpl<$Res,
           ChartThemeSettingPageState>;
   @useResult
-  $Res call({ColorIndexEnum colorIndex, ChartThemeEnum chartTheme});
+  $Res call({ColorIndexEnum colorTheme, ChartThemeEnum chartTheme});
 }
 
 /// @nodoc
@@ -48,13 +48,13 @@ class _$ChartThemeSettingPageStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? colorIndex = null,
+    Object? colorTheme = null,
     Object? chartTheme = null,
   }) {
     return _then(_value.copyWith(
-      colorIndex: null == colorIndex
-          ? _value.colorIndex
-          : colorIndex // ignore: cast_nullable_to_non_nullable
+      colorTheme: null == colorTheme
+          ? _value.colorTheme
+          : colorTheme // ignore: cast_nullable_to_non_nullable
               as ColorIndexEnum,
       chartTheme: null == chartTheme
           ? _value.chartTheme
@@ -73,7 +73,7 @@ abstract class _$$_ChartThemeSettingPageStateCopyWith<$Res>
       __$$_ChartThemeSettingPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ColorIndexEnum colorIndex, ChartThemeEnum chartTheme});
+  $Res call({ColorIndexEnum colorTheme, ChartThemeEnum chartTheme});
 }
 
 /// @nodoc
@@ -89,13 +89,13 @@ class __$$_ChartThemeSettingPageStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? colorIndex = null,
+    Object? colorTheme = null,
     Object? chartTheme = null,
   }) {
     return _then(_$_ChartThemeSettingPageState(
-      colorIndex: null == colorIndex
-          ? _value.colorIndex
-          : colorIndex // ignore: cast_nullable_to_non_nullable
+      colorTheme: null == colorTheme
+          ? _value.colorTheme
+          : colorTheme // ignore: cast_nullable_to_non_nullable
               as ColorIndexEnum,
       chartTheme: null == chartTheme
           ? _value.chartTheme
@@ -109,19 +109,19 @@ class __$$_ChartThemeSettingPageStateCopyWithImpl<$Res>
 
 class _$_ChartThemeSettingPageState implements _ChartThemeSettingPageState {
   const _$_ChartThemeSettingPageState(
-      {this.colorIndex = ColorIndexEnum.normal,
+      {this.colorTheme = ColorIndexEnum.normal,
       this.chartTheme = ChartThemeEnum.heatMap});
 
   @override
   @JsonKey()
-  final ColorIndexEnum colorIndex;
+  final ColorIndexEnum colorTheme;
   @override
   @JsonKey()
   final ChartThemeEnum chartTheme;
 
   @override
   String toString() {
-    return 'ChartThemeSettingPageState(colorIndex: $colorIndex, chartTheme: $chartTheme)';
+    return 'ChartThemeSettingPageState(colorTheme: $colorTheme, chartTheme: $chartTheme)';
   }
 
   @override
@@ -129,14 +129,14 @@ class _$_ChartThemeSettingPageState implements _ChartThemeSettingPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChartThemeSettingPageState &&
-            (identical(other.colorIndex, colorIndex) ||
-                other.colorIndex == colorIndex) &&
+            (identical(other.colorTheme, colorTheme) ||
+                other.colorTheme == colorTheme) &&
             (identical(other.chartTheme, chartTheme) ||
                 other.chartTheme == chartTheme));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, colorIndex, chartTheme);
+  int get hashCode => Object.hash(runtimeType, colorTheme, chartTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -149,11 +149,11 @@ class _$_ChartThemeSettingPageState implements _ChartThemeSettingPageState {
 abstract class _ChartThemeSettingPageState
     implements ChartThemeSettingPageState {
   const factory _ChartThemeSettingPageState(
-      {final ColorIndexEnum colorIndex,
+      {final ColorIndexEnum colorTheme,
       final ChartThemeEnum chartTheme}) = _$_ChartThemeSettingPageState;
 
   @override
-  ColorIndexEnum get colorIndex;
+  ColorIndexEnum get colorTheme;
   @override
   ChartThemeEnum get chartTheme;
   @override

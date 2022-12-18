@@ -32,6 +32,7 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
             )
             .toList() ??
         [];
+    // TODO: get theme flag
     return models;
   }
 
@@ -42,6 +43,8 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
     final contents = list.map((e) => json.encode(e.toJson())).toList();
 
     await storage.setStringList(kStorageKey, contents);
+
+    // TODO: save theme flag
   }
 
   @override

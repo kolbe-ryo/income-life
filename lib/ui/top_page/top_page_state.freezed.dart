@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TopPageState {
   int get pageIndex => throw _privateConstructorUsedError;
-  ColorIndexEnum get colorIndex => throw _privateConstructorUsedError;
+  ColorIndexEnum get colorTheme => throw _privateConstructorUsedError;
+  ChartThemeEnum get chartTheme => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopPageStateCopyWith<TopPageState> get copyWith =>
@@ -30,7 +31,8 @@ abstract class $TopPageStateCopyWith<$Res> {
           TopPageState value, $Res Function(TopPageState) then) =
       _$TopPageStateCopyWithImpl<$Res, TopPageState>;
   @useResult
-  $Res call({int pageIndex, ColorIndexEnum colorIndex});
+  $Res call(
+      {int pageIndex, ColorIndexEnum colorTheme, ChartThemeEnum chartTheme});
 }
 
 /// @nodoc
@@ -47,17 +49,22 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
   @override
   $Res call({
     Object? pageIndex = null,
-    Object? colorIndex = null,
+    Object? colorTheme = null,
+    Object? chartTheme = null,
   }) {
     return _then(_value.copyWith(
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      colorIndex: null == colorIndex
-          ? _value.colorIndex
-          : colorIndex // ignore: cast_nullable_to_non_nullable
+      colorTheme: null == colorTheme
+          ? _value.colorTheme
+          : colorTheme // ignore: cast_nullable_to_non_nullable
               as ColorIndexEnum,
+      chartTheme: null == chartTheme
+          ? _value.chartTheme
+          : chartTheme // ignore: cast_nullable_to_non_nullable
+              as ChartThemeEnum,
     ) as $Val);
   }
 }
@@ -70,7 +77,8 @@ abstract class _$$_TopPageStateCopyWith<$Res>
       __$$_TopPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int pageIndex, ColorIndexEnum colorIndex});
+  $Res call(
+      {int pageIndex, ColorIndexEnum colorTheme, ChartThemeEnum chartTheme});
 }
 
 /// @nodoc
@@ -85,17 +93,22 @@ class __$$_TopPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pageIndex = null,
-    Object? colorIndex = null,
+    Object? colorTheme = null,
+    Object? chartTheme = null,
   }) {
     return _then(_$_TopPageState(
       pageIndex: null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      colorIndex: null == colorIndex
-          ? _value.colorIndex
-          : colorIndex // ignore: cast_nullable_to_non_nullable
+      colorTheme: null == colorTheme
+          ? _value.colorTheme
+          : colorTheme // ignore: cast_nullable_to_non_nullable
               as ColorIndexEnum,
+      chartTheme: null == chartTheme
+          ? _value.chartTheme
+          : chartTheme // ignore: cast_nullable_to_non_nullable
+              as ChartThemeEnum,
     ));
   }
 }
@@ -104,18 +117,23 @@ class __$$_TopPageStateCopyWithImpl<$Res>
 
 class _$_TopPageState implements _TopPageState {
   const _$_TopPageState(
-      {this.pageIndex = 0, this.colorIndex = ColorIndexEnum.normal});
+      {this.pageIndex = 0,
+      this.colorTheme = ColorIndexEnum.normal,
+      this.chartTheme = ChartThemeEnum.heatMap});
 
   @override
   @JsonKey()
   final int pageIndex;
   @override
   @JsonKey()
-  final ColorIndexEnum colorIndex;
+  final ColorIndexEnum colorTheme;
+  @override
+  @JsonKey()
+  final ChartThemeEnum chartTheme;
 
   @override
   String toString() {
-    return 'TopPageState(pageIndex: $pageIndex, colorIndex: $colorIndex)';
+    return 'TopPageState(pageIndex: $pageIndex, colorTheme: $colorTheme, chartTheme: $chartTheme)';
   }
 
   @override
@@ -125,12 +143,15 @@ class _$_TopPageState implements _TopPageState {
             other is _$_TopPageState &&
             (identical(other.pageIndex, pageIndex) ||
                 other.pageIndex == pageIndex) &&
-            (identical(other.colorIndex, colorIndex) ||
-                other.colorIndex == colorIndex));
+            (identical(other.colorTheme, colorTheme) ||
+                other.colorTheme == colorTheme) &&
+            (identical(other.chartTheme, chartTheme) ||
+                other.chartTheme == chartTheme));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pageIndex, colorIndex);
+  int get hashCode =>
+      Object.hash(runtimeType, pageIndex, colorTheme, chartTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -141,12 +162,16 @@ class _$_TopPageState implements _TopPageState {
 
 abstract class _TopPageState implements TopPageState {
   const factory _TopPageState(
-      {final int pageIndex, final ColorIndexEnum colorIndex}) = _$_TopPageState;
+      {final int pageIndex,
+      final ColorIndexEnum colorTheme,
+      final ChartThemeEnum chartTheme}) = _$_TopPageState;
 
   @override
   int get pageIndex;
   @override
-  ColorIndexEnum get colorIndex;
+  ColorIndexEnum get colorTheme;
+  @override
+  ChartThemeEnum get chartTheme;
   @override
   @JsonKey(ignore: true)
   _$$_TopPageStateCopyWith<_$_TopPageState> get copyWith =>
