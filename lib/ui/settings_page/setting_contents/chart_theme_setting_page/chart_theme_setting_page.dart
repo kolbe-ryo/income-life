@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:income_life/enum/chart_theme_enum.dart';
 import 'package:income_life/enum/color_index_enum.dart';
+import 'package:income_life/ui/common/app_colors.dart';
 import 'package:income_life/ui/settings_page/setting_contents/chart_theme_setting_page/chart_theme_setting_page_state.dart';
 import 'package:income_life/ui/settings_page/setting_contents/chart_theme_setting_page/chart_theme_setting_page_view_model.dart';
 import 'package:income_life/util/constants.dart';
@@ -84,20 +85,21 @@ class _RadioButtonWithText extends StatelessWidget {
     return Row(
       children: (isColorTheme ? ColorIndexEnum.values : ChartThemeEnum.values).map(
         (e) {
-          void onTap() {
+          Future<void> onTap() async {
             if (isColorTheme) {
               viewModel.switchColorTheme(e as ColorIndexEnum);
             }
             if (isChartTheme) {
               viewModel.switchChartTheme(e as ChartThemeEnum);
             }
+            // TODO: save to local
           }
 
           return Row(
             children: [
               Radio(
                 value: value,
-                activeColor: Colors.blueAccent,
+                activeColor: AppColors.tealAccent,
                 groupValue: e,
                 onChanged: (_) => onTap(),
               ),
