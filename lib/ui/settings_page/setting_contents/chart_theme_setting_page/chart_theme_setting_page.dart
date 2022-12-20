@@ -77,45 +77,38 @@ class _RadioButtonWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = context.select(
-      (ChartThemeSettingPageState value) {
-        if (isColorTheme) {
-          return value.colorTheme;
-        }
-        if (isChartTheme) {
-          return value.chartTheme;
-        }
-      },
+      (ChartThemeSettingPageState value) => isColorTheme ? value.colorTheme : value.chartTheme,
     );
     final viewModel = context.read<ChartThemeSettingPageViewModel>();
 
-    //TODO: Way to detext tap on all row element
-
     return Row(
-      children: (isColorTheme ? ColorIndexEnum.values : ChartThemeEnum.values)
-          .map(
-            (e) => GestureDetector(
-              onTap: () {
-                if (isColorTheme) {
-                  viewModel.switchColorTheme(e as ColorIndexEnum);
-                }
-                if (isChartTheme) {
-                  viewModel.switchChartTheme(e as ChartThemeEnum);
-                }
-              },
-              child: Row(
-                children: [
-                  Radio(
-                    value: value,
-                    activeColor: Colors.blueAccent,
-                    groupValue: e,
-                    onChanged: (_) {},
-                  ),
-                  Text(e.name),
-                ],
+      children: (isColorTheme ? ColorIndexEnum.values : ChartThemeEnum.values).map(
+        (e) {
+          void onTap() {
+            if (isColorTheme) {
+              viewModel.switchColorTheme(e as ColorIndexEnum);
+            }
+            if (isChartTheme) {
+              viewModel.switchChartTheme(e as ChartThemeEnum);
+            }
+          }
+
+          return Row(
+            children: [
+              Radio(
+                value: value,
+                activeColor: Colors.blueAccent,
+                groupValue: e,
+                onChanged: (_) => onTap(),
               ),
-            ),
-          )
-          .toList(),
+              GestureDetector(
+                onTap: onTap,
+                child: Text(e.name),
+              ),
+            ],
+          );
+        },
+      ).toList(),
     );
   }
 }
