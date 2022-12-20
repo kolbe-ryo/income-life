@@ -13,3 +13,5 @@ const jsogSheetsCredentialsnKey = {
   'auth_provider_x509_cert_url': String.fromEnvironment('AUTHPROVIDERX509CERTURL'),
   'client_x509_cert_url': String.fromEnvironment('CLIENTX509CERTURL')
 };
+
+const admobId = String.fromEnvironment('ADMOBID');

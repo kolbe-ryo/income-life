@@ -6,7 +6,7 @@ import 'package:gsheets/gsheets.dart';
 
 // Project imports:
 import '../../enum/currency_value.dart';
-import '../../util/gsheets_authentication.dart';
+import '../../util/flavor_text.dart';
 import '../../util/logger.dart';
 import '../interface/gsheets_interface.dart';
 import '../model/gsheets_model.dart';

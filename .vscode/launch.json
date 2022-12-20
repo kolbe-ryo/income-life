@@ -30,7 +30,8 @@
                 "--dart-define=TOKENURI=https://oauth2.googleapis.com/token",
                 "--dart-define=AUTHPROVIDERX509CERTURL=https://www.googleapis.com/oauth2/v1/certs",
                 "--dart-define=CLIENTX509CERTURL=https://www.googleapis.com/robot/v1/metadata/x509/income-life%40income-life-368112.iam.gserviceaccount.com",
-                "--dart-define=GSHEETSID=1XxE80CBGvDTw0tAVZWPUZU0K0TPDLQhcINm6esFosXE"
+                "--dart-define=GSHEETSID=1XxE80CBGvDTw0tAVZWPUZU0K0TPDLQhcINm6esFosXE",
+                "--dart-define=ADMOBID=ca-app-pub-3940256099942544/2934735716"
             ]
         },
         {
