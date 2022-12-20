@@ -61,4 +61,16 @@ class GsheetsDao implements GsheetsInterface {
       throw UnimplementedError();
     }
   }
+
+  @override
+  Future<int> fetchRequestRow() {
+    // TODO: implement fetchRequestRow
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> writeRequestStock() {
+    // TODO: implement writeRequestStock
+    throw UnimplementedError();
+  }
 }
