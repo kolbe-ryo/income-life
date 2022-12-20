@@ -37,6 +37,12 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
   }
 
   @override
+  Future<List<String>> getForTheme() {
+    // TODO: implement getForTheme
+    throw UnimplementedError();
+  }
+
+  @override
   Future<void> save(List<GsheetsModel> list) async {
     final storage = await _storage;
 
@@ -45,6 +51,12 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
     await storage.setStringList(kStorageKey, contents);
 
     // TODO: save theme flag
+  }
+
+  @override
+  Future<void> saveForTheme(List<String> themes) {
+    // TODO: implement saveForTheme
+    throw UnimplementedError();
   }
 
   @override
