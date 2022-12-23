@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:income_life/ui/top_page/top_page_state.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
 import '../../data/model/heat_map_model.dart';
-import '../../enum/color_index_enum.dart';
 import '../../util/constants.dart';
 import '../common/add_portfolio_dialog_design.dart';
 import '../common/base_show_dialog.dart';
 import '../global/stock_data_manager.dart';
 import '../global/stock_data_state.dart';
 import 'heat_map_struct/heat_map_struct.dart';
+import '../../util/text_formatter.dart';
 
 class IncomeHeatMap extends StatelessWidget {
   const IncomeHeatMap({super.key});
@@ -22,6 +23,7 @@ class IncomeHeatMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final portfoio = context.select((StockDataState value) => value.portfolio);
+    final colorTheme = context.select((TopPageState value) => value.colorTheme);
     return Visibility(
       visible: portfoio.isNotEmpty,
       replacement: const AspectRatio(
@@ -36,7 +38,7 @@ class IncomeHeatMap extends StatelessWidget {
         crossAxisSpacing: 3,
         children: heatMapStruct(
           models: portfoio,
-          colorIndex: ColorIndexEnum.crash,
+          colorIndex: colorTheme,
         )
             .map(
               (model) => StaggeredGridTile.count(
@@ -79,12 +81,13 @@ class _HeatMapElement extends StatelessWidget {
         },
         child: Center(
           child: Text(
-            heatMapModel.model.ticker,
+            '${heatMapModel.model.ticker} \n¥ ${formatter.format(heatMapModel.model.income.floor())}',
             style: const TextStyle(
               overflow: TextOverflow.ellipsis,
               fontSize: kFontSize,
               fontWeight: FontWeight.bold,
             ),
+            textAlign: TextAlign.center,
           ),
         ),
       ),
