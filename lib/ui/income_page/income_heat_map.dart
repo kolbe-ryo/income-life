@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:income_life/ui/top_page/top_page_state.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
 import '../../data/model/heat_map_model.dart';
 import '../../util/constants.dart';
+import '../../util/text_formatter.dart';
 import '../common/add_portfolio_dialog_design.dart';
 import '../common/base_show_dialog.dart';
 import '../global/stock_data_manager.dart';
 import '../global/stock_data_state.dart';
+import '../top_page/top_page_state.dart';
 import 'heat_map_struct/heat_map_struct.dart';
-import '../../util/text_formatter.dart';
 
 class IncomeHeatMap extends StatelessWidget {
   const IncomeHeatMap({super.key});

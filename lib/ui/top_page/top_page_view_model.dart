@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:get_it/get_it.dart';
-import 'package:income_life/enum/chart_theme_enum.dart';
-import 'package:income_life/enum/color_index_enum.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
 import '../../enum/bnb_items.dart';
+import '../../enum/chart_theme_enum.dart';
+import '../../enum/color_index_enum.dart';
 import '../../util/admob.dart';
 import 'top_page_state.dart';
 

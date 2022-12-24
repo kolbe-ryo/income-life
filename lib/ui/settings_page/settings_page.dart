@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:income_life/ui/settings_page/setting_contents/chart_theme_setting_page/chart_theme_setting_page.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -13,6 +12,7 @@ import '../common/base_show_dialog.dart';
 import '../global/stock_data_manager.dart';
 import '../top_page/top_page_view_model.dart';
 import 'setting_contents/base_web_view_page.dart';
+import 'setting_contents/chart_theme_setting_page/chart_theme_setting_page.dart';
 import 'setting_contents/request_to_add_stock_page.dart';
 
 class SettingsPage extends StatelessWidget {

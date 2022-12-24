@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:income_life/util/flavor_text.dart';
+
+// Project imports:
+import 'flavor_text.dart';
 
 class Admob {
   String _getBannerAdUnitId() {

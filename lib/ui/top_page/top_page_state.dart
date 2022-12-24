@@ -1,7 +1,9 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:income_life/enum/chart_theme_enum.dart';
-import 'package:income_life/enum/color_index_enum.dart';
+
+// Project imports:
+import '../../enum/chart_theme_enum.dart';
+import '../../enum/color_index_enum.dart';
 
 part 'top_page_state.freezed.dart';
 

@@ -1,12 +1,17 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:income_life/enum/chart_theme_enum.dart';
-import 'package:income_life/enum/color_index_enum.dart';
-import 'package:income_life/ui/common/app_colors.dart';
-import 'package:income_life/ui/settings_page/setting_contents/chart_theme_setting_page/chart_theme_setting_page_state.dart';
-import 'package:income_life/ui/settings_page/setting_contents/chart_theme_setting_page/chart_theme_setting_page_view_model.dart';
-import 'package:income_life/util/constants.dart';
 import 'package:provider/provider.dart';
+
+// Project imports:
+import '../../../../enum/chart_theme_enum.dart';
+import '../../../../enum/color_index_enum.dart';
+import '../../../../util/constants.dart';
+import '../../../common/app_colors.dart';
+import 'chart_theme_setting_page_state.dart';
+import 'chart_theme_setting_page_view_model.dart';
 
 class ChartThemeSettingPage extends StatelessWidget {
   const ChartThemeSettingPage({super.key});
