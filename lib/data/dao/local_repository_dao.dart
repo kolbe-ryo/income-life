@@ -2,11 +2,11 @@
 import 'dart:convert';
 
 // Package imports:
-import 'package:income_life/enum/color_index_enum.dart';
-import 'package:income_life/enum/chart_theme_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
+import '../../enum/chart_theme_enum.dart';
+import '../../enum/color_index_enum.dart';
 import '../../util/logger.dart';
 import '../interface/local_repository_interface.dart';
 import '../model/gsheets_model.dart';

@@ -1,7 +1,6 @@
 // Project imports:
-import 'package:income_life/enum/chart_theme_enum.dart';
-import 'package:income_life/enum/color_index_enum.dart';
-
+import '../../enum/chart_theme_enum.dart';
+import '../../enum/color_index_enum.dart';
 import '../model/gsheets_model.dart';
 
 abstract class LocalRepositoryInterface {

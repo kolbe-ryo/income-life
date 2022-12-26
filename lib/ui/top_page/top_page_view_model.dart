@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:get_it/get_it.dart';
 import 'package:state_notifier/state_notifier.dart';
-import '../../data/interface/local_repository_interface.dart';
 
 // Project imports:
+import '../../data/interface/local_repository_interface.dart';
 import '../../enum/bnb_items.dart';
 import '../../enum/chart_theme_enum.dart';
 import '../../enum/color_index_enum.dart';

@@ -93,11 +93,9 @@ class _RadioButtonWithText extends StatelessWidget {
           Future<void> onTap() async {
             if (isColorTheme) {
               viewModel.switchColorTheme(e as ColorIndexEnum);
-            }
-            if (isChartTheme) {
+            } else if (isChartTheme) {
               viewModel.switchChartTheme(e as ChartThemeEnum);
             }
-            // TODO: save to local
           }
 
           return Row(
