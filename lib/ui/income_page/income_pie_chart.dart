@@ -33,12 +33,11 @@ class IncomePieChart extends StatelessWidget {
             baseChartColor: Colors.teal,
             chartLegendSpacing: kPadding,
             chartRadius: double.infinity,
-            chartType: ChartType.ring,
+            // chartType: ChartType.disc,
             chartValuesOptions: const ChartValuesOptions(
               chartValueStyle: TextStyle(
                 color: AppColors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontSize: kFontSize,
               ),
               decimalPlaces: 0,
               showChartValueBackground: false,
@@ -59,21 +58,16 @@ class IncomePieChart extends StatelessWidget {
     );
   }
 
-  // TODO: 6以上のティッカーは合わせて表示する処理を追加する
   Map<String, double> _getPortfolioDataMap(List<GsheetsModel> models) {
     final dataMap = <String, double>{};
-    for (final model in models) {
-      dataMap[model.ticker] = model.income;
+    for (final cycle in List.generate(models.length, (index) => index)) {
+      // sum over 6 stock
+      if (cycle < 5) {
+        dataMap[models[cycle].ticker] = models[cycle].income;
+      } else {
+        dataMap['Others'] = (dataMap['Others'] ?? 0) + models[cycle].income;
+      }
     }
     return dataMap;
   }
 }
-
-Map<String, double> dataMap = {
-  "Flutter": 5,
-  "React": 3,
-  "a": 5,
-  "Reacvt": 3,
-  // "Reacvtw": 3,
-  // "Reacvtf": 3,
-};
