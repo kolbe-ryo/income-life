@@ -84,12 +84,13 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
 
   // Save to local storage
   Future<void> _fetchFromLocal() async {
-    final localModels = await GetIt.I<LocalRepositoryInterface>().getLocal();
+    final localModels = await GetIt.I<LocalRepositoryInterface>().getLocalModel();
 
     // If matching local portfolio ticker, add it, else add gsheets model
     final models = <GsheetsModel>[];
     for (final model in state.gsheets) {
       models.add(model);
+      // Add already been portfolio ones
       for (final localModel in localModels) {
         if (model.ticker == localModel.ticker) {
           models.last = localModel;
@@ -102,7 +103,7 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
 
   // Save to local storage
   Future<void> _saveToLocal() async {
-    await GetIt.I<LocalRepositoryInterface>().save(state.portfolio);
+    await GetIt.I<LocalRepositoryInterface>().saveModel(state.portfolio);
   }
 
   Future<void> resetLocal() async {

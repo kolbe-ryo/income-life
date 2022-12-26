@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:get_it/get_it.dart';
 import 'package:state_notifier/state_notifier.dart';
+import '../../data/interface/local_repository_interface.dart';
 
 // Project imports:
 import '../../enum/bnb_items.dart';
@@ -32,6 +33,22 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
       BnbItems.settings: GlobalKey<NavigatorState>(),
     };
     _admobBanner = GetIt.I<Admob>().getBannerWidget();
+    _fetchThemeFromLocal();
+  }
+
+  Future<void> _fetchThemeFromLocal() async {
+    final localColorTheme = await GetIt.I<LocalRepositoryInterface>().getLocalColorTheme();
+    final localChartTheme = await GetIt.I<LocalRepositoryInterface>().getLocalChartTheme();
+
+    state = state.copyWith(
+      chartTheme: localChartTheme ?? state.chartTheme,
+      colorTheme: localColorTheme ?? state.colorTheme,
+    );
+  }
+
+  Future<void> _saveToLocal() async {
+    await GetIt.I<LocalRepositoryInterface>().saveChartTheme(state.chartTheme);
+    await GetIt.I<LocalRepositoryInterface>().saveColorTheme(state.colorTheme);
   }
 
   void switchBNB(int index) {
@@ -40,9 +57,11 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
 
   void switchColorTheme(ColorIndexEnum colorTheme) {
     state = state.copyWith(colorTheme: colorTheme);
+    _saveToLocal();
   }
 
   void switchChartTheme(ChartThemeEnum chartTheme) {
     state = state.copyWith(chartTheme: chartTheme);
+    _saveToLocal();
   }
 }

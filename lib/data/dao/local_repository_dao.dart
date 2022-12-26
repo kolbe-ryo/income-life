@@ -2,6 +2,8 @@
 import 'dart:convert';
 
 // Package imports:
+import 'package:income_life/enum/color_index_enum.dart';
+import 'package:income_life/enum/chart_theme_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
@@ -22,8 +24,12 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
 
   static const kStorageKey = 'portfolio';
 
+  static const kColorThemeKey = 'colorTheme';
+
+  static const kChartThemeKey = 'chartTheme';
+
   @override
-  Future<List<GsheetsModel>> getLocal() async {
+  Future<List<GsheetsModel>> getLocalModel() async {
     final storage = await _storage;
     final contents = storage.getStringList(kStorageKey);
     final models = contents
@@ -32,31 +38,48 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
             )
             .toList() ??
         [];
-    // TODO: get theme flag
     return models;
   }
 
   @override
-  Future<List<String>> getForTheme() {
-    // TODO: implement getForTheme
-    throw UnimplementedError();
+  Future<ChartThemeEnum?> getLocalChartTheme() async {
+    final storage = await _storage;
+    final content = storage.getString(kChartThemeKey);
+    if (content == null) {
+      return null;
+    }
+    return ChartThemeEnum.values.byName(content);
   }
 
   @override
-  Future<void> save(List<GsheetsModel> list) async {
+  Future<ColorIndexEnum?> getLocalColorTheme() async {
+    final storage = await _storage;
+    final content = storage.getString(kColorThemeKey);
+    if (content == null) {
+      return null;
+    }
+    return ColorIndexEnum.values.byName(content);
+  }
+
+  @override
+  Future<void> saveModel(List<GsheetsModel> list) async {
     final storage = await _storage;
 
     final contents = list.map((e) => json.encode(e.toJson())).toList();
 
     await storage.setStringList(kStorageKey, contents);
-
-    // TODO: save theme flag
   }
 
   @override
-  Future<void> saveForTheme(List<String> themes) {
-    // TODO: implement saveForTheme
-    throw UnimplementedError();
+  Future<void> saveChartTheme(ChartThemeEnum theme) async {
+    final storage = await _storage;
+    await storage.setString(kChartThemeKey, theme.name);
+  }
+
+  @override
+  Future<void> saveColorTheme(ColorIndexEnum theme) async {
+    final storage = await _storage;
+    await storage.setString(kColorThemeKey, theme.name);
   }
 
   @override
