@@ -9,7 +9,11 @@ import '../data/interface/local_repository_interface.dart';
 import '../util/admob.dart';
 
 void setUpDI() {
-  GetIt.I.registerLazySingleton<GsheetsInterface>(() => GsheetsDao());
-  GetIt.I.registerLazySingleton<LocalRepositoryInterface>(() => LocalRepositoryDao());
-  GetIt.I.registerLazySingleton<Admob>(() => Admob());
+  GetIt.I.registerLazySingleton<GsheetsInterface>(_gsheetsDao);
+  GetIt.I.registerLazySingleton<LocalRepositoryInterface>(_localRepositoryDao);
+  GetIt.I.registerLazySingleton<Admob>(_admob);
 }
+
+GsheetsDao _gsheetsDao() => GsheetsDao();
+LocalRepositoryDao _localRepositoryDao() => LocalRepositoryDao();
+Admob _admob() => Admob();

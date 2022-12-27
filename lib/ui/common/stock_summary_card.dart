@@ -1,16 +1,16 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/data/model/gsheets_model.dart';
-import 'package:income_life/ui/common/base_show_dialog.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
 
 // Project imports:
+import '../../data/model/gsheets_model.dart';
 import '../../enum/invest_information_enum.dart';
 import '../../util/constants.dart';
 import '../../util/text_formatter.dart';
 import '../global/stock_data_state.dart';
+import 'base_show_dialog.dart';
 
 class StockSummaryCard extends StatelessWidget {
   const StockSummaryCard(this.kind, {super.key});
