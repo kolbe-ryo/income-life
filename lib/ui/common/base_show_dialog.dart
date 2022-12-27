@@ -8,6 +8,7 @@ Future<bool?> baseShowDialog({
   GlobalKey<FormState>? formKey,
   Widget? widget,
   bool isSimpleDialog = false,
+  bool isOnlyClose = false,
 }) async {
   final isConfirm = await showDialog<bool>(
     barrierDismissible: false,
@@ -17,19 +18,26 @@ Future<bool?> baseShowDialog({
         title: Text(title),
         content: widget,
         actions: [
-          CupertinoDialogAction(
-            isDestructiveAction: true,
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('キャンセル'),
-          ),
-          CupertinoDialogAction(
-            onPressed: () {
-              if (formKey?.currentState!.validate() ?? false || isSimpleDialog) {
-                Navigator.pop(context, true);
-              }
-            },
-            child: const Text('OK'),
-          ),
+          if (!isOnlyClose)
+            CupertinoDialogAction(
+              isDestructiveAction: true,
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('キャンセル'),
+            ),
+          if (!isOnlyClose)
+            CupertinoDialogAction(
+              onPressed: () {
+                if (formKey?.currentState!.validate() ?? false || isSimpleDialog) {
+                  Navigator.pop(context, true);
+                }
+              },
+              child: const Text('OK'),
+            ),
+          if (isOnlyClose)
+            CupertinoDialogAction(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Close'),
+            ),
         ],
       );
     },
