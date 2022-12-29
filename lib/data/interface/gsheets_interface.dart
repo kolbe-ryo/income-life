@@ -8,9 +8,6 @@ abstract class GsheetsInterface {
   // fetch gsheets data of exchange rate
   Future<double> fetchExchangeRate();
 
-  // fetch gsheets data of request sheet
-  Future<int> fetchRequestRow();
-
   // write request stock to request sheet
-  Future<void> writeRequestStock();
+  Future<void> writeRequestStock(String ticker);
 }

@@ -13,7 +13,7 @@ import '../global/stock_data_manager.dart';
 import '../top_page/top_page_view_model.dart';
 import 'setting_contents/base_web_view_page.dart';
 import 'setting_contents/chart_theme_setting_page/chart_theme_setting_page.dart';
-import 'setting_contents/request_to_add_stock_page.dart';
+import 'setting_contents/request_to_add_stock/request_to_add_stock_page.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

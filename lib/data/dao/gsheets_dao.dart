@@ -63,14 +63,15 @@ class GsheetsDao implements GsheetsInterface {
   }
 
   @override
-  Future<int> fetchRequestRow() {
-    // TODO: implement fetchRequestRow
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> writeRequestStock() {
-    // TODO: implement writeRequestStock
-    throw UnimplementedError();
+  Future<void> writeRequestStock(String ticker) async {
+    try {
+      final sheets = await _gsheets.spreadsheet(gSheetsId);
+      final sheet = sheets.worksheetByTitle('requests');
+      final lastRow = (await sheet!.values.allRows()).length;
+      await sheet.values.insertValue(ticker, column: 1, row: lastRow + 1);
+    } on Exception catch (error) {
+      logger.info(error);
+      throw UnimplementedError();
+    }
   }
 }
