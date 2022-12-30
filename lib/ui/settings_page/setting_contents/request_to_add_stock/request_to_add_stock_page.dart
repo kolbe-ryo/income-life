@@ -53,6 +53,7 @@ class RequestToAddStockPage extends StatelessWidget {
                   style: TextStyle(color: AppColors.lightGrey60),
                   textAlign: TextAlign.start,
                 ),
+                const SizedBox(height: kPadding),
                 Provider.value(
                   value: formKey,
                   child: const _TextField(),
@@ -87,36 +88,36 @@ class _TextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      child: Form(
-        key: context.watch<GlobalKey<FormState>>(),
-        child: CupertinoTextFormFieldRow(
-          controller: context.read<RequestToAddStockPageViewModel>().controller,
-          cursorColor: AppColors.darkGrey,
-          cursorWidth: 1,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
+    return Form(
+      key: context.watch<GlobalKey<FormState>>(),
+      child: CupertinoTextFormFieldRow(
+        controller: context.read<RequestToAddStockPageViewModel>().controller,
+        cursorColor: AppColors.darkGrey,
+        cursorWidth: 1,
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.darkGrey),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(kBorder),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: kPadding),
-          placeholder: 'ex ) XOM',
-          textAlign: TextAlign.center,
-          keyboardType: TextInputType.number,
-          style: const TextStyle(
-            color: AppColors.lightGrey70,
-            fontSize: 18,
-          ),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
-          onChanged: (value) {
-            context.read<RequestToAddStockPageViewModel>().inputTicker(value);
-            logger.info(value);
-          },
         ),
+        placeholder: 'ex ) XOM',
+        padding: EdgeInsets.zero,
+        textAlign: TextAlign.center,
+        keyboardType: TextInputType.number,
+        style: const TextStyle(
+          color: AppColors.lightGrey70,
+          fontSize: 18,
+        ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter some text';
+          }
+          return null;
+        },
+        onChanged: (value) {
+          context.read<RequestToAddStockPageViewModel>().inputTicker(value);
+          logger.info(value);
+        },
       ),
     );
   }
