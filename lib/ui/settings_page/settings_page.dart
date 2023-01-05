@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:income_life/enum/color_index_enum.dart';
-import 'package:income_life/ui/common/app_colors.dart';
-import 'package:income_life/ui/top_page/top_page_state.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import '../../enum/color_index_enum.dart';
 import '../../util/constants.dart';
+import '../common/app_colors.dart';
 import '../common/base_card.dart';
 import '../common/base_show_dialog.dart';
 import '../global/stock_data_manager.dart';
+import '../top_page/top_page_state.dart';
 import '../top_page/top_page_view_model.dart';
 import 'setting_contents/base_web_view_page.dart';
 import 'setting_contents/chart_theme_setting_page/chart_theme_setting_page.dart';

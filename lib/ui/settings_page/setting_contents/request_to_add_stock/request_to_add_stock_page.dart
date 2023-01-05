@@ -1,14 +1,18 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:income_life/ui/common/app_colors.dart';
-import 'package:income_life/ui/common/notification_toast.dart';
-import 'package:income_life/ui/settings_page/setting_contents/request_to_add_stock/request_to_add_stock_page_state.dart';
-import 'package:income_life/ui/settings_page/setting_contents/request_to_add_stock/request_to_add_stock_page_view_model.dart';
-import 'package:income_life/util/constants.dart';
-import 'package:income_life/util/logger.dart';
 import 'package:provider/provider.dart';
+
+// Project imports:
+import '../../../../util/constants.dart';
+import '../../../../util/logger.dart';
+import '../../../common/app_colors.dart';
+import '../../../common/notification_toast.dart';
+import 'request_to_add_stock_page_state.dart';
+import 'request_to_add_stock_page_view_model.dart';
 
 class RequestToAddStockPage extends StatelessWidget {
   const RequestToAddStockPage({super.key});

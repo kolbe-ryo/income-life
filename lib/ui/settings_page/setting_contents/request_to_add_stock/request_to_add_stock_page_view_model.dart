@@ -1,7 +1,11 @@
-// Package imports:
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/ui/settings_page/setting_contents/request_to_add_stock/request_to_add_stock_page_state.dart';
+
+// Package imports:
 import 'package:state_notifier/state_notifier.dart';
+
+// Project imports:
+import 'request_to_add_stock_page_state.dart';
 
 class RequestToAddStockPageViewModel extends StateNotifier<RequestToAddStockPageState> with LocatorMixin {
   RequestToAddStockPageViewModel() : super(const RequestToAddStockPageState());
