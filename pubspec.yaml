@@ -9,6 +9,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_slidable: ^2.0.0
   flutter_staggered_grid_view: ^0.6.2
   flutter_state_notifier: ^0.7.1
@@ -39,6 +41,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
 import_path_converter:
   relative: true
+flutter_intl:
+  enabled: true
