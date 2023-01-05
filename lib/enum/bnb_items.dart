@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:income_life/generated/l10n.dart';
 
 // Project imports:
 import '../ui/income_page/income_page.dart';
@@ -25,11 +27,12 @@ extension BnbItemsExt on BnbItems {
   }
 
   BottomNavigationBarItem get item {
+    final _context = GetIt.I<GlobalKey<NavigatorState>>().currentContext!;
     switch (this) {
       case BnbItems.income:
-        return const BottomNavigationBarItem(
-          label: 'Income',
-          icon: Icon(Icons.attach_money),
+        return BottomNavigationBarItem(
+          label: S.of(_context).income,
+          icon: const Icon(Icons.attach_money),
         );
       case BnbItems.search:
         return const BottomNavigationBarItem(

@@ -1,6 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_it/get_it.dart';
 import 'package:income_life/generated/l10n.dart';
 
 // Project imports:
@@ -21,6 +22,7 @@ class MainPage extends StatelessWidget {
       title: 'Income life',
       theme: ThemeData.dark(),
       home: const TopPage(),
+      navigatorKey: GetIt.I<GlobalKey<NavigatorState>>(),
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
