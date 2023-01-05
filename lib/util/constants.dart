@@ -48,7 +48,7 @@ const testModels = [
   ),
   GsheetsModel(
     market: CurrencyValue.usd,
-    ticker: 'SPRD',
+    ticker: 'SPYD',
     name: 'HighDvidendIndex',
     price: 40.3,
     devidend: 0.0345,
