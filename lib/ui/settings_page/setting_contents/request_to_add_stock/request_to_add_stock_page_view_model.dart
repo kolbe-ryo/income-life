@@ -22,9 +22,10 @@ class RequestToAddStockPageViewModel extends StateNotifier<RequestToAddStockPage
     super.dispose();
   }
 
-  Future<void> request(String ticker) async {
+  Future<bool> request(String ticker) async {
     _controller.clear();
     // await GetIt.I<GsheetsInterface>().writeRequestStock(ticker);
+    return true;
   }
 
   void inputTicker(String value) {

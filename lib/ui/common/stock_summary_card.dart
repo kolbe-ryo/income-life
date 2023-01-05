@@ -77,11 +77,13 @@ class StockSummaryCard extends StatelessWidget {
     if (state.portfolioLength == 0) {
       return '-';
     }
+    final totalIncome = formatter.format(state.totalIncome.floor());
+    final totalAmount = formatter.format(state.totalAmount.floor());
     switch (kind) {
       case InvestInfoEnum.income:
-        return '¥ ${formatter.format(state.totalIncome.floor())}';
+        return '¥ $totalIncome';
       case InvestInfoEnum.totalInvest:
-        return '¥ ${formatter.format(state.totalAmount.floor())}';
+        return '¥ $totalAmount';
       case InvestInfoEnum.stocks:
         return formatter.format(state.portfolioLength);
     }

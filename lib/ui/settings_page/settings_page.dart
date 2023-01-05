@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:income_life/enum/color_index_enum.dart';
 import 'package:income_life/ui/common/app_colors.dart';
+import 'package:income_life/ui/top_page/top_page_state.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -21,6 +23,7 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorTheme = context.select((TopPageState value) => value.colorTheme);
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
@@ -28,9 +31,9 @@ class SettingsPage extends StatelessWidget {
           children: [
             const SizedBox(height: kPadding),
             _CardTile(
-              leadingIcon: const FaIcon(
+              leadingIcon: FaIcon(
                 FontAwesomeIcons.appStore,
-                color: AppColors.tealAccent,
+                color: colorTheme.colors[0],
               ),
               title: 'About This App',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
@@ -43,9 +46,9 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             _CardTile(
-              leadingIcon: const FaIcon(
+              leadingIcon: FaIcon(
                 FontAwesomeIcons.palette,
-                color: AppColors.tealAccent,
+                color: colorTheme.colors[1],
               ),
               title: 'Chart Theme',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
@@ -55,18 +58,18 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             _CardTile(
-              leadingIcon: const FaIcon(
+              leadingIcon: FaIcon(
                 FontAwesomeIcons.certificate,
-                color: AppColors.tealAccent,
+                color: colorTheme.colors[2],
               ),
               title: 'Licenses',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => showLicensePage(context: context),
             ),
             _CardTile(
-              leadingIcon: const FaIcon(
+              leadingIcon: FaIcon(
                 FontAwesomeIcons.envelope,
-                color: AppColors.tealAccent,
+                color: colorTheme.colors[3],
               ),
               title: 'Request to add stock',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
@@ -76,18 +79,18 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             _CardTile(
-              leadingIcon: const FaIcon(
+              leadingIcon: FaIcon(
                 FontAwesomeIcons.eraser,
-                color: AppColors.tealAccent,
+                color: colorTheme.colors[4],
               ),
               title: 'Reset',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => _reset(context),
             ),
             _CardTile(
-              leadingIcon: const FaIcon(
+              leadingIcon: FaIcon(
                 FontAwesomeIcons.yahoo,
-                color: AppColors.tealAccent,
+                color: colorTheme.colors[5],
               ),
               title: 'Yahoo Finance',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
