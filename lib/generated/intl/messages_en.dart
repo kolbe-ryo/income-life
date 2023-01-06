@@ -21,6 +21,47 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(dynamic _) =>
-      <String, Function>{"income": MessageLookupByLibrary.simpleMessage("Income")};
+  static Map<String, Function> _notInlinedMessages(dynamic _) => <String, Function>{
+        "aboutThisApp": MessageLookupByLibrary.simpleMessage("About This App"),
+        "adding": MessageLookupByLibrary.simpleMessage("Adding"),
+        "alertTextNoQuantity": MessageLookupByLibrary.simpleMessage("Please enter 1 or more"),
+        "alertTextNotEmpty": MessageLookupByLibrary.simpleMessage("Please enter some text"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "chartTheme": MessageLookupByLibrary.simpleMessage("Chart Theme"),
+        "checkAdding": MessageLookupByLibrary.simpleMessage("Add Your Portfolio?"),
+        "checkCannotUndone": MessageLookupByLibrary.simpleMessage("This operation cannot be undone"),
+        "checkDelete": MessageLookupByLibrary.simpleMessage("Do you want to delete?"),
+        "checkResetAll": MessageLookupByLibrary.simpleMessage("Reset All Your Portfolio?"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "colorTheme": MessageLookupByLibrary.simpleMessage("Color Theme"),
+        "complete": MessageLookupByLibrary.simpleMessage("Complete"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "descriptionForRequest": MessageLookupByLibrary.simpleMessage(
+            "Please input the ticker you want to add and push send button.\nSome tickers cannot be added"),
+        "devidend": MessageLookupByLibrary.simpleMessage("Devidend"),
+        "example": MessageLookupByLibrary.simpleMessage("Ex）10"),
+        "income": MessageLookupByLibrary.simpleMessage("Income"),
+        "jpy": MessageLookupByLibrary.simpleMessage("¥"),
+        "licenses": MessageLookupByLibrary.simpleMessage("Licenses"),
+        "noData": MessageLookupByLibrary.simpleMessage("No Data"),
+        "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "others": MessageLookupByLibrary.simpleMessage("Others"),
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "request": MessageLookupByLibrary.simpleMessage("Request"),
+        "requestPlaceholder": MessageLookupByLibrary.simpleMessage("ex) XOM"),
+        "requestTicker": MessageLookupByLibrary.simpleMessage("Request Ticker"),
+        "requestToAddStock": MessageLookupByLibrary.simpleMessage("Request to add stock"),
+        "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "send": MessageLookupByLibrary.simpleMessage("Send"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "stocks": MessageLookupByLibrary.simpleMessage("Stocks"),
+        "themeSetting": MessageLookupByLibrary.simpleMessage("Theme Setting"),
+        "tickerName": MessageLookupByLibrary.simpleMessage("Ticker: "),
+        "totalInvestment": MessageLookupByLibrary.simpleMessage("Total Investment"),
+        "totalStocks": MessageLookupByLibrary.simpleMessage("Total"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Failed to send. Try again later"),
+        "usd": MessageLookupByLibrary.simpleMessage("\$"),
+        "yahooFinance": MessageLookupByLibrary.simpleMessage("Yahoo Finance")
+      };
 }

@@ -26,6 +26,7 @@ class GsheetsModel with _$GsheetsModel {
 
   String get dividendRate => '${(devidend * 100).toStringAsFixed(2)}%';
 
+  // TODO: switchに変更
   double get income =>
       market == CurrencyValue.jpy ? totalStocks * price * devidend : totalStocks * price * devidend * exchangeRate;
 

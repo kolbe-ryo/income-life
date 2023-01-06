@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 // Project imports:
 import '../../enum/color_index_enum.dart';
 import '../../util/constants.dart';
-import '../common/app_colors.dart';
 import '../common/base_card.dart';
 import '../common/base_show_dialog.dart';
 import '../global/stock_data_manager.dart';

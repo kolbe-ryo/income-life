@@ -19,7 +19,7 @@ extension CurrencyValueExt on CurrencyValue {
 
 CurrencyValue toEnum(String value) {
   switch (value) {
-    case 'JP':
+    case 'JPY':
       return CurrencyValue.jpy;
     case 'USD':
       return CurrencyValue.usd;

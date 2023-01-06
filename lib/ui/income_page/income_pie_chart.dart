@@ -61,10 +61,10 @@ class IncomePieChart extends StatelessWidget {
   Map<String, double> _getPortfolioDataMap(List<GsheetsModel> models) {
     final dataMap = <String, double>{};
     for (final cycle in List.generate(models.length, (index) => index)) {
-      // sum over 6 stock
       if (cycle < 5) {
         dataMap[models[cycle].ticker] = models[cycle].income;
       } else {
+        // sum over 6 stock
         dataMap['Others'] = (dataMap['Others'] ?? 0) + models[cycle].income;
       }
     }
