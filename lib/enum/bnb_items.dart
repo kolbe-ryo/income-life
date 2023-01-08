@@ -1,9 +1,11 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get_it/get_it.dart';
-import 'package:income_life/generated/l10n.dart';
 
 // Project imports:
+import '../generated/l10n.dart';
 import '../ui/income_page/income_page.dart';
 import '../ui/search_stock_page/search_stock_page.dart';
 import '../ui/settings_page/settings_page.dart';

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:get_it/get_it.dart';
-import 'package:income_life/enum/currency_value.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
@@ -11,6 +10,7 @@ import '../../data/interface/local_repository_interface.dart';
 import '../../enum/bnb_items.dart';
 import '../../enum/chart_theme_enum.dart';
 import '../../enum/color_index_enum.dart';
+import '../../enum/currency_value.dart';
 import '../../util/admob.dart';
 import 'top_page_state.dart';
 

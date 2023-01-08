@@ -1,18 +1,18 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/enum/currency_value.dart';
-import 'package:income_life/generated/l10n.dart';
-import 'package:income_life/ui/top_page/top_page_state.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
+import '../../enum/currency_value.dart';
 import '../../enum/invest_information_enum.dart';
+import '../../generated/l10n.dart';
 import '../../util/constants.dart';
 import '../../util/text_formatter.dart';
 import '../global/stock_data_state.dart';
+import '../top_page/top_page_state.dart';
 import 'base_show_dialog.dart';
 
 class StockSummaryCard extends StatelessWidget {

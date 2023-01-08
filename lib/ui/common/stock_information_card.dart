@@ -1,7 +1,5 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
-import 'package:income_life/generated/l10n.dart';
-import 'package:income_life/ui/common/notification_toast.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -9,6 +7,7 @@ import 'package:provider/provider.dart';
 // Project imports:
 import '../../data/model/gsheets_model.dart';
 import '../../enum/stock_information_attribute_enum.dart';
+import '../../generated/l10n.dart';
 import '../../util/constants.dart';
 import '../global/stock_data_manager.dart';
 import '../search_stock_page/search_stock_page_view_model.dart';
@@ -16,6 +15,7 @@ import 'add_portfolio_dialog_design.dart';
 import 'app_colors.dart';
 import 'base_card.dart';
 import 'base_show_dialog.dart';
+import 'notification_toast.dart';
 
 class StockInformationCard extends BaseCard {
   const StockInformationCard({super.key}) : super();

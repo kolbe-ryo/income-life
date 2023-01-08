@@ -1,6 +1,11 @@
-import 'package:get_it/get_it.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/generated/l10n.dart';
+
+// Package imports:
+import 'package:get_it/get_it.dart';
+
+// Project imports:
+import '../generated/l10n.dart';
 
 enum CurrencyValue {
   usd,

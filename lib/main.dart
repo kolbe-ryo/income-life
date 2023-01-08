@@ -1,11 +1,13 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
-import 'package:income_life/generated/l10n.dart';
 
 // Project imports:
 import 'di/di.dart';
+import 'generated/l10n.dart';
 import 'ui/top_page/top_page.dart';
 
 void main() {

@@ -1,7 +1,9 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:income_life/generated/l10n.dart';
+
+// Project imports:
+import '../../generated/l10n.dart';
 
 Future<bool?> baseShowDialog({
   required BuildContext context,

@@ -1,9 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/generated/l10n.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
+import '../../generated/l10n.dart';
 import '../../util/constants.dart';
 import 'custom_text_field.dart';
 

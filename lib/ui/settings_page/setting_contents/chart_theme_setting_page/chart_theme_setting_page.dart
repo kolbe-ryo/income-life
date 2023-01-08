@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:income_life/enum/currency_value.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../../../enum/chart_theme_enum.dart';
 import '../../../../enum/color_index_enum.dart';
+import '../../../../enum/currency_value.dart';
 import '../../../../util/constants.dart';
 import '../../../common/app_colors.dart';
 import 'chart_theme_setting_page_state.dart';

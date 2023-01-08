@@ -2,12 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:income_life/generated/l10n.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
 
 // Project imports:
+import '../../generated/l10n.dart';
 import '../../util/constants.dart';
 import '../../util/logger.dart';
 import '../search_stock_page/search_stock_page_view_model.dart';

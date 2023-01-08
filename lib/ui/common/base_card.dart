@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:income_life/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
+import '../../generated/l10n.dart';
 import '../../util/constants.dart';
 import '../global/stock_data_manager.dart';
 import 'app_colors.dart';

@@ -1,10 +1,10 @@
 // Package imports:
-import 'package:income_life/enum/currency_value.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
 import '../../../../enum/chart_theme_enum.dart';
 import '../../../../enum/color_index_enum.dart';
+import '../../../../enum/currency_value.dart';
 import '../../../top_page/top_page_view_model.dart';
 import 'chart_theme_setting_page_state.dart';
 
