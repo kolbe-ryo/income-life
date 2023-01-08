@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:income_life/generated/l10n.dart';
 
 // Package imports:
 import 'package:pie_chart/pie_chart.dart';
@@ -10,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../data/model/gsheets_model.dart';
 import '../../enum/color_index_enum.dart';
 import '../../enum/currency_value.dart';
+import '../../generated/l10n.dart';
 import '../../util/constants.dart';
 import '../common/app_colors.dart';
 import '../global/stock_data_state.dart';

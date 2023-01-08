@@ -1,8 +1,12 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:flutter/material.dart';
-import 'package:income_life/generated/l10n.dart';
+
+// Project imports:
+import '../generated/l10n.dart';
 
 enum ChartThemeEnum {
   @JsonValue('heatMap')

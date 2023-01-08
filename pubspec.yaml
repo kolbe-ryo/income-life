@@ -9,6 +9,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.11.0
   flutter_localizations:
     sdk: flutter
   flutter_slidable: ^2.0.0
@@ -47,3 +48,8 @@ import_path_converter:
   relative: true
 flutter_intl:
   enabled: true
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/income_life_icon.png"

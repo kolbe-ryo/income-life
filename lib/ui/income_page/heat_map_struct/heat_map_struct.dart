@@ -1,11 +1,14 @@
-// Project imports:
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:income_life/generated/l10n.dart';
 
+// Package imports:
+import 'package:get_it/get_it.dart';
+
+// Project imports:
 import '../../../data/model/gsheets_model.dart';
 import '../../../data/model/heat_map_model.dart';
 import '../../../enum/color_index_enum.dart';
+import '../../../generated/l10n.dart';
 
 List<HeatMapModel> heatMapStruct({
   required List<GsheetsModel> models,

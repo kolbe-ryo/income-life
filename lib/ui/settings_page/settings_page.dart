@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:income_life/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import '../../enum/color_index_enum.dart';
+import '../../generated/l10n.dart';
 import '../../util/constants.dart';
 import '../common/base_card.dart';
 import '../common/base_show_dialog.dart';
