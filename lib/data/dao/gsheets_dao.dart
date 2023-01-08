@@ -33,7 +33,7 @@ class GsheetsDao implements GsheetsInterface {
       return allData
           .map(
             (row) => GsheetsModel(
-              market: toEnum(row[0]),
+              market: toEnum(row[0]) ?? CurrencyValue.usd,
               ticker: row[1],
               name: row[2],
               price: double.parse(row[3]),

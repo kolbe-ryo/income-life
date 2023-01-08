@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:income_life/generated/l10n.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -62,7 +63,7 @@ class DigitsTextField extends StatelessWidget {
         ),
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         padding: const EdgeInsets.symmetric(horizontal: kPadding),
-        placeholder: 'ex ) 10',
+        placeholder: S.of(context).example,
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
         style: const TextStyle(
@@ -71,9 +72,9 @@ class DigitsTextField extends StatelessWidget {
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Please enter some text';
+            return S.of(context).alertTextNotEmpty;
           } else if (value == '0') {
-            return 'Please enter 1 or more';
+            return S.of(context).alertTextNoQuantity;
           }
           return null;
         },

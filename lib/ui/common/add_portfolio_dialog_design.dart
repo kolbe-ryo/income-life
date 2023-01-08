@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:income_life/generated/l10n.dart';
 
 // Project imports:
 import '../../data/model/gsheets_model.dart';
@@ -22,7 +23,7 @@ class AddPortfolioDialogDesign extends StatelessWidget {
             const SizedBox(height: kPadding / 2),
             Row(
               children: [
-                const Text('Ticker :'),
+                Text(S.of(context).tickerName),
                 Expanded(
                   child: Text(
                     model.ticker,
@@ -36,7 +37,7 @@ class AddPortfolioDialogDesign extends StatelessWidget {
                 padding: const EdgeInsets.only(top: kPadding / 2),
                 child: Row(
                   children: [
-                    const Text('Total :'),
+                    Text(S.of(context).totalStocks),
                     Expanded(
                       child: Text(
                         model.totalStocks.toString(),
@@ -48,9 +49,9 @@ class AddPortfolioDialogDesign extends StatelessWidget {
               ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Text('Adding :'),
-                Expanded(
+              children: [
+                Text(S.of(context).adding),
+                const Expanded(
                   child: DigitsTextField(),
                 ),
               ],

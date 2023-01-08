@@ -19,6 +19,7 @@ mixin _$TopPageState {
   int get pageIndex => throw _privateConstructorUsedError;
   ColorIndexEnum get colorTheme => throw _privateConstructorUsedError;
   ChartThemeEnum get chartTheme => throw _privateConstructorUsedError;
+  CurrencyValue get currencyValue => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopPageStateCopyWith<TopPageState> get copyWith =>
@@ -32,7 +33,10 @@ abstract class $TopPageStateCopyWith<$Res> {
       _$TopPageStateCopyWithImpl<$Res, TopPageState>;
   @useResult
   $Res call(
-      {int pageIndex, ColorIndexEnum colorTheme, ChartThemeEnum chartTheme});
+      {int pageIndex,
+      ColorIndexEnum colorTheme,
+      ChartThemeEnum chartTheme,
+      CurrencyValue currencyValue});
 }
 
 /// @nodoc
@@ -51,6 +55,7 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
     Object? pageIndex = null,
     Object? colorTheme = null,
     Object? chartTheme = null,
+    Object? currencyValue = null,
   }) {
     return _then(_value.copyWith(
       pageIndex: null == pageIndex
@@ -65,6 +70,10 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
           ? _value.chartTheme
           : chartTheme // ignore: cast_nullable_to_non_nullable
               as ChartThemeEnum,
+      currencyValue: null == currencyValue
+          ? _value.currencyValue
+          : currencyValue // ignore: cast_nullable_to_non_nullable
+              as CurrencyValue,
     ) as $Val);
   }
 }
@@ -78,7 +87,10 @@ abstract class _$$_TopPageStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int pageIndex, ColorIndexEnum colorTheme, ChartThemeEnum chartTheme});
+      {int pageIndex,
+      ColorIndexEnum colorTheme,
+      ChartThemeEnum chartTheme,
+      CurrencyValue currencyValue});
 }
 
 /// @nodoc
@@ -95,6 +107,7 @@ class __$$_TopPageStateCopyWithImpl<$Res>
     Object? pageIndex = null,
     Object? colorTheme = null,
     Object? chartTheme = null,
+    Object? currencyValue = null,
   }) {
     return _then(_$_TopPageState(
       pageIndex: null == pageIndex
@@ -109,6 +122,10 @@ class __$$_TopPageStateCopyWithImpl<$Res>
           ? _value.chartTheme
           : chartTheme // ignore: cast_nullable_to_non_nullable
               as ChartThemeEnum,
+      currencyValue: null == currencyValue
+          ? _value.currencyValue
+          : currencyValue // ignore: cast_nullable_to_non_nullable
+              as CurrencyValue,
     ));
   }
 }
@@ -119,7 +136,8 @@ class _$_TopPageState implements _TopPageState {
   const _$_TopPageState(
       {this.pageIndex = 0,
       this.colorTheme = ColorIndexEnum.normal,
-      this.chartTheme = ChartThemeEnum.heatMap});
+      this.chartTheme = ChartThemeEnum.heatMap,
+      this.currencyValue = CurrencyValue.usd});
 
   @override
   @JsonKey()
@@ -130,10 +148,13 @@ class _$_TopPageState implements _TopPageState {
   @override
   @JsonKey()
   final ChartThemeEnum chartTheme;
+  @override
+  @JsonKey()
+  final CurrencyValue currencyValue;
 
   @override
   String toString() {
-    return 'TopPageState(pageIndex: $pageIndex, colorTheme: $colorTheme, chartTheme: $chartTheme)';
+    return 'TopPageState(pageIndex: $pageIndex, colorTheme: $colorTheme, chartTheme: $chartTheme, currencyValue: $currencyValue)';
   }
 
   @override
@@ -146,12 +167,14 @@ class _$_TopPageState implements _TopPageState {
             (identical(other.colorTheme, colorTheme) ||
                 other.colorTheme == colorTheme) &&
             (identical(other.chartTheme, chartTheme) ||
-                other.chartTheme == chartTheme));
+                other.chartTheme == chartTheme) &&
+            (identical(other.currencyValue, currencyValue) ||
+                other.currencyValue == currencyValue));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, pageIndex, colorTheme, chartTheme);
+  int get hashCode => Object.hash(
+      runtimeType, pageIndex, colorTheme, chartTheme, currencyValue);
 
   @JsonKey(ignore: true)
   @override
@@ -164,7 +187,8 @@ abstract class _TopPageState implements TopPageState {
   const factory _TopPageState(
       {final int pageIndex,
       final ColorIndexEnum colorTheme,
-      final ChartThemeEnum chartTheme}) = _$_TopPageState;
+      final ChartThemeEnum chartTheme,
+      final CurrencyValue currencyValue}) = _$_TopPageState;
 
   @override
   int get pageIndex;
@@ -172,6 +196,8 @@ abstract class _TopPageState implements TopPageState {
   ColorIndexEnum get colorTheme;
   @override
   ChartThemeEnum get chartTheme;
+  @override
+  CurrencyValue get currencyValue;
   @override
   @JsonKey(ignore: true)
   _$$_TopPageStateCopyWith<_$_TopPageState> get copyWith =>

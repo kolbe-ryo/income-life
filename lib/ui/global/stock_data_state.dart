@@ -19,24 +19,48 @@ class StockDataState with _$StockDataState {
 
   int get portfolioLength => gsheets.where((e) => e.isAddedPortfolio).length;
 
-  double get totalIncome => gsheets
+  double get totalIncomeUsd => gsheets
       .where(
         (e) => e.isAddedPortfolio,
       )
       .map(
-        (e) => e.income,
+        (e) => e.incomeUsd,
       )
       .toList()
       .reduce(
         (a, b) => a + b,
       );
 
-  double get totalAmount => gsheets
+  double get totalIncomeJpy => gsheets
       .where(
         (e) => e.isAddedPortfolio,
       )
       .map(
-        (e) => e.totalInvestment,
+        (e) => e.incomeJpy,
+      )
+      .toList()
+      .reduce(
+        (a, b) => a + b,
+      );
+
+  double get totalAmountUsd => gsheets
+      .where(
+        (e) => e.isAddedPortfolio,
+      )
+      .map(
+        (e) => e.totalInvestmentUsd,
+      )
+      .toList()
+      .reduce(
+        (a, b) => a + b,
+      );
+
+  double get totalAmountJpy => gsheets
+      .where(
+        (e) => e.isAddedPortfolio,
+      )
+      .map(
+        (e) => e.totalInvestmentJpy,
       )
       .toList()
       .reduce(
@@ -49,7 +73,7 @@ class StockDataState with _$StockDataState {
       )
       .toList()
     ..sort(
-      (a, b) => -a.income.compareTo(b.income),
+      (a, b) => -a.incomeUsd.compareTo(b.incomeUsd),
     );
 
   List<GsheetsModel> get notPortfolio => gsheets

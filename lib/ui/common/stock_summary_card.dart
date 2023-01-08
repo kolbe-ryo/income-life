@@ -1,5 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:income_life/enum/currency_value.dart';
+import 'package:income_life/generated/l10n.dart';
+import 'package:income_life/ui/top_page/top_page_state.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -19,6 +22,7 @@ class StockSummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final crossAlignment = kind != InvestInfoEnum.stocks ? CrossAxisAlignment.end : CrossAxisAlignment.center;
     return Card(
       margin: EdgeInsets.zero,
       child: InkWell(
@@ -32,11 +36,10 @@ class StockSummaryCard extends StatelessWidget {
                 // Change card inner layout whether stocks information or not
                 if (kind != InvestInfoEnum.stocks) kind.icon,
                 Column(
-                  crossAxisAlignment:
-                      kind != InvestInfoEnum.stocks ? CrossAxisAlignment.end : CrossAxisAlignment.center,
+                  crossAxisAlignment: crossAlignment,
                   children: [
                     Text(
-                      _title,
+                      _title(context),
                       style: const TextStyle(
                         fontSize: kFontSize,
                         fontWeight: FontWeight.w300,
@@ -61,14 +64,14 @@ class StockSummaryCard extends StatelessWidget {
     );
   }
 
-  String get _title {
+  String _title(BuildContext context) {
     switch (kind) {
       case InvestInfoEnum.income:
-        return 'Income / y';
+        return S.of(context).incomePerYear;
       case InvestInfoEnum.totalInvest:
-        return 'Total Investment';
+        return S.of(context).totalInvestment;
       case InvestInfoEnum.stocks:
-        return 'Stocks';
+        return S.of(context).stocks;
     }
   }
 
@@ -77,13 +80,21 @@ class StockSummaryCard extends StatelessWidget {
     if (state.portfolioLength == 0) {
       return '-';
     }
-    final totalIncome = formatter.format(state.totalIncome.floor());
-    final totalAmount = formatter.format(state.totalAmount.floor());
+    final currency = context.select((TopPageState value) => value.currencyValue);
+    var totalIncome = '';
+    var totalAmount = '';
+    if (currency == CurrencyValue.usd) {
+      totalIncome = '${S.of(context).usd} ${formatter.format(state.totalIncomeUsd.floor())}';
+      totalAmount = '${S.of(context).usd} ${formatter.format(state.totalAmountUsd.floor())}';
+    } else {
+      totalIncome = '${S.of(context).jpy} ${formatter.format(state.totalIncomeJpy.floor())}';
+      totalAmount = '${S.of(context).jpy} ${formatter.format(state.totalAmountJpy.floor())}';
+    }
     switch (kind) {
       case InvestInfoEnum.income:
-        return '¥ $totalIncome';
+        return totalIncome;
       case InvestInfoEnum.totalInvest:
-        return '¥ $totalAmount';
+        return totalAmount;
       case InvestInfoEnum.stocks:
         return formatter.format(state.portfolioLength);
     }
@@ -94,13 +105,17 @@ class StockSummaryCard extends StatelessWidget {
     required InvestInfoEnum kind,
   }) async {
     final portfolio = context.read<StockDataState>().portfolio;
+    final currency = context.read<TopPageState>().currencyValue;
     await baseShowDialog(
       context: context,
-      title: _title,
+      title: _title(context),
       isOnlyClose: true,
-      widget: _SummaryCardInformationDialog(
-        portfolio: portfolio,
-        kind: kind,
+      widget: Provider.value(
+        value: currency,
+        child: _SummaryCardInformationDialog(
+          portfolio: portfolio,
+          kind: kind,
+        ),
       ),
     );
   }
@@ -122,20 +137,23 @@ class _SummaryCardInformationDialog extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: _response,
+          children: _response(context),
         ),
       ),
     );
   }
 
-  List<Widget> get _response {
+  List<Widget> _response(BuildContext context) {
+    final currency = context.read<CurrencyValue>();
     switch (kind) {
       case InvestInfoEnum.income:
         return portfolio
             .map(
               (e) => _ListContents(
                 ticker: e.ticker,
-                content: '¥ ${formatter.format(e.income)}',
+                content: '${currency == CurrencyValue.usd ? r'$' : '¥'} ${formatter.format(
+                  currency == CurrencyValue.usd ? e.incomeUsd : e.incomeJpy,
+                )}',
               ),
             )
             .toList();
@@ -144,7 +162,9 @@ class _SummaryCardInformationDialog extends StatelessWidget {
             .map(
               (e) => _ListContents(
                 ticker: e.ticker,
-                content: '¥ ${formatter.format(e.totalInvestment)}',
+                content: '${currency == CurrencyValue.usd ? r'$' : '¥'} ${formatter.format(
+                  currency == CurrencyValue.usd ? e.totalInvestmentUsd : e.totalInvestmentJpy,
+                )}',
               ),
             )
             .toList();
@@ -153,7 +173,7 @@ class _SummaryCardInformationDialog extends StatelessWidget {
             .map(
               (e) => _ListContents(
                 ticker: e.ticker,
-                content: '${e.totalStocks} stocks',
+                content: '${e.totalStocks} ${S.of(context).stocks}',
               ),
             )
             .toList();

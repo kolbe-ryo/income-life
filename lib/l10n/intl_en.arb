@@ -1,7 +1,7 @@
 {
-    "tickerName": "Ticker: ",
-    "totalStocks": "Total",
-    "adding": "Adding",
+    "tickerName": "Ticker:",
+    "totalStocks": "Total:",
+    "adding": "Adding:",
     "delete": "Delete",
     "cancel": "Cancel",
     "ok": "OK",
@@ -13,10 +13,12 @@
     "price": "Price",
     "devidend": "Devidend",
     "income": "Income",
+    "incomePerYear": "Income per year",
     "totalInvestment": "Total Investment",
     "stocks": "Stocks",
     "noData": "No Data",
     "checkDelete": "Do you want to delete?",
+    "completeDelete": "Complete to delete",
     "checkCannotUndone": "This operation cannot be undone",
     "others": "Others",
     "themeSetting": "Theme Setting",
@@ -38,5 +40,6 @@
     "settings": "Settings",
     "jpy":"¥",
     "usd":"$",
-    "requestPlaceholder":"ex) XOM"
+    "requestPlaceholder":"ex) XOM",
+    "completeAddition":"Complete to add"
 }

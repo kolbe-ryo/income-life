@@ -1,6 +1,7 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:income_life/generated/l10n.dart';
 
 Future<bool?> baseShowDialog({
   required BuildContext context,
@@ -22,7 +23,7 @@ Future<bool?> baseShowDialog({
             CupertinoDialogAction(
               isDestructiveAction: true,
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('キャンセル'),
+              child: Text(S.of(context).cancel),
             ),
           if (!isOnlyClose)
             CupertinoDialogAction(
@@ -31,12 +32,12 @@ Future<bool?> baseShowDialog({
                   Navigator.pop(context, true);
                 }
               },
-              child: const Text('OK'),
+              child: Text(S.of(context).ok),
             ),
           if (isOnlyClose)
             CupertinoDialogAction(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Close'),
+              child: Text(S.of(context).close),
             ),
         ],
       );

@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(dynamic _) => <String, Function>{
         "aboutThisApp": MessageLookupByLibrary.simpleMessage("About This App"),
-        "adding": MessageLookupByLibrary.simpleMessage("Adding"),
+        "adding": MessageLookupByLibrary.simpleMessage("Adding:"),
         "alertTextNoQuantity": MessageLookupByLibrary.simpleMessage("Please enter 1 or more"),
         "alertTextNotEmpty": MessageLookupByLibrary.simpleMessage("Please enter some text"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -35,12 +35,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "colorTheme": MessageLookupByLibrary.simpleMessage("Color Theme"),
         "complete": MessageLookupByLibrary.simpleMessage("Complete"),
+        "completeAddition": MessageLookupByLibrary.simpleMessage("Complete to add"),
+        "completeDelete": MessageLookupByLibrary.simpleMessage("Complete to delete"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "descriptionForRequest": MessageLookupByLibrary.simpleMessage(
             "Please input the ticker you want to add and push send button.\nSome tickers cannot be added"),
         "devidend": MessageLookupByLibrary.simpleMessage("Devidend"),
         "example": MessageLookupByLibrary.simpleMessage("Ex）10"),
         "income": MessageLookupByLibrary.simpleMessage("Income"),
+        "incomePerYear": MessageLookupByLibrary.simpleMessage("Income per year"),
         "jpy": MessageLookupByLibrary.simpleMessage("¥"),
         "licenses": MessageLookupByLibrary.simpleMessage("Licenses"),
         "noData": MessageLookupByLibrary.simpleMessage("No Data"),
@@ -57,9 +60,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "stocks": MessageLookupByLibrary.simpleMessage("Stocks"),
         "themeSetting": MessageLookupByLibrary.simpleMessage("Theme Setting"),
-        "tickerName": MessageLookupByLibrary.simpleMessage("Ticker: "),
+        "tickerName": MessageLookupByLibrary.simpleMessage("Ticker:"),
         "totalInvestment": MessageLookupByLibrary.simpleMessage("Total Investment"),
-        "totalStocks": MessageLookupByLibrary.simpleMessage("Total"),
+        "totalStocks": MessageLookupByLibrary.simpleMessage("Total:"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Failed to send. Try again later"),
         "usd": MessageLookupByLibrary.simpleMessage("\$"),
         "yahooFinance": MessageLookupByLibrary.simpleMessage("Yahoo Finance")

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:get_it/get_it.dart';
+import 'package:income_life/enum/currency_value.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
@@ -39,16 +40,19 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
   Future<void> _fetchThemeFromLocal() async {
     final localColorTheme = await GetIt.I<LocalRepositoryInterface>().getLocalColorTheme();
     final localChartTheme = await GetIt.I<LocalRepositoryInterface>().getLocalChartTheme();
+    final localCurrencyValue = await GetIt.I<LocalRepositoryInterface>().getLocalCurrencyValue();
 
     state = state.copyWith(
       chartTheme: localChartTheme ?? state.chartTheme,
       colorTheme: localColorTheme ?? state.colorTheme,
+      currencyValue: localCurrencyValue ?? state.currencyValue,
     );
   }
 
   Future<void> _saveToLocal() async {
     await GetIt.I<LocalRepositoryInterface>().saveChartTheme(state.chartTheme);
     await GetIt.I<LocalRepositoryInterface>().saveColorTheme(state.colorTheme);
+    await GetIt.I<LocalRepositoryInterface>().saveCurrencyValue(state.currencyValue);
   }
 
   void switchBNB(int index) {
@@ -62,6 +66,11 @@ class TopPageViewModel extends StateNotifier<TopPageState> with LocatorMixin {
 
   void switchChartTheme(ChartThemeEnum chartTheme) {
     state = state.copyWith(chartTheme: chartTheme);
+    _saveToLocal();
+  }
+
+  void switchCurrencyValue(CurrencyValue currencyValue) {
+    state = state.copyWith(currencyValue: currencyValue);
     _saveToLocal();
   }
 }

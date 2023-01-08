@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:income_life/enum/currency_value.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
@@ -29,5 +30,10 @@ class ChartThemeSettingPageViewModel extends StateNotifier<ChartThemeSettingPage
   void switchChartTheme(ChartThemeEnum chartTheme) {
     state = state.copyWith(chartTheme: chartTheme);
     _topPageViewModel.switchChartTheme(chartTheme);
+  }
+
+  void switchCurrencyValue(CurrencyValue currencyValue) {
+    state = state.copyWith(currencyValue: currencyValue);
+    _topPageViewModel.switchCurrencyValue(currencyValue);
   }
 }

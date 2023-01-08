@@ -10,7 +10,7 @@ part 'gsheets_model.g.dart';
 @freezed
 class GsheetsModel with _$GsheetsModel {
   const factory GsheetsModel({
-    @Default(CurrencyValue.non) CurrencyValue market,
+    @Default(CurrencyValue.usd) CurrencyValue market,
     @Default('') String ticker,
     @Default('') String name,
     @Default(0) double price,
@@ -26,9 +26,15 @@ class GsheetsModel with _$GsheetsModel {
 
   String get dividendRate => '${(devidend * 100).toStringAsFixed(2)}%';
 
-  // TODO: switchに変更
-  double get income =>
+  double get incomeUsd =>
+      market == CurrencyValue.jpy ? totalStocks * price * devidend / exchangeRate : totalStocks * price * devidend;
+
+  double get incomeJpy =>
       market == CurrencyValue.jpy ? totalStocks * price * devidend : totalStocks * price * devidend * exchangeRate;
 
-  double get totalInvestment => market == CurrencyValue.jpy ? totalStocks * price : totalStocks * price * exchangeRate;
+  double get totalInvestmentUsd =>
+      market == CurrencyValue.jpy ? totalStocks * price / exchangeRate : totalStocks * price;
+
+  double get totalInvestmentJpy =>
+      market == CurrencyValue.jpy ? totalStocks * price : totalStocks * price * exchangeRate;
 }

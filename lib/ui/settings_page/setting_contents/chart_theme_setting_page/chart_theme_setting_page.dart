@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:income_life/enum/currency_value.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -45,6 +46,9 @@ class ChartThemeSettingPage extends StatelessWidget {
                 _HeadLineText('Chart Theme'),
                 _RadioButtonWithText(isChartTheme: true),
                 Divider(),
+                _HeadLineText('Currency'),
+                _RadioButtonWithText(isCurrency: true),
+                Divider(),
               ],
             ),
           ),
@@ -75,33 +79,47 @@ class _RadioButtonWithText extends StatelessWidget {
   const _RadioButtonWithText({
     this.isColorTheme = false,
     this.isChartTheme = false,
+    this.isCurrency = false,
   });
 
   final bool isColorTheme;
   final bool isChartTheme;
+  final bool isCurrency;
 
   @override
   Widget build(BuildContext context) {
-    final value = context.select(
-      (ChartThemeSettingPageState value) => isColorTheme ? value.colorTheme : value.chartTheme,
+    final valueMap = context.select(
+      (ChartThemeSettingPageState value) {
+        if (isColorTheme) {
+          return {value.colorTheme: ColorIndexEnum.values};
+        }
+        if (isChartTheme) {
+          return {value.chartTheme: ChartThemeEnum.values};
+        }
+        if (isCurrency) {
+          return {value.currencyValue: CurrencyValue.values};
+        }
+      },
     );
     final viewModel = context.read<ChartThemeSettingPageViewModel>();
 
     return Row(
-      children: (isColorTheme ? ColorIndexEnum.values : ChartThemeEnum.values).map(
+      children: valueMap!.values.first.map(
         (e) {
           Future<void> onTap() async {
             if (isColorTheme) {
               viewModel.switchColorTheme(e as ColorIndexEnum);
             } else if (isChartTheme) {
               viewModel.switchChartTheme(e as ChartThemeEnum);
+            } else if (isCurrency) {
+              viewModel.switchCurrencyValue(e as CurrencyValue);
             }
           }
 
           return Row(
             children: [
               Radio(
-                value: value,
+                value: valueMap.keys.first,
                 activeColor: AppColors.tealAccent,
                 groupValue: e,
                 onChanged: (_) => onTap(),

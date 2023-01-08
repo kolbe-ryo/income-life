@@ -1,29 +1,29 @@
+import 'package:get_it/get_it.dart';
+import 'package:flutter/material.dart';
+import 'package:income_life/generated/l10n.dart';
+
 enum CurrencyValue {
-  jpy,
   usd,
-  non,
+  jpy,
 }
 
 extension CurrencyValueExt on CurrencyValue {
   String get symbol {
+    final _context = GetIt.I<GlobalKey<NavigatorState>>().currentContext!;
     switch (this) {
-      case CurrencyValue.jpy:
-        return '¥';
       case CurrencyValue.usd:
-        return r'$';
-      case CurrencyValue.non:
-        return '';
+        return S.of(_context).usd;
+      case CurrencyValue.jpy:
+        return S.of(_context).jpy;
     }
   }
 }
 
-CurrencyValue toEnum(String value) {
+CurrencyValue? toEnum(String value) {
   switch (value) {
-    case 'JPY':
-      return CurrencyValue.jpy;
     case 'USD':
       return CurrencyValue.usd;
-    default:
-      return CurrencyValue.non;
+    case 'JPY':
+      return CurrencyValue.jpy;
   }
 }

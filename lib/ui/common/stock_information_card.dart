@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
+import 'package:income_life/generated/l10n.dart';
+import 'package:income_life/ui/common/notification_toast.dart';
 
 // Package imports:
 import 'package:provider/provider.dart';
@@ -38,9 +40,10 @@ class StockInformationCard extends BaseCard {
       final searchStockPageViewModel = context.read<SearchStockPageViewModel>();
       final formKey = GlobalKey<FormState>();
       void inputMethod(int stocks) => stockDataManager.inputNumverOfStock(stocks);
+      final intlMessage = S.of(context);
       final isAdded = await baseShowDialog(
         context: context,
-        title: 'Add Your Portfolio?',
+        title: intlMessage.checkAdding,
         formKey: formKey,
         widget: MultiProvider(
           providers: [
@@ -53,6 +56,10 @@ class StockInformationCard extends BaseCard {
       if (isAdded ?? false) {
         stockDataManager.addPortfolio(model);
         searchStockPageViewModel.load();
+        await NotificationToast.showToast(
+          context: context,
+          message: intlMessage.completeAddition,
+        );
       }
     };
   }
@@ -80,7 +87,11 @@ class _UnitInformation extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: _getWidgets(attribute: attribute, info: model),
+            children: _getWidgets(
+              attribute: attribute,
+              info: model,
+              context: context,
+            ),
           ),
         ),
       ),
@@ -101,6 +112,7 @@ class _UnitInformation extends StatelessWidget {
   List<Widget> _getWidgets({
     required StockInformationAttribute attribute,
     required GsheetsModel info,
+    required BuildContext context,
   }) {
     switch (attribute) {
       case StockInformationAttribute.name:
@@ -123,9 +135,9 @@ class _UnitInformation extends StatelessWidget {
         ];
       case StockInformationAttribute.price:
         return [
-          const Text(
-            'Price',
-            style: TextStyle(
+          Text(
+            S.of(context).price,
+            style: const TextStyle(
               color: AppColors.grey,
               fontSize: 16,
             ),
@@ -137,9 +149,9 @@ class _UnitInformation extends StatelessWidget {
         ];
       case StockInformationAttribute.devidend:
         return [
-          const Text(
-            'Devidend',
-            style: TextStyle(
+          Text(
+            S.of(context).devidend,
+            style: const TextStyle(
               color: AppColors.grey,
               fontSize: 16,
             ),

@@ -35,11 +35,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "close": MessageLookupByLibrary.simpleMessage("閉じる"),
         "colorTheme": MessageLookupByLibrary.simpleMessage("カラーテーマ"),
         "complete": MessageLookupByLibrary.simpleMessage("完了"),
-        "descriptionForRequest":
-            MessageLookupByLibrary.simpleMessage("追加したいティッカーを入力し、送信ボタンを押して下さい。\n※追加できないティッカーがあります。"),
+        "completeAddition": MessageLookupByLibrary.simpleMessage("追加しました"),
+        "completeDelete": MessageLookupByLibrary.simpleMessage("削除しました"),
+        "descriptionForRequest": MessageLookupByLibrary.simpleMessage("追加したいティッカーを入力し、送信ボタンを押して下さい\n※追加できないティッカーがあります"),
         "devidend": MessageLookupByLibrary.simpleMessage("配当"),
         "example": MessageLookupByLibrary.simpleMessage("例）10"),
         "income": MessageLookupByLibrary.simpleMessage("収益"),
+        "incomePerYear": MessageLookupByLibrary.simpleMessage("年間収益"),
         "jpy": MessageLookupByLibrary.simpleMessage("¥"),
         "licenses": MessageLookupByLibrary.simpleMessage("ライセンス"),
         "noData": MessageLookupByLibrary.simpleMessage("データなし"),
@@ -58,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tickerName": MessageLookupByLibrary.simpleMessage("ティッカー："),
         "totalInvestment": MessageLookupByLibrary.simpleMessage("投資総額"),
         "totalStocks": MessageLookupByLibrary.simpleMessage("合計"),
-        "tryAgain": MessageLookupByLibrary.simpleMessage("送信に失敗しました。後ほど再送信して下さい。"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("送信に失敗しました\n後ほど再送信して下さい"),
         "usd": MessageLookupByLibrary.simpleMessage("\$"),
         "yahooFinance": MessageLookupByLibrary.simpleMessage("Yahooファイナンス")
       };

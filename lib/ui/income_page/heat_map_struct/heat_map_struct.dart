@@ -25,9 +25,9 @@ List<HeatMapModel> heatMapStruct({
       ];
 
     case 2:
-      final pairAmount0 = models[0].income + models[1].income;
-      final size0 = getSizeRate(models[0].income, pairAmount0);
-      final size1 = getSizeRate(models[1].income, pairAmount0);
+      final pairAmount0 = models[0].incomeUsd + models[1].incomeUsd;
+      final size0 = getSizeRate(models[0].incomeUsd, pairAmount0);
+      final size1 = getSizeRate(models[1].incomeUsd, pairAmount0);
       return [
         HeatMapModel(
           mainAxisSize: 100,
@@ -44,12 +44,12 @@ List<HeatMapModel> heatMapStruct({
       ];
 
     case 3:
-      final pairAmount0 = models[0].income + models[1].income;
-      final pairAmount1 = models[1].income + models[2].income;
-      final size0 = getSizeRate(models[0].income, pairAmount0);
-      final size1 = getSizeRate(models[1].income, pairAmount0);
-      final size2 = getSizeRate(models[1].income, pairAmount1);
-      final size3 = getSizeRate(models[2].income, pairAmount1);
+      final pairAmount0 = models[0].incomeUsd + models[1].incomeUsd;
+      final pairAmount1 = models[1].incomeUsd + models[2].incomeUsd;
+      final size0 = getSizeRate(models[0].incomeUsd, pairAmount0);
+      final size1 = getSizeRate(models[1].incomeUsd, pairAmount0);
+      final size2 = getSizeRate(models[1].incomeUsd, pairAmount1);
+      final size3 = getSizeRate(models[2].incomeUsd, pairAmount1);
       return [
         HeatMapModel(
           mainAxisSize: size2,
@@ -72,15 +72,15 @@ List<HeatMapModel> heatMapStruct({
       ];
 
     case 4:
-      final pairAmount0 = models[0].income + models[1].income;
-      final pairAmount1 = models[1].income + models[2].income;
-      final pairAmount2 = models[2].income + models[3].income;
-      final size0 = getSizeRate(models[0].income, pairAmount0);
-      final size1 = getSizeRate(models[1].income, pairAmount0);
-      final size2 = getSizeRate(models[1].income, pairAmount1);
-      final size3 = getSizeRate(models[2].income, pairAmount1);
-      final size4 = getSizeRate(models[2].income, pairAmount2);
-      final size5 = getSizeRate(models[3].income, pairAmount2);
+      final pairAmount0 = models[0].incomeUsd + models[1].incomeUsd;
+      final pairAmount1 = models[1].incomeUsd + models[2].incomeUsd;
+      final pairAmount2 = models[2].incomeUsd + models[3].incomeUsd;
+      final size0 = getSizeRate(models[0].incomeUsd, pairAmount0);
+      final size1 = getSizeRate(models[1].incomeUsd, pairAmount0);
+      final size2 = getSizeRate(models[1].incomeUsd, pairAmount1);
+      final size3 = getSizeRate(models[2].incomeUsd, pairAmount1);
+      final size4 = getSizeRate(models[2].incomeUsd, pairAmount2);
+      final size5 = getSizeRate(models[3].incomeUsd, pairAmount2);
       return [
         HeatMapModel(
           mainAxisSize: size2,
@@ -109,18 +109,18 @@ List<HeatMapModel> heatMapStruct({
       ];
 
     case 5:
-      final pairAmount0 = models[0].income + models[1].income;
-      final pairAmount1 = models[1].income + models[2].income;
-      final pairAmount2 = models[2].income + models[3].income;
-      final pairAmount3 = models[3].income + models[4].income;
-      final size0 = getSizeRate(models[0].income, pairAmount0);
-      final size1 = getSizeRate(models[1].income, pairAmount0);
-      final size2 = getSizeRate(models[1].income, pairAmount1);
-      final size3 = getSizeRate(models[2].income, pairAmount1);
-      final size4 = getSizeRate(models[2].income, pairAmount2);
-      final size5 = getSizeRate(models[3].income, pairAmount2);
-      final size6 = getSizeRate(models[3].income, pairAmount3);
-      final size7 = getSizeRate(models[4].income, pairAmount3);
+      final pairAmount0 = models[0].incomeUsd + models[1].incomeUsd;
+      final pairAmount1 = models[1].incomeUsd + models[2].incomeUsd;
+      final pairAmount2 = models[2].incomeUsd + models[3].incomeUsd;
+      final pairAmount3 = models[3].incomeUsd + models[4].incomeUsd;
+      final size0 = getSizeRate(models[0].incomeUsd, pairAmount0);
+      final size1 = getSizeRate(models[1].incomeUsd, pairAmount0);
+      final size2 = getSizeRate(models[1].incomeUsd, pairAmount1);
+      final size3 = getSizeRate(models[2].incomeUsd, pairAmount1);
+      final size4 = getSizeRate(models[2].incomeUsd, pairAmount2);
+      final size5 = getSizeRate(models[3].incomeUsd, pairAmount2);
+      final size6 = getSizeRate(models[3].incomeUsd, pairAmount3);
+      final size7 = getSizeRate(models[4].incomeUsd, pairAmount3);
       return [
         HeatMapModel(
           mainAxisSize: size2,
@@ -157,18 +157,18 @@ List<HeatMapModel> heatMapStruct({
       if (models.isEmpty) {
         return [];
       } else {
-        final pairAmount0 = models[0].income + models[1].income;
-        final pairAmount1 = models[1].income + models[2].income;
-        final pairAmount2 = models[2].income + models[3].income;
-        final pairAmount3 = models[3].income + models[4].income;
-        final size0 = getSizeRate(models[0].income, pairAmount0);
-        final size1 = getSizeRate(models[1].income, pairAmount0);
-        final size2 = getSizeRate(models[1].income, pairAmount1);
-        final size3 = getSizeRate(models[2].income, pairAmount1);
-        final size4 = getSizeRate(models[2].income, pairAmount2);
-        final size5 = getSizeRate(models[3].income, pairAmount2);
-        final size6 = getSizeRate(models[3].income, pairAmount3);
-        final size7 = getSizeRate(models[4].income, pairAmount3);
+        final pairAmount0 = models[0].incomeUsd + models[1].incomeUsd;
+        final pairAmount1 = models[1].incomeUsd + models[2].incomeUsd;
+        final pairAmount2 = models[2].incomeUsd + models[3].incomeUsd;
+        final pairAmount3 = models[3].incomeUsd + models[4].incomeUsd;
+        final size0 = getSizeRate(models[0].incomeUsd, pairAmount0);
+        final size1 = getSizeRate(models[1].incomeUsd, pairAmount0);
+        final size2 = getSizeRate(models[1].incomeUsd, pairAmount1);
+        final size3 = getSizeRate(models[2].incomeUsd, pairAmount1);
+        final size4 = getSizeRate(models[2].incomeUsd, pairAmount2);
+        final size5 = getSizeRate(models[3].incomeUsd, pairAmount2);
+        final size6 = getSizeRate(models[3].incomeUsd, pairAmount3);
+        final size7 = getSizeRate(models[4].incomeUsd, pairAmount3);
         return [
           HeatMapModel(
             mainAxisSize: size2,

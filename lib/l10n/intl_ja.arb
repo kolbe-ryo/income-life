@@ -13,10 +13,12 @@
     "price": "価格",
     "devidend": "配当",
     "income": "収益",
+    "incomePerYear": "年間収益",
     "totalInvestment": "投資総額",
     "stocks": "株",
     "noData": "データなし",
     "checkDelete": "削除しますか？",
+    "completeDelete": "削除しました",
     "checkCannotUndone": "この操作は元に戻せません",
     "others": "その他",
     "theme Setting": "テーマ設定",
@@ -24,9 +26,9 @@
     "chartTheme": "チャートテーマ",
     "request": "リクエスト",
     "requestTicker": "銘柄のリクエスト",
-    "descriptionForRequest": "追加したいティッカーを入力し、送信ボタンを押して下さい。\n※追加できないティッカーがあります。",
+    "descriptionForRequest": "追加したいティッカーを入力し、送信ボタンを押して下さい\n※追加できないティッカーがあります",
     "complete": "完了",
-    "tryAgain": "送信に失敗しました。後ほど再送信して下さい。",
+    "tryAgain": "送信に失敗しました\n後ほど再送信して下さい",
     "send": "送信",
     "aboutThisApp": "このアプリについて",
     "licenses": "ライセンス",
@@ -38,5 +40,6 @@
     "settings": "設定",
     "jpy":"¥",
     "usd":"$",
-    "requestPlaceholder":"ex) XOM"
+    "requestPlaceholder":"ex) XOM",
+    "completeAddition":"追加しました"
 }

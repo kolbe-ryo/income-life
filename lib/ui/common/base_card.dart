@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:income_life/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -38,7 +39,7 @@ abstract class BaseCard extends StatelessWidget {
                 backgroundColor: AppColors.deepOrangeAccent,
                 foregroundColor: Colors.white,
                 icon: Icons.delete,
-                label: 'Delete',
+                label: S.of(context).delete,
                 onPressed: (BuildContext context) {
                   context.read<StockDataManager>().deletePortfolio(model);
                 },

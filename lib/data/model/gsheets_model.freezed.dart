@@ -191,7 +191,7 @@ class __$$_GsheetsModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_GsheetsModel extends _GsheetsModel {
   const _$_GsheetsModel(
-      {this.market = CurrencyValue.non,
+      {this.market = CurrencyValue.usd,
       this.ticker = '',
       this.name = '',
       this.price = 0,

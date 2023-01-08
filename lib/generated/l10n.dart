@@ -50,30 +50,30 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Ticker: `
+  /// `Ticker:`
   String get tickerName {
     return Intl.message(
-      'Ticker: ',
+      'Ticker:',
       name: 'tickerName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Total`
+  /// `Total:`
   String get totalStocks {
     return Intl.message(
-      'Total',
+      'Total:',
       name: 'totalStocks',
       desc: '',
       args: [],
     );
   }
 
-  /// `Adding`
+  /// `Adding:`
   String get adding {
     return Intl.message(
-      'Adding',
+      'Adding:',
       name: 'adding',
       desc: '',
       args: [],
@@ -190,6 +190,16 @@ class S {
     );
   }
 
+  /// `Income per year`
+  String get incomePerYear {
+    return Intl.message(
+      'Income per year',
+      name: 'incomePerYear',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Total Investment`
   String get totalInvestment {
     return Intl.message(
@@ -225,6 +235,16 @@ class S {
     return Intl.message(
       'Do you want to delete?',
       name: 'checkDelete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete to delete`
+  String get completeDelete {
+    return Intl.message(
+      'Complete to delete',
+      name: 'completeDelete',
       desc: '',
       args: [],
     );
@@ -445,6 +465,16 @@ class S {
     return Intl.message(
       'ex) XOM',
       name: 'requestPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete to add`
+  String get completeAddition {
+    return Intl.message(
+      'Complete to add',
+      name: 'completeAddition',
       desc: '',
       args: [],
     );

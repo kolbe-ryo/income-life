@@ -35,14 +35,14 @@ extension BnbItemsExt on BnbItems {
           icon: const Icon(Icons.attach_money),
         );
       case BnbItems.search:
-        return const BottomNavigationBarItem(
-          label: 'Search',
-          icon: Icon(Icons.search),
+        return BottomNavigationBarItem(
+          label: S.of(_context).search,
+          icon: const Icon(Icons.search),
         );
       case BnbItems.settings:
-        return const BottomNavigationBarItem(
-          label: 'Settings',
-          icon: Icon(Icons.settings),
+        return BottomNavigationBarItem(
+          label: S.of(_context).settings,
+          icon: const Icon(Icons.settings),
         );
     }
   }

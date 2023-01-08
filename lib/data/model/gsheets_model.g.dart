@@ -9,7 +9,7 @@ part of 'gsheets_model.dart';
 _$_GsheetsModel _$$_GsheetsModelFromJson(Map<String, dynamic> json) =>
     _$_GsheetsModel(
       market: $enumDecodeNullable(_$CurrencyValueEnumMap, json['market']) ??
-          CurrencyValue.non,
+          CurrencyValue.usd,
       ticker: json['ticker'] as String? ?? '',
       name: json['name'] as String? ?? '',
       price: (json['price'] as num?)?.toDouble() ?? 0,
@@ -32,7 +32,6 @@ Map<String, dynamic> _$$_GsheetsModelToJson(_$_GsheetsModel instance) =>
     };
 
 const _$CurrencyValueEnumMap = {
-  CurrencyValue.jpy: 'jpy',
   CurrencyValue.usd: 'usd',
-  CurrencyValue.non: 'non',
+  CurrencyValue.jpy: 'jpy',
 };

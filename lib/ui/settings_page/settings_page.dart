@@ -49,7 +49,7 @@ class SettingsPage extends StatelessWidget {
                 FontAwesomeIcons.palette,
                 color: colorTheme.colors[1],
               ),
-              title: 'Chart Theme',
+              title: 'Theme Settings',
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => Navigator.push(
                 context,

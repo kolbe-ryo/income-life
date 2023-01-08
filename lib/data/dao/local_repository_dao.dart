@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 // Package imports:
+import 'package:income_life/enum/currency_value.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
@@ -27,6 +28,8 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
   static const kColorThemeKey = 'colorTheme';
 
   static const kChartThemeKey = 'chartTheme';
+
+  static const kCurrencyValueKey = 'currencyValue';
 
   @override
   Future<List<GsheetsModel>> getLocalModel() async {
@@ -62,6 +65,16 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
   }
 
   @override
+  Future<CurrencyValue?> getLocalCurrencyValue() async {
+    final storage = await _storage;
+    final content = storage.getString(kCurrencyValueKey);
+    if (content == null) {
+      return null;
+    }
+    return CurrencyValue.values.byName(content);
+  }
+
+  @override
   Future<void> saveModel(List<GsheetsModel> list) async {
     final storage = await _storage;
 
@@ -80,6 +93,12 @@ class LocalRepositoryDao implements LocalRepositoryInterface {
   Future<void> saveColorTheme(ColorIndexEnum theme) async {
     final storage = await _storage;
     await storage.setString(kColorThemeKey, theme.name);
+  }
+
+  @override
+  Future<void> saveCurrencyValue(CurrencyValue value) async {
+    final storage = await _storage;
+    await storage.setString(kCurrencyValueKey, value.name);
   }
 
   @override

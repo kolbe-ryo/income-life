@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:income_life/enum/currency_value.dart';
 
 // Package imports:
 import 'package:pie_chart/pie_chart.dart';
@@ -20,6 +21,7 @@ class IncomePieChart extends StatelessWidget {
   Widget build(BuildContext context) {
     final portfoio = context.select((StockDataState value) => value.portfolio);
     final colorTheme = context.select((TopPageState value) => value.colorTheme);
+    final currencyValue = context.select((TopPageState value) => value.currencyValue);
     return AspectRatio(
       aspectRatio: 1,
       child: Visibility(
@@ -43,7 +45,10 @@ class IncomePieChart extends StatelessWidget {
               showChartValueBackground: false,
             ),
             colorList: colorTheme.colors.take(portfoio.length).toList(),
-            dataMap: _getPortfolioDataMap(portfoio),
+            dataMap: _getPortfolioDataMap(
+              models: portfoio,
+              currencyValue: currencyValue,
+            ),
             initialAngleInDegree: 270,
             legendOptions: const LegendOptions(
               legendPosition: LegendPosition.bottom,
@@ -58,14 +63,25 @@ class IncomePieChart extends StatelessWidget {
     );
   }
 
-  Map<String, double> _getPortfolioDataMap(List<GsheetsModel> models) {
+  Map<String, double> _getPortfolioDataMap({
+    required List<GsheetsModel> models,
+    required CurrencyValue currencyValue,
+  }) {
     final dataMap = <String, double>{};
     for (final cycle in List.generate(models.length, (index) => index)) {
       if (cycle < 5) {
-        dataMap[models[cycle].ticker] = models[cycle].income;
+        if (currencyValue == CurrencyValue.usd) {
+          dataMap[models[cycle].ticker] = models[cycle].incomeUsd;
+        } else {
+          dataMap[models[cycle].ticker] = models[cycle].incomeJpy;
+        }
       } else {
         // sum over 6 stock
-        dataMap['Others'] = (dataMap['Others'] ?? 0) + models[cycle].income;
+        if (currencyValue == CurrencyValue.usd) {
+          dataMap['Others'] = (dataMap['Others'] ?? 0) + models[cycle].incomeUsd;
+        } else {
+          dataMap['Others'] = (dataMap['Others'] ?? 0) + models[cycle].incomeJpy;
+        }
       }
     }
     return dataMap;

@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:income_life/enum/currency_value.dart';
+import 'package:income_life/generated/l10n.dart';
+import 'package:income_life/ui/common/notification_toast.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -61,6 +64,13 @@ class _HeatMapElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<StockDataManager>();
+    final income = context.select((TopPageState value) {
+      if (value.currencyValue == CurrencyValue.usd) {
+        return r'$ ' + '${formatter.format(heatMapModel.model.incomeUsd.floor())}';
+      } else {
+        return '¥ ${formatter.format(heatMapModel.model.incomeJpy.floor())}';
+      }
+    });
     return Card(
       color: heatMapModel.color,
       margin: EdgeInsets.zero,
@@ -81,7 +91,7 @@ class _HeatMapElement extends StatelessWidget {
         },
         child: Center(
           child: Text(
-            '${heatMapModel.model.ticker} \n¥ ${formatter.format(heatMapModel.model.income.floor())}',
+            '${heatMapModel.model.ticker} \n$income',
             style: const TextStyle(
               overflow: TextOverflow.ellipsis,
               fontSize: kFontSize,
@@ -101,6 +111,7 @@ class _HeatMapElement extends StatelessWidget {
   }) async {
     void inputMethod(int stocks) => viewModel.inputNumverOfStock(stocks);
     final formKey = GlobalKey<FormState>();
+    final intlMessage = S.of(context);
     final isAdded = await baseShowDialog(
       context: context,
       title: 'Add Your Portfolio?',
@@ -115,6 +126,10 @@ class _HeatMapElement extends StatelessWidget {
     );
     if (isAdded ?? false) {
       viewModel.addPortfolio(model);
+      await NotificationToast.showToast(
+        context: context,
+        message: intlMessage.completeAddition,
+      );
     }
   }
 
@@ -123,6 +138,7 @@ class _HeatMapElement extends StatelessWidget {
     required GsheetsModel model,
     required StockDataManager viewModel,
   }) async {
+    final intlMessage = S.of(context);
     final isDelete = await baseShowDialog(
       context: context,
       title: 'Do you want to delete?',
@@ -134,6 +150,10 @@ class _HeatMapElement extends StatelessWidget {
     );
     if (isDelete ?? false) {
       viewModel.deletePortfolio(model);
+      await NotificationToast.showToast(
+        context: context,
+        message: intlMessage.completeDelete,
+      );
     }
   }
 }
