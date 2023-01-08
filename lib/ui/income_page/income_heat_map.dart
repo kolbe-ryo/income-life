@@ -29,10 +29,10 @@ class IncomeHeatMap extends StatelessWidget {
     final colorTheme = context.select((TopPageState value) => value.colorTheme);
     return Visibility(
       visible: portfoio.isNotEmpty,
-      replacement: const AspectRatio(
+      replacement: AspectRatio(
         aspectRatio: 1,
         child: Center(
-          child: Text('No Data'),
+          child: Text(S.of(context).noData),
         ),
       ),
       child: StaggeredGrid.count(
@@ -114,7 +114,7 @@ class _HeatMapElement extends StatelessWidget {
     final intlMessage = S.of(context);
     final isAdded = await baseShowDialog(
       context: context,
-      title: 'Add Your Portfolio?',
+      title: S.of(context).checkAdding,
       formKey: formKey,
       widget: MultiProvider(
         providers: [
@@ -141,11 +141,11 @@ class _HeatMapElement extends StatelessWidget {
     final intlMessage = S.of(context);
     final isDelete = await baseShowDialog(
       context: context,
-      title: 'Do you want to delete?',
+      title: S.of(context).checkDelete,
       isSimpleDialog: true,
-      widget: const Padding(
-        padding: EdgeInsets.only(top: kPadding / 2),
-        child: Text('This operation cannot be undon.'),
+      widget: Padding(
+        padding: const EdgeInsets.only(top: kPadding / 2),
+        child: Text(S.of(context).checkCannotUndone),
       ),
     );
     if (isDelete ?? false) {

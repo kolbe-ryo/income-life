@@ -10,7 +10,6 @@
 // ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
 // ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
 
-// Package imports:
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 
@@ -38,16 +37,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "complete": MessageLookupByLibrary.simpleMessage("完了"),
         "completeAddition": MessageLookupByLibrary.simpleMessage("追加しました"),
         "completeDelete": MessageLookupByLibrary.simpleMessage("削除しました"),
+        "crach": MessageLookupByLibrary.simpleMessage("下落"),
+        "currency": MessageLookupByLibrary.simpleMessage("通貨"),
         "descriptionForRequest": MessageLookupByLibrary.simpleMessage("追加したいティッカーを入力し、送信ボタンを押して下さい\n※追加できないティッカーがあります"),
         "devidend": MessageLookupByLibrary.simpleMessage("配当"),
         "example": MessageLookupByLibrary.simpleMessage("例）10"),
+        "heatMap": MessageLookupByLibrary.simpleMessage("ヒートマップ"),
         "income": MessageLookupByLibrary.simpleMessage("収益"),
         "incomePerYear": MessageLookupByLibrary.simpleMessage("年間収益"),
         "jpy": MessageLookupByLibrary.simpleMessage("¥"),
         "licenses": MessageLookupByLibrary.simpleMessage("ライセンス"),
         "noData": MessageLookupByLibrary.simpleMessage("データなし"),
+        "normal": MessageLookupByLibrary.simpleMessage("ノーマル"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "others": MessageLookupByLibrary.simpleMessage("その他"),
+        "pieChart": MessageLookupByLibrary.simpleMessage("円グラフ"),
         "price": MessageLookupByLibrary.simpleMessage("価格"),
         "request": MessageLookupByLibrary.simpleMessage("リクエスト"),
         "requestPlaceholder": MessageLookupByLibrary.simpleMessage("ex) XOM"),
@@ -57,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("検索"),
         "send": MessageLookupByLibrary.simpleMessage("送信"),
         "settings": MessageLookupByLibrary.simpleMessage("設定"),
+        "souring": MessageLookupByLibrary.simpleMessage("上昇"),
         "stocks": MessageLookupByLibrary.simpleMessage("株"),
         "tickerName": MessageLookupByLibrary.simpleMessage("ティッカー："),
         "totalInvestment": MessageLookupByLibrary.simpleMessage("投資総額"),

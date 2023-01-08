@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:income_life/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -34,12 +35,12 @@ class SettingsPage extends StatelessWidget {
                 FontAwesomeIcons.appStore,
                 color: colorTheme.colors[0],
               ),
-              title: 'About This App',
+              title: S.of(context).aboutThisApp,
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => Navigator.push(
                 context,
                 BaseWebView.route(
-                  title: 'About This App',
+                  title: S.of(context).aboutThisApp,
                   url: aboutAppUrl,
                 ),
               ),
@@ -49,7 +50,7 @@ class SettingsPage extends StatelessWidget {
                 FontAwesomeIcons.palette,
                 color: colorTheme.colors[1],
               ),
-              title: 'Theme Settings',
+              title: S.of(context).themeSetting,
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => Navigator.push(
                 context,
@@ -61,7 +62,7 @@ class SettingsPage extends StatelessWidget {
                 FontAwesomeIcons.certificate,
                 color: colorTheme.colors[2],
               ),
-              title: 'Licenses',
+              title: S.of(context).licenses,
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => showLicensePage(context: context),
             ),
@@ -70,7 +71,7 @@ class SettingsPage extends StatelessWidget {
                 FontAwesomeIcons.envelope,
                 color: colorTheme.colors[3],
               ),
-              title: 'Request to add stock',
+              title: S.of(context).requestToAddStock,
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => Navigator.push(
                 context,
@@ -82,7 +83,7 @@ class SettingsPage extends StatelessWidget {
                 FontAwesomeIcons.eraser,
                 color: colorTheme.colors[4],
               ),
-              title: 'Reset',
+              title: S.of(context).reset,
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => _reset(context),
             ),
@@ -91,12 +92,12 @@ class SettingsPage extends StatelessWidget {
                 FontAwesomeIcons.yahoo,
                 color: colorTheme.colors[5],
               ),
-              title: 'Yahoo Finance',
+              title: S.of(context).yahooFinance,
               trailingIcon: const FaIcon(FontAwesomeIcons.arrowRight),
               onTap: () => Navigator.push(
                 context,
                 BaseWebView.route(
-                  title: 'Yahoo Finance',
+                  title: S.of(context).yahooFinance,
                   url: yahooFinanceUrl,
                   needAppBar: false,
                 ),
@@ -113,11 +114,11 @@ class SettingsPage extends StatelessWidget {
     final bnbController = context.read<TopPageViewModel>();
     final isDelete = await baseShowDialog(
       context: context,
-      title: 'Reset All Your Portfolio?',
+      title: S.of(context).checkResetAll,
       isSimpleDialog: true,
-      widget: const Padding(
-        padding: EdgeInsets.only(top: kPadding / 2),
-        child: Text('This operation cannot be undone.'),
+      widget: Padding(
+        padding: const EdgeInsets.only(top: kPadding / 2),
+        child: Text(S.of(context).checkCannotUndone),
       ),
     );
     if (isDelete ?? false) {

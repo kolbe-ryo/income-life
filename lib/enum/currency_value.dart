@@ -13,7 +13,7 @@ enum CurrencyValue {
 }
 
 extension CurrencyValueExt on CurrencyValue {
-  String get symbol {
+  String get value {
     final _context = GetIt.I<GlobalKey<NavigatorState>>().currentContext!;
     switch (this) {
       case CurrencyValue.usd:

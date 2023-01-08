@@ -40,6 +40,12 @@
     "settings": "設定",
     "jpy":"¥",
     "usd":"$",
+    "currency":"通貨",
     "requestPlaceholder":"ex) XOM",
-    "completeAddition":"追加しました"
+    "completeAddition":"追加しました",
+    "normal":"ノーマル",
+    "souring":"上昇",
+    "crach":"下落",
+    "heatMap":"ヒートマップ",
+    "pieChart":"円グラフ"
 }

@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:income_life/generated/l10n.dart';
 
 // Package imports:
 import 'package:pie_chart/pie_chart.dart';
@@ -26,8 +27,8 @@ class IncomePieChart extends StatelessWidget {
       aspectRatio: 1,
       child: Visibility(
         visible: portfoio.isNotEmpty,
-        replacement: const Center(
-          child: Text('No Data'),
+        replacement: Center(
+          child: Text(S.of(context).noData),
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: kPadding),

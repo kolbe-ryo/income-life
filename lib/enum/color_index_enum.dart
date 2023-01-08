@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:income_life/generated/l10n.dart';
 
 // Project imports:
 import '../ui/common/app_colors.dart';
@@ -40,6 +42,18 @@ extension ColorIndexEnumExt on ColorIndexEnum {
           AppColors.redAccent.shade100,
           AppColors.blueGrey,
         ];
+    }
+  }
+
+  String get value {
+    final _context = GetIt.I<GlobalKey<NavigatorState>>().currentContext!;
+    switch (this) {
+      case ColorIndexEnum.normal:
+        return S.of(_context).normal;
+      case ColorIndexEnum.souring:
+        return S.of(_context).souring;
+      case ColorIndexEnum.crash:
+        return S.of(_context).crach;
     }
   }
 }

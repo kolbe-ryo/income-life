@@ -40,6 +40,12 @@
     "settings": "Settings",
     "jpy":"¥",
     "usd":"$",
+    "currency":"Currency",
     "requestPlaceholder":"ex) XOM",
-    "completeAddition":"Complete to add"
+    "completeAddition":"Complete to add",
+    "normal":"Normal",
+    "souring":"Souring",
+    "crach":"Crach",
+    "heatMap":"Heat Map",
+    "pieChart":"Pie Chart"
 }

@@ -1,4 +1,8 @@
 // Project imports:
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:income_life/generated/l10n.dart';
+
 import '../../../data/model/gsheets_model.dart';
 import '../../../data/model/heat_map_model.dart';
 import '../../../enum/color_index_enum.dart';
@@ -12,6 +16,8 @@ List<HeatMapModel> heatMapStruct({
     double pairAmount,
   ) =>
       (100 * selfAmount / pairAmount).floor();
+
+  final _context = GetIt.I<GlobalKey<NavigatorState>>().currentContext!;
 
   switch (models.length) {
     case 1:
@@ -204,7 +210,7 @@ List<HeatMapModel> heatMapStruct({
             mainAxisSize: (size3 * size7 / 100).floor(),
             crossAxisSize: (size5 * 0.3).floor(),
             color: colorIndex.colors[5],
-            model: const GsheetsModel(ticker: 'Others'),
+            model: GsheetsModel(ticker: S.of(_context).others),
           ),
         ];
       }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:income_life/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -30,7 +31,7 @@ class ChartThemeSettingPage extends StatelessWidget {
       builder: (context, _) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Theme Setting'),
+            title: Text(S.of(context).themeSetting),
             centerTitle: true,
             elevation: 0,
           ),
@@ -38,17 +39,17 @@ class ChartThemeSettingPage extends StatelessWidget {
             padding: const EdgeInsets.all(kPadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                _HeadLineText('Color Theme'),
-                _RadioButtonWithText(isColorTheme: true),
-                Divider(),
-                SizedBox(height: kPadding),
-                _HeadLineText('Chart Theme'),
-                _RadioButtonWithText(isChartTheme: true),
-                Divider(),
-                _HeadLineText('Currency'),
-                _RadioButtonWithText(isCurrency: true),
-                Divider(),
+              children: [
+                _HeadLineText(S.of(context).colorTheme),
+                const _RadioButtonWithText(isColorTheme: true),
+                const Divider(),
+                const SizedBox(height: kPadding),
+                _HeadLineText(S.of(context).chartTheme),
+                const _RadioButtonWithText(isChartTheme: true),
+                const Divider(),
+                _HeadLineText(S.of(context).currency),
+                const _RadioButtonWithText(isCurrency: true),
+                const Divider(),
               ],
             ),
           ),
@@ -106,14 +107,17 @@ class _RadioButtonWithText extends StatelessWidget {
     return Row(
       children: valueMap!.values.first.map(
         (e) {
-          Future<void> onTap() async {
-            if (isColorTheme) {
-              viewModel.switchColorTheme(e as ColorIndexEnum);
-            } else if (isChartTheme) {
-              viewModel.switchChartTheme(e as ChartThemeEnum);
-            } else if (isCurrency) {
-              viewModel.switchCurrencyValue(e as CurrencyValue);
-            }
+          var text = '';
+          Future<void> Function()? onTap;
+          if (isColorTheme) {
+            onTap = () async => viewModel.switchColorTheme(e as ColorIndexEnum);
+            text = (e as ColorIndexEnum).value;
+          } else if (isChartTheme) {
+            onTap = () async => viewModel.switchChartTheme(e as ChartThemeEnum);
+            text = (e as ChartThemeEnum).value;
+          } else if (isCurrency) {
+            onTap = () async => viewModel.switchCurrencyValue(e as CurrencyValue);
+            text = (e as CurrencyValue).value;
           }
 
           return Row(
@@ -122,11 +126,14 @@ class _RadioButtonWithText extends StatelessWidget {
                 value: valueMap.keys.first,
                 activeColor: AppColors.tealAccent,
                 groupValue: e,
-                onChanged: (_) => onTap(),
+                onChanged: (_) => onTap!(),
               ),
               GestureDetector(
                 onTap: onTap,
-                child: Text(e.name),
+                child: Text(
+                  text,
+                  style: const TextStyle(fontSize: kFontSize),
+                ),
               ),
             ],
           );

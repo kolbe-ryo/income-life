@@ -1,12 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Package imports:
 import 'package:intl/intl.dart';
-
-// Project imports:
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -466,6 +460,16 @@ class S {
     );
   }
 
+  /// `Currency`
+  String get currency {
+    return Intl.message(
+      'Currency',
+      name: 'currency',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `ex) XOM`
   String get requestPlaceholder {
     return Intl.message(
@@ -481,6 +485,56 @@ class S {
     return Intl.message(
       'Complete to add',
       name: 'completeAddition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Normal`
+  String get normal {
+    return Intl.message(
+      'Normal',
+      name: 'normal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Souring`
+  String get souring {
+    return Intl.message(
+      'Souring',
+      name: 'souring',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Crach`
+  String get crach {
+    return Intl.message(
+      'Crach',
+      name: 'crach',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Heat Map`
+  String get heatMap {
+    return Intl.message(
+      'Heat Map',
+      name: 'heatMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pie Chart`
+  String get pieChart {
+    return Intl.message(
+      'Pie Chart',
+      name: 'pieChart',
       desc: '',
       args: [],
     );

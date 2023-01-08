@@ -10,7 +10,6 @@
 // ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
 // ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
 
-// Package imports:
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 
@@ -38,18 +37,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "complete": MessageLookupByLibrary.simpleMessage("Complete"),
         "completeAddition": MessageLookupByLibrary.simpleMessage("Complete to add"),
         "completeDelete": MessageLookupByLibrary.simpleMessage("Complete to delete"),
+        "crach": MessageLookupByLibrary.simpleMessage("Crach"),
+        "currency": MessageLookupByLibrary.simpleMessage("Currency"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "descriptionForRequest": MessageLookupByLibrary.simpleMessage(
             "Please input the ticker you want to add and push send button.\nSome tickers cannot be added"),
         "devidend": MessageLookupByLibrary.simpleMessage("Devidend"),
         "example": MessageLookupByLibrary.simpleMessage("Ex）10"),
+        "heatMap": MessageLookupByLibrary.simpleMessage("Heat Map"),
         "income": MessageLookupByLibrary.simpleMessage("Income"),
         "incomePerYear": MessageLookupByLibrary.simpleMessage("Income per year"),
         "jpy": MessageLookupByLibrary.simpleMessage("¥"),
         "licenses": MessageLookupByLibrary.simpleMessage("Licenses"),
         "noData": MessageLookupByLibrary.simpleMessage("No Data"),
+        "normal": MessageLookupByLibrary.simpleMessage("Normal"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
+        "pieChart": MessageLookupByLibrary.simpleMessage("Pie Chart"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "request": MessageLookupByLibrary.simpleMessage("Request"),
         "requestPlaceholder": MessageLookupByLibrary.simpleMessage("ex) XOM"),
@@ -59,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "souring": MessageLookupByLibrary.simpleMessage("Souring"),
         "stocks": MessageLookupByLibrary.simpleMessage("Stocks"),
         "themeSetting": MessageLookupByLibrary.simpleMessage("Theme Setting"),
         "tickerName": MessageLookupByLibrary.simpleMessage("Ticker:"),
