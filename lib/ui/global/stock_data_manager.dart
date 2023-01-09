@@ -26,8 +26,7 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   @override
   Future<void> initState() async {
     super.initState();
-    await _fetchGsheets();
-    await _fetchFromLocal();
+    await reload();
   }
 
   @override
@@ -35,11 +34,17 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
     super.dispose();
   }
 
+  Future<void> reload() async {
+    await _fetchGsheets();
+    await _fetchFromLocal();
+  }
+
   // fetch data from Gsheets and Local Repository
   Future<void> _fetchGsheets() async {
     try {
       state = state.copyWith(
         gsheets: await GetIt.I<GsheetsInterface>().fetch(),
+        isCompleteFetch: true,
       );
       logger.info(state);
     } on Exception catch (error) {

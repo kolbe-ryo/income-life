@@ -11,6 +11,7 @@ class StockDataState with _$StockDataState {
   const factory StockDataState({
     @Default(<GsheetsModel>[]) List<GsheetsModel> gsheets,
     @Default(0) int currentAddingStocks,
+    @Default(false) bool isCompleteFetch,
   }) = _StockDataState;
 
   const StockDataState._();

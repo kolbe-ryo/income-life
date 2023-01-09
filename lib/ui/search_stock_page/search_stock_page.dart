@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:income_life/ui/common/notification_toast.dart';
+import 'package:income_life/util/logger.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -35,14 +37,39 @@ class SearchStockPage extends StatelessWidget {
                 child: CustomTextField(),
               ),
             ),
-            body: GestureDetector(
-              onTap: () {
-                final currentScope = FocusScope.of(context);
-                if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
-                  FocusManager.instance.primaryFocus!.unfocus();
-                }
-              },
-              child: const _ListView(),
+            body: Visibility(
+              visible: context.select((StockDataState value) => value.isCompleteFetch),
+              replacement: Center(
+                child: ElevatedButton(
+                  onPressed: () async {
+                    // TODO: 更新作業
+                    NotificationToast.showToast(context: context, message: 'test');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.teal,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(kBorder),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      FaIcon(FontAwesomeIcons.arrowsRotate),
+                      SizedBox(width: kPadding),
+                      Text('Refresh'),
+                    ],
+                  ),
+                ),
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  final currentScope = FocusScope.of(context);
+                  if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+                    FocusManager.instance.primaryFocus!.unfocus();
+                  }
+                },
+                child: const _ListView(),
+              ),
             ),
             floatingActionButton: const _FloatingActionButton(),
           ),
