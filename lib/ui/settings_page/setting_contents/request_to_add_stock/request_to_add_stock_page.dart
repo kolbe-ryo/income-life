@@ -71,7 +71,7 @@ class RequestToAddStockPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
-                            final isComplete = await context.read<RequestToAddStockPageViewModel>().request('test');
+                            final isComplete = await context.read<RequestToAddStockPageViewModel>().request();
                             final message = isComplete ? 'Complete' : 'Failed to send. Try again later';
                             NotificationToast.showToast(context: context, message: message);
                           }

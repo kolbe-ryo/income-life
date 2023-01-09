@@ -1,3 +1,9 @@
+// Dart imports:
+import 'dart:io';
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Package imports:
 import 'package:get_it/get_it.dart';
 import 'package:state_notifier/state_notifier.dart';
@@ -8,6 +14,8 @@ import '../../data/interface/local_repository_interface.dart';
 import '../../data/model/gsheets_model.dart';
 import '../../enum/added_condition_enum.dart';
 import '../../util/constants.dart';
+import '../../util/logger.dart';
+import '../common/notification_toast.dart';
 import 'stock_data_state.dart';
 
 class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
@@ -16,10 +24,10 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   StockDataState get info => state;
 
   @override
-  void initState() {
+  Future<void> initState() async {
     super.initState();
-    _fetchGsheets();
-    _fetchFromLocal();
+    await _fetchGsheets();
+    await _fetchFromLocal();
   }
 
   @override
@@ -29,11 +37,26 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
 
   // fetch data from Gsheets and Local Repository
   Future<void> _fetchGsheets() async {
-    // state = state.copyWith(
-    //   gsheets: await GetIt.I<GsheetsInterface>().fetch(),
-    // );
-    // logger.info(state);
-    state = state.copyWith(gsheets: testModels);
+    try {
+      state = state.copyWith(
+        gsheets: await GetIt.I<GsheetsInterface>().fetch(),
+      );
+      logger.info(state);
+    } on Exception catch (error) {
+      final context = GetIt.I<GlobalKey<NavigatorState>>().currentContext!;
+      if (error is SocketException) {
+        await NotificationToast.showToast(
+          context: context,
+          message: 'インターネットに接続されていません\n銘柄を取得できませんでした',
+        );
+      } else {
+        await NotificationToast.showToast(
+          context: context,
+          message: 'データ取得中にエラーが発生しました',
+        );
+      }
+    }
+    // state = state.copyWith(gsheets: testModels);
   }
 
   // Switch stock isAddedPortfolio and Save local storage
@@ -84,6 +107,10 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   // Save to local storage
   Future<void> _fetchFromLocal() async {
     final localModels = await GetIt.I<LocalRepositoryInterface>().getLocalModel();
+    if (state.gsheets.isEmpty) {
+      state = state.copyWith(gsheets: localModels);
+      return;
+    }
 
     // If matching local portfolio ticker, add it, else add gsheets model
     final models = <GsheetsModel>[];
@@ -92,7 +119,7 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
       // Add already been portfolio ones
       for (final localModel in localModels) {
         if (model.ticker == localModel.ticker) {
-          models.last = localModel;
+          models.last = localModel; // replace fetch model to local portfolio
           break;
         }
       }

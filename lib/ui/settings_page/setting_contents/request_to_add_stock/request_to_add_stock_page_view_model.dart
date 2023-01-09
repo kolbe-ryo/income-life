@@ -2,9 +2,12 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:get_it/get_it.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
+import '../../../../data/interface/gsheets_interface.dart';
+import '../../../../util/logger.dart';
 import 'request_to_add_stock_page_state.dart';
 
 class RequestToAddStockPageViewModel extends StateNotifier<RequestToAddStockPageState> with LocatorMixin {
@@ -26,10 +29,16 @@ class RequestToAddStockPageViewModel extends StateNotifier<RequestToAddStockPage
     super.dispose();
   }
 
-  Future<bool> request(String ticker) async {
-    _controller.clear();
-    // await GetIt.I<GsheetsInterface>().writeRequestStock(ticker);
-    return true;
+  Future<bool> request() async {
+    try {
+      await GetIt.I<GsheetsInterface>().writeRequestStock(state.requestTicker);
+      return true;
+    } on Exception catch (e) {
+      logger.info(e);
+      return false;
+    } finally {
+      _controller.clear();
+    }
   }
 
   void inputTicker(String value) {

@@ -42,9 +42,11 @@ class GsheetsDao implements GsheetsInterface {
             ),
           )
           .toList();
-    } on Exception catch (error) {
-      logger.info(error);
-      throw UnimplementedError();
+    } on Exception catch (error, stackTrace) {
+      logger
+        ..info(error)
+        ..info(stackTrace);
+      rethrow;
     }
   }
 
@@ -58,7 +60,7 @@ class GsheetsDao implements GsheetsInterface {
       return double.parse(allData.first.first);
     } on Exception catch (error) {
       logger.info(error);
-      throw UnimplementedError();
+      rethrow;
     }
   }
 
@@ -71,7 +73,7 @@ class GsheetsDao implements GsheetsInterface {
       await sheet.values.insertValue(ticker, column: 1, row: lastRow + 1);
     } on Exception catch (error) {
       logger.info(error);
-      throw UnimplementedError();
+      rethrow;
     }
   }
 }
