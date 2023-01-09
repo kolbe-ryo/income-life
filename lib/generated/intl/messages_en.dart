@@ -10,7 +10,6 @@
 // ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
 // ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
 
-// Package imports:
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 
@@ -44,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionForRequest": MessageLookupByLibrary.simpleMessage(
             "Please input the ticker you want to add and push send button.\nSome tickers cannot be added"),
         "devidend": MessageLookupByLibrary.simpleMessage("Devidend"),
+        "errorHasOccurred": MessageLookupByLibrary.simpleMessage("Error has occurred"),
         "example": MessageLookupByLibrary.simpleMessage("Ex）10"),
         "heatMap": MessageLookupByLibrary.simpleMessage("Heat Map"),
         "income": MessageLookupByLibrary.simpleMessage("Income"),
@@ -51,11 +51,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "jpy": MessageLookupByLibrary.simpleMessage("¥"),
         "licenses": MessageLookupByLibrary.simpleMessage("Licenses"),
         "noData": MessageLookupByLibrary.simpleMessage("No Data"),
+        "noInternetConnection": MessageLookupByLibrary.simpleMessage("No Internet Connection"),
         "normal": MessageLookupByLibrary.simpleMessage("Normal"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "others": MessageLookupByLibrary.simpleMessage("Others"),
         "pieChart": MessageLookupByLibrary.simpleMessage("Pie Chart"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
+        "refreshing": MessageLookupByLibrary.simpleMessage("Now Refreshing"),
         "request": MessageLookupByLibrary.simpleMessage("Request"),
         "requestPlaceholder": MessageLookupByLibrary.simpleMessage("ex) XOM"),
         "requestTicker": MessageLookupByLibrary.simpleMessage("Request Ticker"),
@@ -63,9 +66,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
+        "sending": MessageLookupByLibrary.simpleMessage("Sengind..."),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "souring": MessageLookupByLibrary.simpleMessage("Souring"),
         "stocks": MessageLookupByLibrary.simpleMessage("Stocks"),
+        "successRefresh": MessageLookupByLibrary.simpleMessage("Success Refreshing"),
         "themeSetting": MessageLookupByLibrary.simpleMessage("Theme Setting"),
         "tickerName": MessageLookupByLibrary.simpleMessage("Ticker:"),
         "totalInvestment": MessageLookupByLibrary.simpleMessage("Total Investment"),

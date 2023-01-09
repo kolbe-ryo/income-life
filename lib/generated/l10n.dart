@@ -1,12 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Package imports:
 import 'package:intl/intl.dart';
-
-// Project imports:
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -541,6 +535,66 @@ class S {
     return Intl.message(
       'Pie Chart',
       name: 'pieChart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Now Refreshing`
+  String get refreshing {
+    return Intl.message(
+      'Now Refreshing',
+      name: 'refreshing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refresh`
+  String get refresh {
+    return Intl.message(
+      'Refresh',
+      name: 'refresh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success Refreshing`
+  String get successRefresh {
+    return Intl.message(
+      'Success Refreshing',
+      name: 'successRefresh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Internet Connection`
+  String get noInternetConnection {
+    return Intl.message(
+      'No Internet Connection',
+      name: 'noInternetConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error has occurred`
+  String get errorHasOccurred {
+    return Intl.message(
+      'Error has occurred',
+      name: 'errorHasOccurred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sengind...`
+  String get sending {
+    return Intl.message(
+      'Sengind...',
+      name: 'sending',
       desc: '',
       args: [],
     );

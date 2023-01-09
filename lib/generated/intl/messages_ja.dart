@@ -10,7 +10,6 @@
 // ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
 // ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
 
-// Package imports:
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 
@@ -42,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "currency": MessageLookupByLibrary.simpleMessage("通貨"),
         "descriptionForRequest": MessageLookupByLibrary.simpleMessage("追加したいティッカーを入力し、送信ボタンを押して下さい\n※追加できないティッカーがあります"),
         "devidend": MessageLookupByLibrary.simpleMessage("配当"),
+        "errorHasOccurred": MessageLookupByLibrary.simpleMessage("データ取得中にエラーが発生しました"),
         "example": MessageLookupByLibrary.simpleMessage("例）10"),
         "heatMap": MessageLookupByLibrary.simpleMessage("ヒートマップ"),
         "income": MessageLookupByLibrary.simpleMessage("収益"),
@@ -49,11 +49,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "jpy": MessageLookupByLibrary.simpleMessage("¥"),
         "licenses": MessageLookupByLibrary.simpleMessage("ライセンス"),
         "noData": MessageLookupByLibrary.simpleMessage("データなし"),
+        "noInternetConnection": MessageLookupByLibrary.simpleMessage("インターネットに接続できません"),
         "normal": MessageLookupByLibrary.simpleMessage("ノーマル"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "others": MessageLookupByLibrary.simpleMessage("その他"),
         "pieChart": MessageLookupByLibrary.simpleMessage("円グラフ"),
         "price": MessageLookupByLibrary.simpleMessage("価格"),
+        "refresh": MessageLookupByLibrary.simpleMessage("更新する"),
+        "refreshing": MessageLookupByLibrary.simpleMessage("更新しています"),
         "request": MessageLookupByLibrary.simpleMessage("リクエスト"),
         "requestPlaceholder": MessageLookupByLibrary.simpleMessage("ex) XOM"),
         "requestTicker": MessageLookupByLibrary.simpleMessage("銘柄のリクエスト"),
@@ -61,9 +64,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "reset": MessageLookupByLibrary.simpleMessage("リセット"),
         "search": MessageLookupByLibrary.simpleMessage("検索"),
         "send": MessageLookupByLibrary.simpleMessage("送信"),
+        "sending": MessageLookupByLibrary.simpleMessage("送信中..."),
         "settings": MessageLookupByLibrary.simpleMessage("設定"),
         "souring": MessageLookupByLibrary.simpleMessage("上昇"),
         "stocks": MessageLookupByLibrary.simpleMessage("株"),
+        "successRefresh": MessageLookupByLibrary.simpleMessage("更新が成功しました"),
         "tickerName": MessageLookupByLibrary.simpleMessage("ティッカー："),
         "totalInvestment": MessageLookupByLibrary.simpleMessage("投資総額"),
         "totalStocks": MessageLookupByLibrary.simpleMessage("合計"),

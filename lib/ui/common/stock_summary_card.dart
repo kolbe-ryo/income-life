@@ -36,6 +36,7 @@ class StockSummaryCard extends StatelessWidget {
                 // Change card inner layout whether stocks information or not
                 if (kind != InvestInfoEnum.stocks) kind.icon,
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: crossAlignment,
                   children: [
                     Text(

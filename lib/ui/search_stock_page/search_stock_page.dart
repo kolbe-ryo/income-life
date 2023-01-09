@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:income_life/generated/l10n.dart';
 import 'package:income_life/ui/common/notification_toast.dart';
-import 'package:income_life/util/logger.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -24,6 +24,8 @@ class SearchStockPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final stockDataManager = context.read<StockDataManager>();
+    final messageIntl = S.of(context);
     return StateNotifierProvider<SearchStockPageViewModel, SearchStockPageState>(
       create: (context) => SearchStockPageViewModel(),
       builder: (context, _) {
@@ -38,12 +40,23 @@ class SearchStockPage extends StatelessWidget {
               ),
             ),
             body: Visibility(
-              visible: context.select((StockDataState value) => value.isCompleteFetch),
+              visible: context.select(
+                (StockDataState value) => value.isCompleteFetch,
+              ),
               replacement: Center(
                 child: ElevatedButton(
                   onPressed: () async {
-                    // TODO: 更新作業
-                    NotificationToast.showToast(context: context, message: 'test');
+                    await NotificationToast.showToast(
+                      context: context,
+                      message: messageIntl.refreshing,
+                    );
+                    final isSuccess = await stockDataManager.reload();
+                    if (isSuccess ?? false) {
+                      await NotificationToast.showToast(
+                        context: context,
+                        message: messageIntl.successRefresh,
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.teal,
@@ -53,10 +66,16 @@ class SearchStockPage extends StatelessWidget {
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      FaIcon(FontAwesomeIcons.arrowsRotate),
-                      SizedBox(width: kPadding),
-                      Text('Refresh'),
+                    children: [
+                      const FaIcon(FontAwesomeIcons.arrowsRotate),
+                      const SizedBox(width: kPadding),
+                      Text(
+                        S.of(context).refresh,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -87,11 +106,24 @@ class _ListView extends StatelessWidget {
     // Change display stock by FAB condition
     final viewModel1 = context.read<StockDataManager>();
     final viewModel2 = context.read<SearchStockPageViewModel>();
-    final condition = context.select((SearchStockPageState value) => value.condition);
-    final isSearching = context.select((SearchStockPageState value) => value.isSearching);
+    final condition = context.select(
+      (SearchStockPageState value) => value.condition,
+    );
+    final isSearching = context.select(
+      (SearchStockPageState value) => value.isSearching,
+    );
     final searchedModels = !isSearching
-        ? context.select((StockDataState value) => viewModel1.selectGsheets(state: value, condition: condition))
-        : context.select((SearchStockPageState value) => viewModel2.selectGsheets(state: value));
+        ? context.select(
+            (StockDataState value) => viewModel1.selectGsheets(
+              state: value,
+              condition: condition,
+            ),
+          )
+        : context.select(
+            (SearchStockPageState value) => viewModel2.selectGsheets(
+              state: value,
+            ),
+          );
     return Padding(
       padding: const EdgeInsets.fromLTRB(kPadding, kPadding, kPadding, 0),
       child: ListView(
@@ -111,10 +143,14 @@ class _FloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final searchCondition = context.select((SearchStockPageState value) => value.condition);
+    final searchCondition = context.select(
+      (SearchStockPageState value) => value.condition,
+    );
     return FloatingActionButton(
       backgroundColor: searchCondition.color,
-      onPressed: () => context.read<SearchStockPageViewModel>().switchCondition(),
+      onPressed: () {
+        return context.read<SearchStockPageViewModel>().switchCondition();
+      },
       child: const FaIcon(
         FontAwesomeIcons.toggleOn,
         color: AppColors.white,

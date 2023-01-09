@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:get_it/get_it.dart';
+import 'package:income_life/generated/l10n.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 // Project imports:
@@ -34,9 +35,10 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
     super.dispose();
   }
 
-  Future<void> reload() async {
+  Future<bool?> reload() async {
     await _fetchGsheets();
     await _fetchFromLocal();
+    return state.isCompleteFetch;
   }
 
   // fetch data from Gsheets and Local Repository
@@ -52,12 +54,12 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
       if (error is SocketException) {
         await NotificationToast.showToast(
           context: context,
-          message: 'インターネットに接続されていません\n銘柄を取得できませんでした',
+          message: S.of(context).noInternetConnection,
         );
       } else {
         await NotificationToast.showToast(
           context: context,
-          message: 'データ取得中にエラーが発生しました',
+          message: S.of(context).errorHasOccurred,
         );
       }
     }

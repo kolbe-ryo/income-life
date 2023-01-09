@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:income_life/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -31,7 +32,7 @@ class RequestToAddStockPage extends StatelessWidget {
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Request'),
+        title: Text(S.of(context).request),
         centerTitle: true,
         elevation: 0,
       ),
@@ -42,20 +43,20 @@ class RequestToAddStockPage extends StatelessWidget {
             padding: const EdgeInsets.all(kPadding),
             child: Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   width: double.infinity,
                   child: Text(
-                    'Request Ticker',
-                    style: TextStyle(
+                    S.of(context).requestTicker,
+                    style: const TextStyle(
                       fontSize: 20,
                     ),
                     textAlign: TextAlign.start,
                   ),
                 ),
                 const SizedBox(height: kPadding),
-                const Text(
-                  'Please input the ticker you want to add and push send button. \n※ Some tickers cannot be added.',
-                  style: TextStyle(color: AppColors.lightGrey60),
+                Text(
+                  S.of(context).descriptionForRequest,
+                  style: const TextStyle(color: AppColors.lightGrey60),
                   textAlign: TextAlign.start,
                 ),
                 const SizedBox(height: kPadding * 2),
@@ -66,14 +67,22 @@ class RequestToAddStockPage extends StatelessWidget {
                 const SizedBox(height: kPadding / 2),
                 Builder(
                   builder: (context) {
+                    final viewModel = context.read<RequestToAddStockPageViewModel>();
+                    final messageIntl = S.of(context);
                     return SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
-                            final isComplete = await context.read<RequestToAddStockPageViewModel>().request();
-                            final message = isComplete ? 'Complete' : 'Failed to send. Try again later';
-                            NotificationToast.showToast(context: context, message: message);
+                            await NotificationToast.showToast(
+                              context: context,
+                              message: messageIntl.sending,
+                            );
+                            final isComplete = await viewModel.request();
+                            await NotificationToast.showToast(
+                              context: context,
+                              message: isComplete ? messageIntl.complete : messageIntl.tryAgain,
+                            );
                           }
                         },
                         style: ElevatedButton.styleFrom(
@@ -82,7 +91,13 @@ class RequestToAddStockPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(kBorder),
                           ),
                         ),
-                        child: const Text('Send'),
+                        child: Text(
+                          S.of(context).send,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
                     );
                   },
@@ -113,7 +128,7 @@ class _TextField extends StatelessWidget {
             Radius.circular(kBorder),
           ),
         ),
-        placeholder: 'ex ) XOM',
+        placeholder: S.of(context).requestPlaceholder,
         padding: EdgeInsets.zero,
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
@@ -123,7 +138,7 @@ class _TextField extends StatelessWidget {
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Please enter some text';
+            return S.of(context).alertTextNotEmpty;
           }
           return null;
         },

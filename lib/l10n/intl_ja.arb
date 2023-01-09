@@ -47,5 +47,11 @@
     "souring":"上昇",
     "crach":"下落",
     "heatMap":"ヒートマップ",
-    "pieChart":"円グラフ"
+    "pieChart":"円グラフ",
+    "refreshing":"更新しています",
+    "refresh":"更新する",
+    "successRefresh":"更新が成功しました",
+    "noInternetConnection":"インターネットに接続できません",
+    "errorHasOccurred":"データ取得中にエラーが発生しました",
+    "sending":"送信中..."
 }

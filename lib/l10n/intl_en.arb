@@ -47,5 +47,11 @@
     "souring":"Souring",
     "crach":"Crach",
     "heatMap":"Heat Map",
-    "pieChart":"Pie Chart"
+    "pieChart":"Pie Chart",
+    "refreshing":"Now Refreshing",
+    "refresh":"Refresh",
+    "successRefresh":"Success Refreshing",
+    "noInternetConnection":"No Internet Connection",
+    "errorHasOccurred":"Error has occurred",
+    "sending":"Sengind..."
 }
