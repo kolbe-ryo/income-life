@@ -41,7 +41,7 @@ class SearchStockPage extends StatelessWidget {
             ),
             body: Visibility(
               visible: context.select(
-                (StockDataState value) => value.isCompleteFetch,
+                (StockDataState value) => value.isSuccessFetch,
               ),
               replacement: Center(
                 child: ElevatedButton(

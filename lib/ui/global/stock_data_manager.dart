@@ -38,7 +38,7 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
   Future<bool?> reload() async {
     await _fetchGsheets();
     await _fetchFromLocal();
-    return state.isCompleteFetch;
+    return state.isSuccessFetch;
   }
 
   // fetch data from Gsheets and Local Repository
@@ -46,7 +46,7 @@ class StockDataManager extends StateNotifier<StockDataState> with LocatorMixin {
     try {
       state = state.copyWith(
         gsheets: await GetIt.I<GsheetsInterface>().fetch(),
-        isCompleteFetch: true,
+        isSuccessFetch: true,
       );
       logger.info(state);
     } on Exception catch (error) {
